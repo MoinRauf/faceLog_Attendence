@@ -19,13 +19,12 @@ const MainRoutes = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/admindashboard" element={<AdminDashboard />} />
-        <Route  path="/LogOut"  element={<LogOut/>} />
-        <Route  path="/RegisterCoAdmin"  element={<RegisterCoAdmin/>} />
-        <Route  path="/RegisterEmployee"  element={<RegisterEmployee/>} /> 
-        <Route  path="/SetDays"  element={<SetDays/>} />
-        <Route  path="/SetSalaryPolicy"  element={<SetSalaryPolicy/>} />
-        <Route  path="/SetTimeInterval"  element={<SetTimeInterval/>} />
-        
+        <Route path="/LogOut" element={<LogOut />} />
+        <Route path="/RegisterCoAdmin" element={<RegisterCoAdmin />} />
+        <Route path="/RegisterEmployee" element={<RegisterEmployee />} />
+        <Route path="/SetDays" element={<SetDays />} />
+        <Route path="/SetSalaryPolicy" element={<SetSalaryPolicy />} />
+        <Route path="/SetTimeInterval" element={<SetTimeInterval />} />
       </Routes>
     </BrowserRouter>
   );

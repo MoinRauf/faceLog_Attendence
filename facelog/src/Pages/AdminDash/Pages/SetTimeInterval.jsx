@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const SetTimeInterval = () => {
   return (
-    <div><h1>SetTimeInterval</h1></div>
-  )
-}
+    <div>
+      <h1>SetTimeInterval</h1>
+    </div>
+  );
+};
 
-export default SetTimeInterval
+export default SetTimeInterval;
