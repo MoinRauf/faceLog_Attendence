@@ -1,14 +1,15 @@
 import React from 'react'
-import { Link } from "react-router-dom";
+import HomePage from "./Pages/HomePage";
+import { Route, Routes } from "react-router-dom";
 
 const AdminDashboard = () => {
   return (
-    <div>
-      <h1>Welcome Admin, its your dashboard</h1>
-      <button>
-        <Link to="/">Home</Link>
-      </button>
-    </div>
+    <>
+<Routes>
+<Route  path="/"  element={<HomePage/>} />
+{/* <Route path="*" element={<Error />} /> */}
+</Routes>
+    </>
   );
 }
 
