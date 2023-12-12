@@ -1,0 +1,29 @@
+/* .boxStyle {
+    padding: 10px 20px;
+    border: 2px solid #16344f;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease all;
+}
+
+.linkStyle{
+    text-decoration: none;
+}
+
+.boxStyle:hover .linkStyle{
+    background-color: #16344f;
+    color: #d9eff5;
+} */
+
+.boxStyle {
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 2px solid #16344f;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s ease all;
+}
