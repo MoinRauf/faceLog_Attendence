@@ -94,6 +94,13 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 export default function SideNav() {
+  const backgroundStyle = {
+    backgroundImage: `url(${Image})`,
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+    height: "100vh",
+  };
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -108,9 +115,9 @@ export default function SideNav() {
   // };
 
   return (
-    <Box style={{ display: "flex" }}>
-      <CssBaseline />
-      <AppBar position="fixed" open={open} style={{ background: "#265073" }}>
+    <Box style={{ ...backgroundStyle, display: "flex" }}>
+      {/* <CssBaseline /> */}
+      <AppBar position="fixed" open={open} style={{ background: "#16344F" }}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -183,7 +190,7 @@ export default function SideNav() {
                 justifyContent: open ? "initial" : "center",
                 px: 2.5,
                 "&:hover": {
-                  backgroundColor: "#265073", // Change to your desired blue color
+                  backgroundColor: "#16344F", // Change to your desired blue color
                   borderRadius: "10px", // 10px border radius on hover
                   transition:
                     "background-color 0.9s ease, border-radius 0.2s ease", // 0.2 second transition for background color and border radius
@@ -232,7 +239,7 @@ export default function SideNav() {
                 justifyContent: open ? "initial" : "center",
                 px: 2.5,
                 "&:hover": {
-                  backgroundColor: "#265073", // Change to your desired blue color
+                  backgroundColor: "#16344F", // Change to your desired blue color
                   borderRadius: "10px", // 10px border radius on hover
                   transition:
                     "background-color 0.9s ease, border-radius 0.2s ease", // 0.2 second transition for background color and border radius
@@ -285,7 +292,7 @@ export default function SideNav() {
                 justifyContent: open ? "initial" : "center",
                 px: 2.5,
                 "&:hover": {
-                  backgroundColor: "#265073", // Change to your desired blue color
+                  backgroundColor: "#16344F", // Change to your desired blue color
                   borderRadius: "10px", // 10px border radius on hover
                   transition:
                     "background-color 0.9s ease, border-radius 0.2s ease", // 0.2 second transition for background color and border radius
@@ -338,7 +345,7 @@ export default function SideNav() {
                 justifyContent: open ? "initial" : "center",
                 px: 2.5,
                 "&:hover": {
-                  backgroundColor: "#265073", // Change to your desired blue color
+                  backgroundColor: "#16344F", // Change to your desired blue color
                   borderRadius: "10px", // 10px border radius on hover
                   transition:
                     "background-color 0.9s ease, border-radius 0.2s ease", // 0.2 second transition for background color and border radius
@@ -392,7 +399,7 @@ export default function SideNav() {
                 justifyContent: open ? "initial" : "center",
                 px: 2.5,
                 "&:hover": {
-                  backgroundColor: "#265073", // Change to your desired blue color
+                  backgroundColor: "#16344F", // Change to your desired blue color
                   borderRadius: "10px", // 10px border radius on hover
                   transition:
                     "background-color 0.9s ease, border-radius 0.2s ease", // 0.2 second transition for background color and border radius
@@ -443,7 +450,7 @@ export default function SideNav() {
                 justifyContent: open ? "initial" : "center",
                 px: 2.5,
                 "&:hover": {
-                  backgroundColor: "#265073", // Change to your desired blue color
+                  backgroundColor: "#16344F", // Change to your desired blue color
                   borderRadius: "10px", // 10px border radius on hover
                   transition:
                     "background-color 0.9s ease, border-radius 0.2s ease", // 0.2 second transition for background color and border radius
@@ -497,7 +504,7 @@ export default function SideNav() {
                 justifyContent: open ? "initial" : "center",
                 px: 2.5,
                 "&:hover": {
-                  backgroundColor: "#265073", // Change to your desired blue color
+                  backgroundColor: "#16344F", // Change to your desired blue color
                   borderRadius: "10px", // 10px border radius on hover
                   transition:
                     "background-color 0.9s ease, border-radius 0.2s ease", // 0.2 second transition for background color and border radius
