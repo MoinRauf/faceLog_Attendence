@@ -23,7 +23,7 @@ const HomePage = () => {
   return (
     <>
       <Box height={10} />
-      <Box style={{ display: "flex" }}>
+      <Box style={{ display: "flex", overflowX: "hidden" }}>
         <SideNav />
         <Box component="main" style={{ flexGrow: 1, p: 3 }}>
           <DrawerHeader />
@@ -43,125 +43,56 @@ const HomePage = () => {
               >
                 DashBoard
               </Grid>
-              {/* remove start */}
-              <Grid
-                xs={10.5}
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  gap: "50px",
-                }}
-              >
-                <Stack spacing={6} direction="row">
-                  <Card
-                    variant="solid"
-                    sx={{
-                      height: 15 + "vh",
-                      width: 40 + "%",
-                      backgroundColor: "white",
-                      color: "black",
-                    }}
-                  >
-                    <CardContent>
-                      <Typography
-                        level="title-md"
-                        style={{ fontSize: "30px", textAlign: "center" }}
-                      >
-                        Days Present
-                      </Typography>
-                      <Typography
-                        style={{ fontSize: "30px", textAlign: "center" }}
-                      >
-                        34
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                  <Card
-                    variant="outlined"
-                    sx={{ height: 15 + "vh", width: 40 + "%", color: "black" }}
-                  >
-                    <CardContent>
-                      <Typography
-                        level="title-md"
-                        style={{ fontSize: "30px", textAlign: "center" }}
-                      >
-                        Days Late
-                      </Typography>
-                      <Typography
-                        style={{ fontSize: "30px", textAlign: "center" }}
-                      >
-                        4
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                </Stack>
-              </Grid>
 
-              <Grid
-                xs={11}
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  gap: "50px",
-                }}
-              >
-                <Stack spacing={5.7} direction="row">
-                  <Card
-                    variant="outlined"
-                    sx={{
-                      height: 15 + "vh",
-                      width: 40 + "%",
-                      // backgroundColor: "#16344F",
-                      // color: "white",
-                      backgroundColor: "white",
-                      color: "black",
-                    }}
-                  >
-                    <CardContent>
-                      <Typography
-                        level="title-md"
-                        style={{ fontSize: "30px", textAlign: "center" }}
-                      >
-                        Days Absent
-                      </Typography>
-                      <Typography
-                        style={{ fontSize: "30px", textAlign: "center" }}
-                      >
-                        3
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                  <Card
-                    variant="soft"
-                    sx={{
-                      height: 15 + "vh",
-                      width: 40 + "%",
-                      // backgroundColor: "#D9EFF5",
-                      backgroundColor: "white",
-                      color: "black",
-                    }}
-                  >
-                    <CardContent>
-                      <Typography
-                        level="title-md"
-                        style={{
-                          fontSize: "30px",
-                          textAlign: "center",
-                          padding: "10px",
-                        }}
-                      >
-                        Half Days
-                      </Typography>
-                      <Typography
-                        style={{ fontSize: "30px", textAlign: "center" }}
-                      >
-                        12
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                </Stack>
+              {/* remove start */}
+
+              <Grid container spacing={2} sx={{ flexGrow: 1 }}>
+                <Grid
+                  xs={10.5}
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    gap: "50px",
+                    paddingTop: "90px",
+                  }}
+                >
+                  <Stack spacing={2} direction="row">
+                    <Card variant="plain">
+                      <CardContent>
+                        <Typography level="title-md">Plain card</Typography>
+                        <Typography>Description of the card.</Typography>
+                      </CardContent>
+                    </Card>
+                    <Card variant="outlined">
+                      <CardContent>
+                        <Typography level="title-md">
+                          Outlined card (default)
+                        </Typography>
+                        <Typography>Description of the card.</Typography>
+                      </CardContent>
+                    </Card>
+                    <Card variant="soft">
+                      <CardContent>
+                        <Typography level="title-md">Soft card</Typography>
+                        <Typography>Description of the card.</Typography>
+                      </CardContent>
+                    </Card>
+                    <Card variant="solid">
+                      <CardContent>
+                        <Typography level="title-md" textColor="inherit">
+                          Solid card
+                        </Typography>
+                        <Typography textColor="inherit">
+                          Description of the card.
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </Stack>
+                </Grid>
+                <Grid xs={4}></Grid>
+                <Grid xs={4}></Grid>
+                <Grid xs={8}></Grid>
               </Grid>
               {/* remove end */}
             </Grid>

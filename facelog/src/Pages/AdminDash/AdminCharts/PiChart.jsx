@@ -3,15 +3,15 @@ import { Chart } from "react-google-charts";
 
 export const data = [
   ["PENDING", "Hours per Day"],
-  ["PENDING", 11],
-  ["PENDING", 2],
-  ["ComPENDING", 2],
-  ["PENDING", 2],
-  ["PENDING", 7],
+  ["Present Days  ", 11],
+  ["Days Late", 2],
+  ["Days Absent", 2],
+  ["Half Days", 2],
+  // ["PENDING", 7],
 ];
 
 export const options = {
-  title: "FaceLog System",
+  // title: "FaceLog System",
 };
 
 export default function PiChart() {

@@ -1,45 +1,52 @@
 .homecontainer {
-    background-image: url("../../Assets/darkbg1.svg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    min-height: 100vh;
-    margin: 0;
-    padding: 0;
+  background-image: url("../../Assets/darkbg1.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
 .homebody {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: calc(100vh - 80px);
-    padding: 0 140px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: calc(100vh - 80px);
+  padding: 0 140px;
 }
 
 .hometextarea {
-    display: flex;
-    flex-direction: column;
-    /* align-content: space-between; */
-    width: 50%;
-    gap: 50px;
+  display: flex;
+  flex-direction: column;
+  /* align-content: space-between; */
+  width: 50%;
+  gap: 50px;
 }
 
 .hometextarea h1 {
-    font-size: 7em;
-    color: #c0ffd1;
-    text-shadow: 7px 7px 4px rgba(0, 0, 0, 0.5);
+  font-size: 7em;
+  color: #c0ffd1;
+  text-shadow: 7px 7px 4px rgba(0, 0, 0, 0.5);
 }
 
 .homebuttons {
-    display: flex;
-    justify-content: flex-start;
-    gap: 40px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 40px;
 }
 
-.faceimg{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5%;
-    filter: drop-shadow(5px 75px 52px #000000);
+.faceimg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5%;
+  filter: drop-shadow(5px 75px 52px #000000);
 }
+/* home.module.css */
+.homebuttonsContainer {
+  display: flex;
+  gap: 10px; /* Adjust the gap between buttons as needed */
+}
+
+/* Add any other styles as needed */

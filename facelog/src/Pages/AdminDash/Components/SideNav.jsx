@@ -5,7 +5,7 @@ import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
-import CssBaseline from "@mui/material/CssBaseline";
+// import CssBaseline from "@mui/material/CssBaseline";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
@@ -25,6 +25,9 @@ import { useNavigate } from "react-router-dom";
 import PermIdentityTwoToneIcon from "@mui/icons-material/PermIdentityTwoTone";
 import HowToRegTwoToneIcon from "@mui/icons-material/HowToRegTwoTone";
 import AccessTimeTwoToneIcon from "@mui/icons-material/AccessTimeTwoTone";
+import listItemButtonStyles from "./css/ListItemButtonStyles";
+import ListItemIconCss from "./css/ListItemIcon";
+import AdminCss from "./css/AdminCss";
 
 const drawerWidth = 240;
 
@@ -94,28 +97,13 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 export default function SideNav() {
-  const backgroundStyle = {
-    backgroundImage: `url(${Image})`,
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "center",
-    height: "100vh",
-  };
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
   const navigate = useNavigate();
 
-  // const handleDrawerOpen = () => {
-  //   setOpen(true);
-  // };
-
-  // const handleDrawerClose = () => {
-  //   setOpen(false);
-  // };
-
   return (
-    <Box style={{ ...backgroundStyle, display: "flex" }}>
+    <Box style={{ display: "flex" }}>
       {/* <CssBaseline /> */}
       <AppBar position="fixed" open={open} style={{ background: "#16344F" }}>
         <Toolbar>
@@ -132,14 +120,7 @@ export default function SideNav() {
             <MenuIcon />
           </IconButton>
 
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              width: "100%",
-            }}
-          >
+          <div style={AdminCss}>
             <div style={{ display: "flex", alignItems: "center" }}>
               <CalendarMonthTwoToneIcon />
               <Typography
@@ -184,41 +165,10 @@ export default function SideNav() {
             disablePadding
             style={{ display: "block", marginBottom: "10px" }}
           >
-            <ListItemButton
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
-                "&:hover": {
-                  backgroundColor: "#16344F", // Change to your desired blue color
-                  borderRadius: "10px", // 10px border radius on hover
-                  transition:
-                    "background-color 0.9s ease, border-radius 0.2s ease", // 0.2 second transition for background color and border radius
-                  "& .MuiListItemIcon-root": {
-                    color: "white", // Change to your desired text/icon color on hover
-                    transition: "color 1.7s ease", // 0.2 second transition for text/icon color
-                  },
-                  "& .MuiListItemText-root": {
-                    color: "white", // Change to your desired text/icon color on hover
-                    transition: "color 1.7  s ease", // 0.2 second transition for text/icon color
-                    borderBottom: "2px solid white", // White bottom border on hover
-                    paddingTop: "5px", // Add margin above the bottom border
-                    paddingBottom: "5px", // Add margin below the bottom border
-                  },
-                },
-                "&:not(:hover)": {
-                  transition:
-                    "background-color 0.9s ease, border-radius 0.2s ease", // 0.2 second transition for background color and border radius when not hovered
-                },
-              }}
-            >
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
-                }}
-              >
+            <ListItemButton sx={listItemButtonStyles(open)}>
+              {/* ... your component JSX */}
+
+              <ListItemIcon sx={ListItemIconCss(open)}>
                 <HomeTwoToneIcon />
               </ListItemIcon>
               <ListItemText primary="Home" style={{ opacity: open ? 1 : 0 }} />
@@ -233,41 +183,8 @@ export default function SideNav() {
               navigate("/RegisterEmployee");
             }}
           >
-            <ListItemButton
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
-                "&:hover": {
-                  backgroundColor: "#16344F", // Change to your desired blue color
-                  borderRadius: "10px", // 10px border radius on hover
-                  transition:
-                    "background-color 0.9s ease, border-radius 0.2s ease", // 0.2 second transition for background color and border radius
-                  "& .MuiListItemIcon-root": {
-                    color: "white", // Change to your desired text/icon color on hover
-                    transition: "color 1.7s ease", // 0.2 second transition for text/icon color
-                  },
-                  "& .MuiListItemText-root": {
-                    color: "white", // Change to your desired text/icon color on hover
-                    transition: "color 1.7  s ease", // 0.2 second transition for text/icon color
-                    borderBottom: "2px solid white", // White bottom border on hover
-                    paddingTop: "5px", // Add margin above the bottom border
-                    paddingBottom: "5px", // Add margin below the bottom border
-                  },
-                },
-                "&:not(:hover)": {
-                  transition:
-                    "background-color 0.9s ease, border-radius 0.2s ease", // 0.2 second transition for background color and border radius when not hovered
-                },
-              }}
-            >
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
-                }}
-              >
+            <ListItemButton sx={listItemButtonStyles(open)}>
+              <ListItemIcon sx={ListItemIconCss(open)}>
                 <HowToRegTwoToneIcon />
               </ListItemIcon>
               <ListItemText
@@ -277,7 +194,6 @@ export default function SideNav() {
             </ListItemButton>
           </ListItem>
           {/* employee reg end */}
-
           {/* coadmin reg start */}
           <ListItem
             disablePadding
@@ -286,41 +202,8 @@ export default function SideNav() {
               navigate("/RegisterCoAdmin");
             }}
           >
-            <ListItemButton
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
-                "&:hover": {
-                  backgroundColor: "#16344F", // Change to your desired blue color
-                  borderRadius: "10px", // 10px border radius on hover
-                  transition:
-                    "background-color 0.9s ease, border-radius 0.2s ease", // 0.2 second transition for background color and border radius
-                  "& .MuiListItemIcon-root": {
-                    color: "white", // Change to your desired text/icon color on hover
-                    transition: "color 1.7s ease", // 0.2 second transition for text/icon color
-                  },
-                  "& .MuiListItemText-root": {
-                    color: "white", // Change to your desired text/icon color on hover
-                    transition: "color 1.7  s ease", // 0.2 second transition for text/icon color
-                    borderBottom: "2px solid white", // White bottom border on hover
-                    paddingTop: "5px", // Add margin above the bottom border
-                    paddingBottom: "5px", // Add margin below the bottom border
-                  },
-                },
-                "&:not(:hover)": {
-                  transition:
-                    "background-color 0.9s ease, border-radius 0.2s ease", // 0.2 second transition for background color and border radius when not hovered
-                },
-              }}
-            >
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
-                }}
-              >
+            <ListItemButton sx={listItemButtonStyles(open)}>
+              <ListItemIcon sx={ListItemIconCss(open)}>
                 <SupervisorAccountTwoToneIcon />
               </ListItemIcon>
               <ListItemText
@@ -339,41 +222,8 @@ export default function SideNav() {
               navigate("/SetTimeInterval");
             }}
           >
-            <ListItemButton
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
-                "&:hover": {
-                  backgroundColor: "#16344F", // Change to your desired blue color
-                  borderRadius: "10px", // 10px border radius on hover
-                  transition:
-                    "background-color 0.9s ease, border-radius 0.2s ease", // 0.2 second transition for background color and border radius
-                  "& .MuiListItemIcon-root": {
-                    color: "white", // Change to your desired text/icon color on hover
-                    transition: "color 1.7s ease", // 0.2 second transition for text/icon color
-                  },
-                  "& .MuiListItemText-root": {
-                    color: "white", // Change to your desired text/icon color on hover
-                    transition: "color 1.7  s ease", // 0.2 second transition for text/icon color
-                    borderBottom: "2px solid white", // White bottom border on hover
-                    paddingTop: "5px", // Add margin above the bottom border
-                    paddingBottom: "5px", // Add margin below the bottom border
-                  },
-                },
-                "&:not(:hover)": {
-                  transition:
-                    "background-color 0.9s ease, border-radius 0.2s ease", // 0.2 second transition for background color and border radius when not hovered
-                },
-              }}
-            >
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
-                }}
-              >
+            <ListItemButton sx={listItemButtonStyles(open)}>
+              <ListItemIcon sx={ListItemIconCss(open)}>
                 <AccessTimeTwoToneIcon />
               </ListItemIcon>
               <ListItemText
@@ -393,41 +243,8 @@ export default function SideNav() {
               navigate("/SetDays");
             }}
           >
-            <ListItemButton
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
-                "&:hover": {
-                  backgroundColor: "#16344F", // Change to your desired blue color
-                  borderRadius: "10px", // 10px border radius on hover
-                  transition:
-                    "background-color 0.9s ease, border-radius 0.2s ease", // 0.2 second transition for background color and border radius
-                  "& .MuiListItemIcon-root": {
-                    color: "white", // Change to your desired text/icon color on hover
-                    transition: "color 1.7s ease", // 0.2 second transition for text/icon color
-                  },
-                  "& .MuiListItemText-root": {
-                    color: "white", // Change to your desired text/icon color on hover
-                    transition: "color 1.7  s ease", // 0.2 second transition for text/icon color
-                    borderBottom: "2px solid white", // White bottom border on hover
-                    paddingTop: "5px", // Add margin above the bottom border
-                    paddingBottom: "5px", // Add margin below the bottom border
-                  },
-                },
-                "&:not(:hover)": {
-                  transition:
-                    "background-color 0.9s ease, border-radius 0.2s ease", // 0.2 second transition for background color and border radius when not hovered
-                },
-              }}
-            >
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
-                }}
-              >
+            <ListItemButton sx={listItemButtonStyles(open)}>
+              <ListItemIcon sx={ListItemIconCss(open)}>
                 <CalendarMonthTwoToneIcon />
               </ListItemIcon>
               <ListItemText
@@ -444,41 +261,8 @@ export default function SideNav() {
               navigate("/SetSalaryPolicy");
             }}
           >
-            <ListItemButton
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
-                "&:hover": {
-                  backgroundColor: "#16344F", // Change to your desired blue color
-                  borderRadius: "10px", // 10px border radius on hover
-                  transition:
-                    "background-color 0.9s ease, border-radius 0.2s ease", // 0.2 second transition for background color and border radius
-                  "& .MuiListItemIcon-root": {
-                    color: "white", // Change to your desired text/icon color on hover
-                    transition: "color 1.7s ease", // 0.2 second transition for text/icon color
-                  },
-                  "& .MuiListItemText-root": {
-                    color: "white", // Change to your desired text/icon color on hover
-                    transition: "color 1.7  s ease", // 0.2 second transition for text/icon color
-                    borderBottom: "2px solid white", // White bottom border on hover
-                    paddingTop: "5px", // Add margin above the bottom border
-                    paddingBottom: "5px", // Add margin below the bottom border
-                  },
-                },
-                "&:not(:hover)": {
-                  transition:
-                    "background-color 0.9s ease, border-radius 0.2s ease", // 0.2 second transition for background color and border radius when not hovered
-                },
-              }}
-            >
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
-                }}
-              >
+            <ListItemButton sx={listItemButtonStyles(open)}>
+              <ListItemIcon sx={ListItemIconCss(open)}>
                 <PolicyTwoToneIcon />
               </ListItemIcon>
               {/* setsalarypolicy start */}
@@ -498,41 +282,8 @@ export default function SideNav() {
               navigate("/LogOut");
             }}
           >
-            <ListItemButton
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
-                "&:hover": {
-                  backgroundColor: "#16344F", // Change to your desired blue color
-                  borderRadius: "10px", // 10px border radius on hover
-                  transition:
-                    "background-color 0.9s ease, border-radius 0.2s ease", // 0.2 second transition for background color and border radius
-                  "& .MuiListItemIcon-root": {
-                    color: "white", // Change to your desired text/icon color on hover
-                    transition: "color 1.7s ease", // 0.2 second transition for text/icon color
-                  },
-                  "& .MuiListItemText-root": {
-                    color: "white", // Change to your desired text/icon color on hover
-                    transition: "color 1.7  s ease", // 0.2 second transition for text/icon color
-                    borderBottom: "2px solid white", // White bottom border on hover
-                    paddingTop: "5px", // Add margin above the bottom border
-                    paddingBottom: "5px", // Add margin below the bottom border
-                  },
-                },
-                "&:not(:hover)": {
-                  transition:
-                    "background-color 0.9s ease, border-radius 0.2s ease", // 0.2 second transition for background color and border radius when not hovered
-                },
-              }}
-            >
-              <ListItemIcon
-                sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
-                }}
-              >
+            <ListItemButton sx={listItemButtonStyles(open)}>
+              <ListItemIcon sx={ListItemIconCss(open)}>
                 <LogoutTwoToneIcon />
               </ListItemIcon>
               <ListItemText
@@ -541,32 +292,8 @@ export default function SideNav() {
               />
             </ListItemButton>
           </ListItem>
-          {/* logout end */}
+          {/* logout end */}  
         </List>
-
-        {/* <Divider />
-        <List>
-        <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}
-                >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-        </List> */}
       </Drawer>
     </Box>
   );
