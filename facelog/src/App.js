@@ -1,10 +1,15 @@
 import MainRoutes from "./Routes";
-import './App.css';
-
+import "./App.css";
+import { MyContext } from "./MyContext";
+import { useState, React } from "react";
 function App() {
+  const [text, setText] = useState([]);
+
   return (
     <>
-      <MainRoutes />
+      <MyContext.Provider value={{ text, setText }}>
+        <MainRoutes />
+      </MyContext.Provider>
     </>
   );
 }

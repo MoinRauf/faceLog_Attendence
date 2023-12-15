@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import SideNav from "../Components/SideNav";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -10,6 +10,7 @@ import Stack from "@mui/joy/Stack";
 import AChart from "../AdminCharts/AChart";
 import PiChart from "../AdminCharts/PiChart";
 import DataTable from "../Components/DataTable";
+import { MyContext } from "../../../MyContext";
 
 const HomePage = () => {
   const DrawerHeader = styled("div")(({ theme }) => ({
@@ -20,6 +21,7 @@ const HomePage = () => {
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
   }));
+  const { text } = useContext(MyContext);
   return (
     <>
       <Box height={10} />
@@ -60,31 +62,35 @@ const HomePage = () => {
                   <Stack spacing={2} direction="row">
                     <Card variant="plain">
                       <CardContent>
-                        <Typography level="title-md">Plain card</Typography>
-                        <Typography>Description of the card.</Typography>
+                        <Typography level="title-md">Present Days</Typography>
+                        <Typography>
+                          {text.DaysPresent ? text.DaysPresent : 0}
+                        </Typography>
                       </CardContent>
                     </Card>
                     <Card variant="outlined">
                       <CardContent>
-                        <Typography level="title-md">
-                          Outlined card (default)
+                        <Typography level="title-md">Days Late</Typography>
+                        <Typography>
+                          {text.DaysLate ? text.DaysLate : 0}
                         </Typography>
-                        <Typography>Description of the card.</Typography>
                       </CardContent>
                     </Card>
                     <Card variant="soft">
                       <CardContent>
                         <Typography level="title-md">Soft card</Typography>
-                        <Typography>Description of the card.</Typography>
+                        <Typography>
+                          {text.DaysAbsent ? text.DaysAbsent : 0}
+                        </Typography>
                       </CardContent>
                     </Card>
                     <Card variant="solid">
                       <CardContent>
                         <Typography level="title-md" textColor="inherit">
-                          Solid card
+                          Half Days
                         </Typography>
                         <Typography textColor="inherit">
-                          Description of the card.
+                          {text.HalfDays ? text.HalfDays : 0}
                         </Typography>
                       </CardContent>
                     </Card>
@@ -98,7 +104,7 @@ const HomePage = () => {
             </Grid>
             <Box height={20} />
             <Grid container spacing={0.2} sx={{ flexGrow: 1 }}>
-              <Grid xs={5} style={{ margin: "50px" }}>
+              <Grid xs={4.5} style={{ margin: "30px" }}>
                 <Card
                   variant="solid"
                   sx={{
@@ -108,12 +114,12 @@ const HomePage = () => {
                   }}
                 >
                   <CardContent>
-                    <AChart />
+                    <AChart></AChart>
                   </CardContent>
                 </Card>
               </Grid>
               <Grid
-                xs={5}
+                xs={6}
                 style={{
                   margin: "50px",
                   display: "flex",

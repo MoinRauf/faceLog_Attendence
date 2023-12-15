@@ -122,7 +122,7 @@ export default function SideNav() {
 
           <div style={AdminCss}>
             <div style={{ display: "flex", alignItems: "center" }}>
-              <CalendarMonthTwoToneIcon />
+              {/* <CalendarMonthTwoToneIcon /> */}
               <Typography
                 variant="h6"
                 noWrap
