@@ -12,14 +12,14 @@ const HoverButton = ({ label, bgColor, textColor, linkTo }) => {
     border: "2px solid #16344f",
     fontSize: "18px",
     fontWeight: "bold",
-    borderRadius: isHovered ? "0px" : "10px",
+    borderRadius: isHovered ? "0px" : "6px",
     cursor: "pointer",
     transition: "all 0.3s",
     textDecoration: "none",
     color: textColor || "#16344f",
     backgroundColor: bgColor || "#d9eff5",
     transform: isHovered ? "scale(1.05,1.05)" : "scale(1, 1)",
-    boxShadow: isHovered ? "5px 5px 5px #16344f" : "",
+    boxShadow: isHovered ? "5px 5px 5px #000000" : "",
   };
 
   const handleMouseEnter = () => {
