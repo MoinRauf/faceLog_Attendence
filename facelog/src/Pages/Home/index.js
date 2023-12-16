@@ -2,7 +2,7 @@
 import React from "react";
 import Logo from "../../Components/Logo";
 import styles from "./home.module.css";
-import face from "../../Assets/facerecognition.svg";
+import face from "../../Assets/facerecognition2.svg";
 import HoverButton from "../../Components/CustomButton/HoverButton";
 
 const Home = () => {
@@ -14,16 +14,21 @@ const Home = () => {
           <h1>FaceLog Attendance</h1>
 
           {/* Container for the buttons */}
-          <div className={styles.homebuttonsContainer}>
+          <div className={styles.homebuttons}>
             {/* First button */}
-            <div className={styles.homebuttons}>
-              <HoverButton label="Login" linkTo="/login" />
-            </div>
-
+            <HoverButton
+              label="Setup System"
+              bgColor="#c0ffd1"
+              textColor="#16344f"
+              linkTo="/register"
+            />
             {/* Second button */}
-            <div className={styles.homebuttons}>
-              <HoverButton label="Register" linkTo="/register" />
-            </div>
+            <HoverButton
+              label="Login"
+              bgColor="#d9eff5"
+              textColor="#16344f"
+              linkTo="/login"
+            />
           </div>
         </div>
         <div className={styles.faceimg}>
@@ -36,4 +41,3 @@ const Home = () => {
 
 export default Home;
 
-// es file main b change hua hy kafi

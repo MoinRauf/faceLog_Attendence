@@ -43,10 +43,4 @@
   padding: 5%;
   filter: drop-shadow(5px 75px 52px #000000);
 }
-/* home.module.css */
-.homebuttonsContainer {
-  display: flex;
-  gap: 10px; /* Adjust the gap between buttons as needed */
-}
 
-/* Add any other styles as needed */
