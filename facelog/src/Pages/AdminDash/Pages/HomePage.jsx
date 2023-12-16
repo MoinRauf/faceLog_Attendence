@@ -43,7 +43,9 @@ const HomePage = () => {
                   color: "white",
                 }}
               >
-                DashBoard
+                <span style={{fontSize: "1em", fontFamily: 'Bad Script, cursive' }}>DashBoard</span>
+
+                
               </Grid>
 
               {/* remove start */}
@@ -62,35 +64,45 @@ const HomePage = () => {
                   <Stack spacing={2} direction="row">
                     <Card variant="plain">
                       <CardContent>
-                        <Typography level="title-md">Present Days</Typography>
-                        <Typography>
-                          {text.DaysPresent ? text.DaysPresent : 0}
+                        <Typography level="title-md" fontWeight="bold">
+                          Present Days
+                        </Typography>
+                        <Typography style={{ textAlign: "center" }}>
+                          {text.DaysPresent ? text.DaysPresent : "- - -"}
                         </Typography>
                       </CardContent>
                     </Card>
-                    <Card variant="outlined">
+                    <Card variant="plain">
                       <CardContent>
-                        <Typography level="title-md">Days Late</Typography>
-                        <Typography>
-                          {text.DaysLate ? text.DaysLate : 0}
+                        <Typography level="title-md" fontWeight="bold">
+                          Days Late
+                        </Typography>
+                        <Typography style={{ textAlign: "center" }}>
+                          {text.DaysLate ? text.DaysLate : "- - -"}
                         </Typography>
                       </CardContent>
                     </Card>
-                    <Card variant="soft">
+                    <Card variant="plain">
                       <CardContent>
-                        <Typography level="title-md">Soft card</Typography>
-                        <Typography>
-                          {text.DaysAbsent ? text.DaysAbsent : 0}
+                        <Typography level="title-md" fontWeight="bold">
+                          Days Absent
+                        </Typography>
+                        <Typography style={{ textAlign: "center" }}>
+                          {text.DaysAbsent ? text.DaysAbsent : "- - -"}
                         </Typography>
                       </CardContent>
                     </Card>
-                    <Card variant="solid">
+                    <Card variant="plain">
                       <CardContent>
-                        <Typography level="title-md" textColor="inherit">
+                        <Typography
+                          level="title-md"
+                          textColor="inherit"
+                          fontWeight="bold"
+                        >
                           Half Days
                         </Typography>
-                        <Typography textColor="inherit">
-                          {text.HalfDays ? text.HalfDays : 0}
+                        <Typography style={{ textAlign: "center" }}>
+                          {text.HalfDays ? text.HalfDays : "- - -"}
                         </Typography>
                       </CardContent>
                     </Card>
@@ -103,7 +115,11 @@ const HomePage = () => {
               {/* remove end */}
             </Grid>
             <Box height={20} />
-            <Grid container spacing={0.2} sx={{ flexGrow: 1 }}>
+            <Grid
+              container
+              spacing={0.2}
+              sx={{ flexGrow: 1, marginLeft:"170px" }}
+            >
               <Grid xs={4.5} style={{ margin: "30px" }}>
                 <Card
                   variant="solid"
@@ -118,10 +134,11 @@ const HomePage = () => {
                   </CardContent>
                 </Card>
               </Grid>
+
               <Grid
-                xs={6}
+                xs={4.5}
                 style={{
-                  margin: "50px",
+                  margin: "30px",
                   display: "flex",
                   alignItems: "center",
                 }}
@@ -132,6 +149,7 @@ const HomePage = () => {
                     padding: "30px",
                     height: 50 + "vh",
                     backgroundColor: "#16344F",
+                    // marginT
                   }}
                 >
                   <CardContent>

@@ -31,11 +31,27 @@ import Swal from "sweetalert2";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { MyContext } from "../../../MyContext";
+import Modal from "@mui/material/Modal";
+
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+};
 
 export default function DataTable() {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [rows, setRows] = useState([]);
+  // const [open, setOpen] = useState(false);
+  // const handleOpen = () => setOpen(true);
+  // const handleClose = () => setOpen(false);
 
   const [filterrow, setfilterrow] = useState("");
   const { text, setText } = React.useContext(MyContext);
@@ -126,11 +142,11 @@ export default function DataTable() {
             disablePortal
             id="combo-box-demo"
             options={rows}
-            sx={{ width: 300 }}
+            sx={{ width: 300 , paddingLeft:"10px" }}
             onChange={(e, v) => filterData(v)}
-            getOptionLabel={(rows) => rows.EmpId || ""}
+            getOptionLabel={(rows) => rows.EmpName || ""}
             renderInput={(params) => (
-              <TextField {...params} size="small" label="Search Products" />
+              <TextField {...params} size="small" label="Search Name" />
             )}
           />
           {/* <Typography

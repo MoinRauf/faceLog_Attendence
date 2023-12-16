@@ -129,7 +129,15 @@ export default function SideNav() {
                 component="div"
                 sx={{ paddingLeft: "16px" }}
               >
-                FaceLog
+                <span
+                  style={{
+                    fontSize: "1.5em",
+                    fontFamily: "Bad Script, cursive",
+                  }}
+                >
+                  {" "}
+                  FaceLog
+                </span>
               </Typography>
             </div>
 
@@ -138,9 +146,17 @@ export default function SideNav() {
                 variant="h6"
                 noWrap
                 component="div"
-                sx={{ paddingRight: "16px" }}
+                sx={{ paddingRight: "16px", paddingTop: "9.2px", }}
               >
-                Welcome Admin
+                <span
+                  style={{
+                    fontFamily: "Bad Script, cursive",
+                    fontSize: "1.5em",
+                   
+                  }}
+                >
+                  Welcome Admin
+                </span>
               </Typography>
               <PermIdentityTwoToneIcon />
             </div>
@@ -292,7 +308,7 @@ export default function SideNav() {
               />
             </ListItemButton>
           </ListItem>
-          {/* logout end */}  
+          {/* logout end */}
         </List>
       </Drawer>
     </Box>
