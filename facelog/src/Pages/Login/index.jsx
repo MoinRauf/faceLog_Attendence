@@ -1,30 +1,29 @@
-import React from 'react'
+import React from "react";
 import styles from "../../ReusableCSS/form.module.css";
 import Logo from "../../Components/Logo";
 import HoverButton from "../../Components/CustomButton/HoverButton";
-import FormField from '../../Components/FormField';
-import PersonIcon from '@mui/icons-material/Person';
+import FormField from "../../Components/FormField";
 import EmailIcon from "@mui/icons-material/Email";
 import LockIcon from "@mui/icons-material/Lock";
 
-const Register = () => {
+const Login = () => {
   return (
     <div className={styles.formBody}>
       {/* LOGO */}
       <Logo />
 
-      {/* Blue Admin Registration Form Container */}
+      {/* Blue Login Form Container */}
       <div className={styles.formContainer}>
-        <h1 className={styles.formheading}>Admin Registration</h1>
+        <h1 className={styles.formheading}>Login</h1>
 
         {/* HTML form */}
         <form>
-          <FormField
-            label="Name"
-            icon={<PersonIcon />}
-            inputType="text"
-            placeholder="John Doe"
-          />
+          <div className={styles.loginType} style={{ display: "flex", justifyContent: "space-around" }}>
+            <input type="radio" value="Admin" />
+            <div>Admin</div>
+            <input type="radio" value="Employee" />
+            <div>Employee</div>
+          </div>
           <FormField
             label="Email"
             icon={<EmailIcon />}
@@ -42,15 +41,15 @@ const Register = () => {
         {/* Register button */}
         <div style={{ margin: "10px 0px 30px" }}>
           <HoverButton
-            label="Register"
+            label="Login"
             bgColor="#16344f"
             textColor="#d9eff5"
-            linkTo="/login"
+            linkTo="/admindashboard"
           />
         </div>
       </div>
     </div>
   );
-}
+};
 
-export default Register
+export default Login;
