@@ -142,7 +142,7 @@ export default function DataTable() {
             disablePortal
             id="combo-box-demo"
             options={rows}
-            sx={{ width: 300 , paddingLeft:"10px" }}
+            sx={{ width: 300, paddingLeft: "10px" }}
             onChange={(e, v) => filterData(v)}
             getOptionLabel={(rows) => rows.EmpName || ""}
             renderInput={(params) => (
