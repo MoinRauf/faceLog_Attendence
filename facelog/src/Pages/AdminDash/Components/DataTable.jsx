@@ -250,7 +250,8 @@ export default function DataTable() {
                             viewUser(row.id);
 
                             // Calculate 80% of the page height
-                            window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to the top
+                            window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll to the top
+
                             // Swal.fire(
                             //   "User Viewed!",
                             //   "User details have been viewed.",

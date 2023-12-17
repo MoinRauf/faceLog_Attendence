@@ -4,18 +4,21 @@ import Logo from "../../../Components/Logo";
 import HoverButton from "../../../Components/CustomButton/HoverButton";
 import FormField from "../../../Components/FormField";
 import PersonIcon from "@mui/icons-material/Person";
-import EmailIcon from "@mui/icons-material/Email";
-import LockIcon from "@mui/icons-material/Lock";
 import Stack from "@mui/material/Stack";
+
+// es file main <form> </form> k icon remove krne hain
 
 const Register = () => {
   return (
-    <div className={styles.formBody}>
+    <div
+      className={styles.formBody}
+      style={{ minHeight: "120vh", paddingTop: "10px" }}
+    >
       {/* LOGO */}
       <Logo />
 
       {/* Blue Admin Registration Form Container */}
-      <div className={styles.formContainer}>
+      <div className={styles.formContainer} style={{ marginTop: "100px" }}>
         <h1 className={styles.formheading}>Set Time Interval</h1>
 
         {/* HTML form */}
@@ -23,58 +26,68 @@ const Register = () => {
           <Stack spacing={0} direction="row">
             <FormField
               label="Attendance Time"
-              icon={<PersonIcon />}
+              icon={<PersonIcon />} // remove   
               inputType="time"
               placeholder="From"
             />
             <FormField
-              // label="Attendance Time"
-              icon={<PersonIcon />}
+              icon={<PersonIcon />} // remove 
               inputType="time"
               placeholder="To"
-            />
-          </Stack>
-          <Stack spacing={0} direction="row">
-            <FormField
-              label="Present Status"
-              icon={<PersonIcon />}
-              inputType="time"
-              placeholder="From"
-            />
-            <FormField
-              // label="Attendance Time"
-              icon={<PersonIcon />}
-              inputType="time"
-              placeholder="To"
-            />
-          </Stack>
-          <Stack spacing={0} direction="row">
-            <FormField
-              label="Present Days"
-              icon={<EmailIcon />}
-              inputType="Number"
-              placeholder="Enter the number of Present days"
-            />
-            <FormField
-              label="Absent Days"
-              icon={<LockIcon />}
-              inputType="Number"
-              placeholder="Enter the number of Absent days"
             />
           </Stack>
 
           <Stack spacing={0} direction="row">
             <FormField
-              label="Late Days"
-              icon={<EmailIcon />}
-              inputType="Number"
-              placeholder="Enter the number of Late days"
+              label="Present Status"
+              icon={<PersonIcon />} // remove 
+              inputType="time"
+              placeholder="From"
             />
             <FormField
-              label="Half Days"
-              icon={<LockIcon />}
-              inputType="Number"
-              placeholder="Enter the number of Half days"
+              icon={<PersonIcon />} // remove 
+              inputType="time"
+              placeholder="To"
+            />
+          </Stack>
+          <Stack spacing={0} direction="row">
+            <FormField
+              label="Absent Status"
+              icon={<PersonIcon />} // remove 
+              inputType="time"
+              placeholder="From"
+            />
+            <FormField
+              icon={<PersonIcon />} // remove 
+              inputType="time"
+              placeholder="To"
+            />
+          </Stack>
+
+          <Stack spacing={0} direction="row">
+            <FormField
+              label="Leave Status"
+              icon={<PersonIcon />} // remove 
+              inputType="time"
+              placeholder="From"
+            />
+            <FormField
+              icon={<PersonIcon />} // remove 
+              inputType="time"
+              placeholder="To"
+            />
+          </Stack>
+          <Stack spacing={0} direction="row">
+            <FormField
+              label="HalfDays Status"
+              icon={<PersonIcon />} // remove 
+              inputType="time"
+              placeholder="From"
+            />
+            <FormField
+              icon={<PersonIcon />} // remove 
+              inputType="time"
+              placeholder="To"
             />
           </Stack>
         </form>

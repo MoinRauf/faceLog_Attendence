@@ -28,6 +28,7 @@ import AccessTimeTwoToneIcon from "@mui/icons-material/AccessTimeTwoTone";
 import listItemButtonStyles from "./css/ListItemButtonStyles";
 import ListItemIconCss from "./css/ListItemIcon";
 import AdminCss from "./css/AdminCss";
+import Swal from "sweetalert2";
 
 const drawerWidth = 240;
 
@@ -146,13 +147,12 @@ export default function SideNav() {
                 variant="h6"
                 noWrap
                 component="div"
-                sx={{ paddingRight: "16px", paddingTop: "9.2px", }}
+                sx={{ paddingRight: "16px", paddingTop: "9.2px" }}
               >
                 <span
                   style={{
                     fontFamily: "Bad Script, cursive",
                     fontSize: "1.5em",
-                   
                   }}
                 >
                   Welcome Admin
@@ -295,7 +295,26 @@ export default function SideNav() {
             disablePadding
             style={{ display: "block", marginBottom: "10px" }}
             onClick={() => {
-              navigate("/LogOut");
+              Swal.fire({
+                title: "Logout",
+                text: "Are you sure you want to log out?",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Yes, log out",
+                cancelButtonText: "Cancel",
+                confirmButtonColor: "#16344F", // Set the color for the confirm button
+                cancelButtonColor: "#d33", // Set the color for the cancel button
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  // Perform the logout action
+                  // You can replace the following line with your logout logic
+                  Swal.fire(
+                    "Logged Out!",
+                    "You have been successfully logged out.",
+                    "success"
+                  );
+                }
+              });
             }}
           >
             <ListItemButton sx={listItemButtonStyles(open)}>

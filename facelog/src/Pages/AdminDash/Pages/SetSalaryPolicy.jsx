@@ -7,6 +7,12 @@ import PersonIcon from '@mui/icons-material/Person';
 import EmailIcon from "@mui/icons-material/Email";
 import LockIcon from "@mui/icons-material/Lock";
 
+
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import EditCalendarIcon from '@mui/icons-material/EditCalendar';
+import EventNoteIcon from '@mui/icons-material/EventNote';
+
+
 const Register = () => {
   return (
     <div className={styles.formBody}>
@@ -21,13 +27,13 @@ const Register = () => {
         <form>
           <FormField
             label="Absent Days"
-            icon={<PersonIcon />}
+            icon={<CalendarMonthIcon />}
             inputType="Number"
             placeholder="Enter the number of Absent days"
           />
           <FormField
             label="Late Days"
-            icon={<EmailIcon />}
+            icon={<EditCalendarIcon />}
             inputType="Number"
             placeholder="Enter the number of late days"
           />

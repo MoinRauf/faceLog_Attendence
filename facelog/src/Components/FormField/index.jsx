@@ -3,7 +3,11 @@ import styles from "./formfield.module.css";
 import PropTypes from "prop-types";
 
 
-const FormField = ({label, icon, inputType, placeholder}) => {
+
+const FormField = ({label, icon, inputType, placeholder, marginLeft}) => {
+  const fieldStyle = {
+    marginLeft: marginLeft || "0", // Default to "0" if marginLeft is not provided
+  };
   return (
     <div className={styles.fieldContainer}>
         
@@ -22,6 +26,7 @@ const FormField = ({label, icon, inputType, placeholder}) => {
         className={styles.input}
         type={inputType}
         placeholder={placeholder || ""}
+        style={fieldStyle}
       />
     </div>
   );
@@ -29,7 +34,8 @@ const FormField = ({label, icon, inputType, placeholder}) => {
 
 FormField.propTypes = {
   label: PropTypes.string.isRequired,
-  icon: PropTypes.element.isRequired,
+  // icon: PropTypes.element.isRequired,
+  icon: PropTypes.element,
   inputType: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
 };

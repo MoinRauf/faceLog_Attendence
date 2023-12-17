@@ -5,6 +5,7 @@
     align-content: space-between;
     width: 300px;
     margin: 26px;
+    /* margin: 17px; */
     gap: 4px;
 }
 
@@ -28,4 +29,5 @@
     border: 1px solid #16344f;
     border-radius: 5px;
     outline: none;
+    
 }
