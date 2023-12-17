@@ -1,8 +1,10 @@
 import React from "react";
+import styles from "../../../ReusableCSS/form.module.css";
 
 const Error = () => {
   return (
     <div
+      className={styles.formBody}
       style={{
         display: "flex",
         alignItems: "center",

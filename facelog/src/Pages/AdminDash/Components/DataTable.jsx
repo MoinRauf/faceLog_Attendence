@@ -105,6 +105,12 @@ export default function DataTable() {
     for (var i = 0; i < rows.length; i++) {
       if (rows[i].id === id) {
         setfilterrow(rows[i]);
+        // Swal.fire(
+        //   "Graph Updated!",
+        //   "Employee graph has been successfully updated.",
+        //   "success"
+        // );
+
         break;
       }
     }
@@ -242,6 +248,14 @@ export default function DataTable() {
                           }}
                           onClick={() => {
                             viewUser(row.id);
+
+                            // Calculate 80% of the page height
+                            window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to the top
+                            // Swal.fire(
+                            //   "User Viewed!",
+                            //   "User details have been viewed.",
+                            //   "success"
+                            // );
                           }}
                         />
                       </Stack>
