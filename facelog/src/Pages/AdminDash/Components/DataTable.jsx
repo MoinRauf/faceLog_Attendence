@@ -46,12 +46,14 @@ const style = {
 };
 
 export default function DataTable() {
+
+
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [rows, setRows] = useState([]);
-  // const [open, setOpen] = useState(false);
-  // const handleOpen = () => setOpen(true);
-  // const handleClose = () => setOpen(false);
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const [filterrow, setfilterrow] = useState("");
   const { text, setText } = React.useContext(MyContext);
@@ -98,6 +100,19 @@ export default function DataTable() {
         deleteApi(id);
       }
     });
+  };
+
+  const edituser = async () => {
+    await updateDoc(empCollectionRef, {
+      EmpId: 2,
+      EmpName: "EmpName",
+      DaysAbsent: 5,
+      DaysLate: 6,
+      HalfDays: 6,
+    });
+    getUsers(); //update the list acc: to data
+    CloseEvent();
+    Swal.fire("edit successfullt");
   };
 
   const viewUser = (id) => {
@@ -155,14 +170,14 @@ export default function DataTable() {
               <TextField {...params} size="small" label="Search Name" />
             )}
           />
-          {/* <Typography
-          variant="h6"
-          component="div"
-          sx={{ flexGrow: 1 }}
-        ></Typography>
-        <Button variant="contained" endIcon={<AddCircleIcon />}>
-          Add
-        </Button> */}
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1 }}
+          ></Typography>
+          <Button variant="contained" endIcon={<AddCircleIcon />}>
+            Add
+          </Button>
         </Stack>
         <Box height={10} />
         <TableContainer sx={{ maxHeight: 440 }}>
@@ -228,7 +243,7 @@ export default function DataTable() {
                             cursor: "pointer",
                           }}
                           className="cursor-pointer"
-                          // onClick={() => editUser(row.id)}
+                          onClick={() => edituser(row.id)}
                         />
                         <DeleteIcon
                           style={{

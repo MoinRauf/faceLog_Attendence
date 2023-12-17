@@ -1,36 +1,63 @@
-// import React from "react";
-// import Webcam from "react-webcam";
-// import styles from "../../../ReusableCSS/form.module.css";
-// import HoverButton from "../../../Components/CustomButton/HoverButton";
+// WebcamComponent.js
+import React, { useRef, useState } from "react";
+import Webcam from "react-webcam";
+import style from "../Camera/WebCam.module.css";
 
+const WebcamComponent = ({ isOpen, onClose }) => {
+  const webcamRef = useRef(null);
+  const [isHovered, setIsHovered] = useState(false);
 
+  const capture = () => {
+    if (webcamRef.current) {
+      const imageSrc = webcamRef.current.getScreenshot();
+      console.log(imageSrc);
+      onClose(); // Close the camera after capturing the photo
+    } else {
+      console.error("Webcam reference not available");
+    }
+  };
 
-// const WebcamComponent = () => {
-//     return (
-//       <div
-//         className={styles.formBody}
-//         style={{
-//           display: "flex",
-//           alignItems: "center",
-//           justifyContent: "center",
-//           height: "100vh",
-//           backgroundColor: "#091D36",
-//         }}
-//       >
-//         <div style={{ padding: "300 px" }}>
-//           <HoverButton
-//             label="LogOut"
-//             bgColor="#c0ffd1"
-//             textColor="#16344f"
-//             // linkTo="/register"
-//           />
-//         </div>
-//       </div>
-//     );
-//   };
-  
+  return (
+    <div className={style.webBody}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          paddingTop: "160px",
+        }}
+      >
+        {" "}
+        {isOpen && (
+          <Webcam audio={false} ref={webcamRef} screenshotFormat="image/jpeg" />
+        )}
+        {isOpen && (
+          <button
+            onClick={capture}
+            style={{
+              margin: "20px 0px 0px 80px",
+              padding: "10px 20px",
+              border: "2px solid #16344f",
+              fontSize: "18px",
+              fontWeight: "bold",
+              borderRadius: isHovered ? "0px" : "6px",
+              cursor: "pointer",
+              transition: "all 0.3s",
+              textDecoration: "none",
+              color: "#16344f",
+              backgroundColor: "#d9eff5",
+              transform: isHovered ? "scale(1.05,1.05)" : "scale(1, 1)",
+              boxShadow: isHovered ? "5px 5px 5px #000000" : "",
+            }}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            Capture photo
+          </button>
+        )}
+      </div>
+    </div>
+  );
+};
 
-// export default WebcamComponent;
-
-
-
+export default WebcamComponent;
