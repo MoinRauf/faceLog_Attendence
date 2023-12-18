@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
 
-const HoverButton = ({ label, bgColor, textColor, linkTo }) => {
+const HoverButton = ({ label, bgColor, textColor, linkTo, onClick }) => {
   const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
 
@@ -39,7 +39,7 @@ const HoverButton = ({ label, bgColor, textColor, linkTo }) => {
       style={buttonStyle}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      onClick={handleClick}
+      onClick={linkTo ? handleClick : onClick}
     >
       {label}
     </button>
