@@ -18,7 +18,7 @@ const Register = () => {
         <h1 className={styles.formheading}>Admin Registration</h1>
 
         {/* HTML form */}
-        <form>
+        <form className={styles.form}>
           <FormField
             label="Name"
             icon={<PersonIcon />}
@@ -37,17 +37,17 @@ const Register = () => {
             inputType="password"
             placeholder="123j808"
           />
-        </form>
 
-        {/* Register button */}
-        <div style={{ margin: "10px 0px 30px" }}>
-          <HoverButton
-            label="Register"
-            bgColor="#16344f"
-            textColor="#d9eff5"
-            linkTo="/login"
-          />
-        </div>
+          {/* Register button */}
+          <div style={{ margin: "30px 0px" }}>
+            <HoverButton
+              label="Register"
+              bgColor="#16344f"
+              textColor="#d9eff5"
+              linkTo="/login"
+            />
+          </div>
+        </form>
       </div>
     </div>
   );
