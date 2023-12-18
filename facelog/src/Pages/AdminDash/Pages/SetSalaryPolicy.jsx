@@ -3,11 +3,6 @@ import styles from "../../../ReusableCSS/form.module.css";
 import Logo from "../../../Components/Logo";
 import HoverButton from "../../../Components/CustomButton/HoverButton";
 import FormField from '../../../Components/FormField';
-import PersonIcon from '@mui/icons-material/Person';
-import EmailIcon from "@mui/icons-material/Email";
-import LockIcon from "@mui/icons-material/Lock";
-
-
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import EditCalendarIcon from '@mui/icons-material/EditCalendar';
 import EventNoteIcon from '@mui/icons-material/EventNote';
@@ -20,40 +15,43 @@ const Register = () => {
       <Logo />
 
       {/* Blue Admin Registration Form Container */}
-      <div className={styles.formContainer}>
-        <h1 className={styles.formheading}>Set Salary Policy</h1>
+      <div className={styles.formContainer} style={{ padding: "0px 30px" }}>
+        <h1 className={styles.formheading}>Salary Deduction Policy</h1>
 
         {/* HTML form */}
-        <form>
+        <form className={styles.form}>
           <FormField
             label="Absent Days"
-            icon={<CalendarMonthIcon />}
+            // icon={<CalendarMonthIcon />}
             inputType="Number"
-            placeholder="Enter the number of Absent days"
+            placeholder="%"
+            min="0"
           />
           <FormField
             label="Late Days"
-            icon={<EditCalendarIcon />}
+            // icon={<EditCalendarIcon />}
             inputType="Number"
-            placeholder="Enter the number of late days"
+            placeholder="%"
+            min="0"
           />
           <FormField
             label="Half Days"
-            icon={<LockIcon />}
+            // icon={<EventNoteIcon />}
             inputType="Number"
-            placeholder="Enter the number of Half days"
+            placeholder="%"
+            min="0"
           />
-        </form>
 
-        {/* Register button */}
-        <div style={{ margin: "10px 0px 30px" }}>
-          <HoverButton
-            label="Submit"
-            bgColor="#16344f"
-            textColor="#d9eff5"
-            // linkTo="/login"
-          />
-        </div>
+          {/* Register button */}
+          <div style={{ margin: "30px 0px" }}>
+            <HoverButton
+              label="Submit"
+              bgColor="#16344f"
+              textColor="#d9eff5"
+              // linkTo="/login"
+            />
+          </div>
+        </form>
       </div>
     </div>
   );

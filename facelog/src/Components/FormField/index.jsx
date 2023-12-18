@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 
 
-const FormField = ({label, icon, inputType, placeholder}) => {
+const FormField = ({label, icon, inputType, placeholder, min}) => {
   return (
     <div className={styles.fieldContainer}>
       
@@ -25,6 +25,7 @@ const FormField = ({label, icon, inputType, placeholder}) => {
         className={styles.input}
         type={inputType}
         placeholder={placeholder || ""}
+        min={min || ""}
         required
       />
     </div>
