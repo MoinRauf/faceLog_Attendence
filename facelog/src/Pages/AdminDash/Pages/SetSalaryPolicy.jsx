@@ -8,7 +8,7 @@ import EditCalendarIcon from '@mui/icons-material/EditCalendar';
 import EventNoteIcon from '@mui/icons-material/EventNote';
 
 
-const Register = () => {
+const SetSalaryPolicy = () => {
   return (
     <div className={styles.formBody}>
       {/* LOGO */}
@@ -57,4 +57,4 @@ const Register = () => {
   );
 }
 
-export default Register
+export default SetSalaryPolicy;

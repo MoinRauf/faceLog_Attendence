@@ -8,7 +8,7 @@ import Stack from "@mui/material/Stack";
 
 // es file main <form> </form> k icon remove krne hain
 
-const Register = () => {
+const SetTimeInterval = () => {
   return (
     <div className={styles.formBody} style={{ minHeight: "120vh" }}>
       {/* LOGO */}
@@ -81,4 +81,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default SetTimeInterval;
