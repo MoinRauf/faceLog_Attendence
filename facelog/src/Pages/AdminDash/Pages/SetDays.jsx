@@ -25,7 +25,7 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("https://your-api-endpoint.com/submit", {
+      const response = await fetch("api", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -79,7 +79,7 @@ const Register = () => {
           />
 
           {/* Register button */}
-          <div style={{ margin: "10px 0px 30px" }}>
+          <div style={{ margin: "10px 0px 30px 120px" }}>
             <HoverButton
               label="Submit"
               bgColor="#16344f"
