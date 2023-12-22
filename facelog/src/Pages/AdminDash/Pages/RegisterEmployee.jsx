@@ -106,7 +106,7 @@ const RegisterEmployee = () => {
                         textColor="#d9eff5"
                         onClick={openCamera}
                       />
-                      No Images
+                      {/* No Images */}
                     </label>
                   </div>
                 </Stack>

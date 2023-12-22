@@ -80,9 +80,10 @@ const SetDays = () => {
             min="0"
             onChange={(e) => handleInputChange("halfDays", e.target.value)}
           />
+          {/* <div style={{ margin: "30px 0px" }}></div> */}
 
           {/* Register button */}
-          <div style={{ margin: "10px 0px 30px" }}>
+          <div style={{ margin: "30px 0px" }}>
             <HoverButton
               label="Submit"
               bgColor="#16344f"
