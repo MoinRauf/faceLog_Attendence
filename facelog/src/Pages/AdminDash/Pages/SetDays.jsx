@@ -25,7 +25,7 @@ const SetDays = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("api", {
+      const response = await fetch("apiapi", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
