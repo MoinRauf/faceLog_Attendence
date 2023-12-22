@@ -3,17 +3,14 @@ import styles from "../../../ReusableCSS/form.module.css";
 import Logo from "../../../Components/Logo";
 import HoverButton from "../../../Components/CustomButton/HoverButton";
 import FormField from "../../../Components/FormField";
-import PersonIcon from "@mui/icons-material/Person";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import Stack from "@mui/material/Stack";
 
 // es file main <form> </form> k icon remove krne hain
 
-const Register = () => {
+const SetTimeInterval = () => {
   return (
-    <div
-      className={styles.formBody}
-      style={{ minHeight: "120vh", paddingTop: "10px" }}
-    >
+    <div className={styles.formBody} style={{ minHeight: "120vh" }}>
       {/* LOGO */}
       <Logo />
 
@@ -22,16 +19,11 @@ const Register = () => {
         <h1 className={styles.formheading}>Set Time Interval</h1>
 
         {/* HTML form */}
-        <form>
+        <form className={styles.form}>
           <Stack spacing={0} direction="row">
+            <FormField label="Attendance Timing" inputType="time"/>
             <FormField
-              label="Attendance Time"
-              icon={<PersonIcon />} // remove   
-              inputType="time"
-              placeholder="From"
-            />
-            <FormField
-              icon={<PersonIcon />} // remove 
+              icon={<AccessTimeIcon />}
               inputType="time"
               placeholder="To"
             />
@@ -39,66 +31,54 @@ const Register = () => {
 
           <Stack spacing={0} direction="row">
             <FormField
-              label="Present Status"
-              icon={<PersonIcon />} // remove 
+              label="Present Timing"
               inputType="time"
-              placeholder="From"
             />
             <FormField
-              icon={<PersonIcon />} // remove 
+              icon={<AccessTimeIcon />} // remove
               inputType="time"
-              placeholder="To"
             />
           </Stack>
           <Stack spacing={0} direction="row">
             <FormField
-              label="Absent Status"
-              icon={<PersonIcon />} // remove 
+              label="Absent Timing"
               inputType="time"
-              placeholder="From"
             />
             <FormField
-              icon={<PersonIcon />} // remove 
+              icon={<AccessTimeIcon />} // remove
               inputType="time"
-              placeholder="To"
             />
           </Stack>
 
           <Stack spacing={0} direction="row">
             <FormField
-              label="Leave Status"
-              icon={<PersonIcon />} // remove 
+              label="Late Timing"
               inputType="time"
-              placeholder="From"
             />
             <FormField
-              icon={<PersonIcon />} // remove 
+              icon={<AccessTimeIcon />} // remove
               inputType="time"
-              placeholder="To"
             />
           </Stack>
           <Stack spacing={0} direction="row">
             <FormField
-              label="HalfDays Status"
-              icon={<PersonIcon />} // remove 
+              label="Half Day Timing"
               inputType="time"
-              placeholder="From"
             />
             <FormField
-              icon={<PersonIcon />} // remove 
+              icon={<AccessTimeIcon />} // remove
               inputType="time"
-              placeholder="To"
             />
           </Stack>
+
+          {/* Register button */}
+          <div style={{ margin: "20px 0px 30px" }}>
+            <HoverButton label="Submit" bgColor="#16344f" textColor="#d9eff5" />
+          </div>
         </form>
-
-        {/* Register button */}
-        <div style={{ margin: "10px 0px 30px" }}>
-          <HoverButton label="Submit" bgColor="#16344f" textColor="#d9eff5" />
-        </div>
       </div>
     </div>
   );
 };
 
-export default Register;
+export default SetTimeInterval;

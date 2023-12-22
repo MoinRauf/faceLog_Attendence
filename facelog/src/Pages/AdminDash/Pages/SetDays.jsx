@@ -7,7 +7,7 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import EditCalendarIcon from "@mui/icons-material/EditCalendar";
 import EventNoteIcon from "@mui/icons-material/EventNote";
 
-const Register = () => {
+const SetDays = () => {
   const [formValues, setFormValues] = useState({
     absentDays: "",
     lateDays: "",
@@ -52,34 +52,37 @@ const Register = () => {
 
       {/* Blue Admin Registration Form Container */}
       <div className={styles.formContainer}>
-        <h1 className={styles.formheading}>Set Days</h1>
+        <h1 className={styles.formheading}>Permissable Days</h1>
 
         {/* HTML form */}
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={styles.form}>
           <FormField
             label="Absent Days"
-            icon={<CalendarMonthIcon />}
+            // icon={<CalendarMonthIcon />}
             inputType="number"
             placeholder="Enter the number of absent days"
+            min="0"
             onChange={(e) => handleInputChange("absentDays", e.target.value)}
           />
           <FormField
             label="Late Days"
-            icon={<EditCalendarIcon />}
+            // icon={<EditCalendarIcon />}
             inputType="number"
             placeholder="Enter the number of late days"
+            min="0"
             onChange={(e) => handleInputChange("lateDays", e.target.value)}
           />
           <FormField
             label="Half Days"
-            icon={<EventNoteIcon />}
+            // icon={<EventNoteIcon />}
             inputType="number"
             placeholder="Enter the number of half days"
+            min="0"
             onChange={(e) => handleInputChange("halfDays", e.target.value)}
           />
 
           {/* Register button */}
-          <div style={{ margin: "10px 0px 30px 120px" }}>
+          <div style={{ margin: "10px 0px 30px" }}>
             <HoverButton
               label="Submit"
               bgColor="#16344f"
@@ -93,4 +96,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default SetDays;

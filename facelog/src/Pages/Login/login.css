@@ -1,0 +1,47 @@
+.wrapper {
+    display: inline-flex;
+    height: 40px;
+    width: 300px;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 5px;
+    padding: 20px 15px;
+}
+
+.wrapper .option {
+    background: transparent;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 0 10px;
+    border: 2px solid #16344f;
+    transition: all 0.3s ease;
+}
+
+.wrapper .option:hover {
+    box-shadow: 4px 4px 5px #959595;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+#option-1:checked:checked~.option-1,
+#option-2:checked:checked~.option-2 {
+    background: #16344f;
+}
+
+.wrapper .option span {
+    font-size: 18px;
+    color: #16344f;
+}
+
+#option-1:checked:checked~.option-1 span,
+#option-2:checked:checked~.option-2 span {
+    color: #c0ffd1;
+}
