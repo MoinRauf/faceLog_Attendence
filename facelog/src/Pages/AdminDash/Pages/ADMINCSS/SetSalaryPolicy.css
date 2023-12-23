@@ -1,0 +1,53 @@
+/* CSS file */
+.maindiv1 {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center;
+  align-items: center; */
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #d9eff5;
+  border-radius: 10px;
+  box-shadow: 8px 8px 8px #000000;
+}
+
+.heading1 {
+  font-size: 36px;
+  color: #16344f;
+  padding: 10px;
+  padding-left: 10px;
+  display: flex;
+  align-content: center;
+  text-align: center;
+}
+
+.divlabel1 {
+  color: #16344f;
+  font-size: 18px;
+  font-weight: 550;
+  margin-left: 60px;
+}
+
+.userinput1 {
+  margin-left: 60px;
+
+  padding: 8px;
+  background-color: #c0ffd1;
+  color: #16344f;
+  font-size: 16px;
+  border: 1px solid #16344f;
+  border-radius: 5px;
+  outline: none;
+  width: 70%;
+  margin-bottom: 20px;
+  margin-right: 30px;
+}
+
+.center1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
