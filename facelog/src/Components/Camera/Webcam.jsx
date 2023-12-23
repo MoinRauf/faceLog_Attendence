@@ -2,6 +2,7 @@
 import React, { useRef, useState } from "react";
 import Webcam from "react-webcam";
 import style from "../Camera/WebCam.module.css";
+import Logo from "../../Components/Logo/index";
 
 const WebcamComponent = ({ isOpen, onClose }) => {
   const webcamRef = useRef(null);
@@ -19,12 +20,13 @@ const WebcamComponent = ({ isOpen, onClose }) => {
 
   return (
     <div className={style.webBody}>
+      <Logo/>
       <div
         style={{
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          paddingTop: "160px",
+          paddingTop: "50px",
         }}
       >
         {" "}

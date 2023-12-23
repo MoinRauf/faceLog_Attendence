@@ -5,7 +5,7 @@
   /* justify-content: center;
     align-items: center; */
   /* padding: 50px 50px 50px 50px; */
-  padding: 50px;
+  padding: 50px 70px 50px 50px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -32,7 +32,7 @@
 }
 
 .userinput {
-    margin-right: 30px;
+  margin-right: 40px;
   padding: 8px;
   background-color: #c0ffd1;
   color: #16344f;

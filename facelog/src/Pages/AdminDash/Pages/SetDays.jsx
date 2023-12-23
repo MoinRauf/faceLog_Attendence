@@ -110,7 +110,7 @@ const SetDays = () => {
               className="userinput"
             />
           </div>
-          <div style={{ margin: "30px 0px 30px 120px" }}>
+          <div style={{ margin: "30px 0px 10px 120px" }}>
             <HoverButton
               label="Submit"
               bgColor="#16344f"

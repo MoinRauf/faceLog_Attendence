@@ -31,7 +31,7 @@ export default function PiChart() {
       data={data}
       options={options}
       width={"100%"}
-      height={"400px"}
+      height={"360px"}
       style={chartStyle}
     />
   );
