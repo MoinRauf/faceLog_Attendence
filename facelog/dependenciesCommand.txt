@@ -1,0 +1,13 @@
+Date: 24/12/2023 
+sTART
+
+-->  axios
+npm i axios or npm install react axios
+
+--> react-toastify
+npm i react-toastify
+
+--> Cors 
+npm i cors
+
+End
