@@ -14,6 +14,7 @@ import captureimg from "../../../Components/FormField/formfield.module.css";
 import { ToastContainer, toast } from "react-toastify";
 import WebcamComponent from "../../../Components/Camera/Webcam";
 import { MyContext } from "../../../MyContext";
+import admincss from "../../../Pages/AdminDash/Pages/ADMINCSS/RegisterEmployee.css";
 
 const RegisterEmployee = () => {
   // Consume the Context start
@@ -108,104 +109,110 @@ const RegisterEmployee = () => {
             pauseOnHover
             theme="light"
           />
-          <div className="maindiv">
-            <h1 className="heading">Employee Registration</h1>
+          <div className="maindiv12">
+            <h1 className="heading12">Employee Registration</h1>
 
             <div>
-              <div>
-                <div className="center">
-                  <label className="divlabel">Employee ID:</label>
-                </div>
-                <input
-                  type="number"
-                  value={formData.employeeId}
-                  placeholder="Enter employee ID"
-                  onChange={(e) =>
-                    handleInputChange("employeeId", e.target.value)
-                  }
-                  className="userinput"
-                />
-              </div>
-              <div>
-                <div className="center">
-                  <label className="divlabel">Employee Name:</label>
-                </div>
-                <input
-                  type="text"
-                  value={formData.employeeName}
-                  placeholder="Enter employee name"
-                  onChange={(e) =>
-                    handleInputChange("employeeName", e.target.value)
-                  }
-                  className="userinput"
-                />
-              </div>
-              <div>
-                <div className="center">
-                  <label className="divlabel">Email:</label>
-                </div>
-                <input
-                  type="email"
-                  value={formData.email}
-                  placeholder="Enter email"
-                  onChange={(e) => handleInputChange("email", e.target.value)}
-                  className="userinput"
-                />
-              </div>
-              <div>
-                <div className="center">
-                  <label className="divlabel">Password:</label>
-                </div>
-                <input
-                  type="password"
-                  value={formData.password}
-                  placeholder="Enter password"
-                  onChange={(e) =>
-                    handleInputChange("password", e.target.value)
-                  }
-                  className="userinput"
-                />
-              </div>
-              <div>
-                <div className="center">
-                  <label className="divlabel">Salary:</label>
-                </div>
-                <input
-                  type="number"
-                  value={formData.salary}
-                  placeholder="Enter salary"
-                  onChange={(e) =>
-                    handleInputChange("salary", e.target.value)
-                  }
-                  className="userinput"
-                />
-              </div>
-              <div className={captureimg.fieldContainer}>
-                {/* Input Label with Icon */}
-                <div className={captureimg.labelContainer}>
-                  <h4 className={captureimg.labelText}>Facial Images</h4>
-                  <PhotoCameraFrontIcon />
-                </div>
-
-                {/* Input Field */}
-                <input
-                  type="file"
-                  value={formData.image}
-                  id="capture"
-                  style={{ display: "none" }}
-                  required
-                />
-                <label htmlFor="capture">
-                  <HoverButton
-                    label="Take Images"
-                    bgColor="#16344f"
-                    textColor="#d9eff5"
-                    onClick={openCamera}
+              <Stack spacing={7} direction="row">
+                <div>
+                  <div className="center12">
+                    <label className="divlabel12">Employee ID:</label>
+                  </div>
+                  <input
+                    type="number"
+                    value={formData.employeeId}
+                    placeholder="Enter employee ID"
+                    onChange={(e) =>
+                      handleInputChange("employeeId", e.target.value)
+                    }
+                    className="userinput12"
                   />
-                  {/* No Images */}
-                </label>
-              </div>
-              <div style={{ margin: "30px 0px 10px 120px" }}>
+                </div>
+                <div>
+                  <div className="center12">
+                    <label className="divlabel12">Employee Name:</label>
+                  </div>
+                  <input
+                    type="text"
+                    value={formData.employeeName}
+                    placeholder="Enter employee name"
+                    onChange={(e) =>
+                      handleInputChange("employeeName", e.target.value)
+                    }
+                    className="userinput12"
+                  />
+                </div>
+              </Stack>
+              <Stack spacing={7} direction="row">
+                <div>
+                  <div className="center12">
+                    <label className="divlabel12">Email:</label>
+                  </div>
+                  <input
+                    type="email"
+                    value={formData.email}
+                    placeholder="Enter email"
+                    onChange={(e) => handleInputChange("email", e.target.value)}
+                    className="userinput12"
+                  />
+                </div>
+                <div>
+                  <div className="center12">
+                    <label className="divlabel12">Password:</label>
+                  </div>
+                  <input
+                    type="password"
+                    value={formData.password}
+                    placeholder="Enter password"
+                    onChange={(e) =>
+                      handleInputChange("password", e.target.value)
+                    }
+                    className="userinput12"
+                  />
+                </div>
+              </Stack>
+              <Stack spacing={7} direction="row">
+                <div>
+                  <div className="center12">
+                    <label className="divlabel12">Salary:</label>
+                  </div>
+                  <input
+                    type="number"
+                    value={formData.salary}
+                    placeholder="Enter salary"
+                    onChange={(e) =>
+                      handleInputChange("salary", e.target.value)
+                    }
+                    className="userinput12"
+                  />
+                </div>
+                <div className={captureimg.fieldContainer}>
+                  {/* Input Label with Icon */}
+                  <div className={captureimg.labelContainer}>
+                    <h4 className={captureimg.labelText}> <span style={{fontSize:"20px"}}>Facial Images</span>  <PhotoCameraFrontIcon /> </h4>
+                    
+                  </div>
+
+                  {/* Input Field */}
+                  <input
+                    type="file"
+                    value={formData.image}
+                    id="capture"
+                    style={{ display: "none" }}
+                    required
+                  />
+                  <label htmlFor="capture">
+                    <HoverButton
+                      label="Take Images"
+                      bgColor="#16344f"
+                      textColor="#d9eff5"
+                      onClick={openCamera}
+                    />
+                    {/* No Images */}
+                  </label>
+                </div>
+              </Stack>
+              <div style={{ margin: "30px 0px 10px 230px" }}>
                 <HoverButton
                   label="Register"
                   bgColor="#16344f"
