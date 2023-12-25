@@ -42,7 +42,7 @@ const SetDays = () => {
 
       setTimeout(() => {
         navigate("/admindashboard");
-      }, 3000);
+      }, 4000);
 
       // Clear the form by resetting state variables
       setAbsentDays("");

@@ -3,15 +3,20 @@ import React, { useRef, useState } from "react";
 import Webcam from "react-webcam";
 import style from "../Camera/WebCam.module.css";
 import Logo from "../../Components/Logo/index";
+import { MyContext } from "../../MyContext";
 
 const WebcamComponent = ({ isOpen, onClose }) => {
+  const { text, setText } = React.useContext(MyContext);
+
+
   const webcamRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
 
   const capture = () => {
     if (webcamRef.current) {
       const imageSrc = webcamRef.current.getScreenshot();
-      console.log(imageSrc);
+      // console.log(imageSrc);
+      setText(imageSrc);
       onClose(); // Close the camera after capturing the photo
     } else {
       console.error("Webcam reference not available");
@@ -20,7 +25,7 @@ const WebcamComponent = ({ isOpen, onClose }) => {
 
   return (
     <div className={style.webBody}>
-      <Logo/>
+      <Logo />
       <div
         style={{
           display: "flex",

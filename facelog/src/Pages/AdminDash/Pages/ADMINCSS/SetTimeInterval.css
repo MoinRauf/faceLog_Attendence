@@ -1,0 +1,56 @@
+    /*  CSS file */
+    .maindiv111 {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center;
+        align-items: center; */
+        padding: 0px 100px 0px 50px;
+        /* padding: 10px; */
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #d9eff5;
+        border-radius: 10px;
+        box-shadow: 8px 8px 8px #000000;
+    }
+    
+    .heading111 {
+        font-size: 36px;
+        color: #16344f;
+        padding: 10px;
+        margin-left: 240px;
+        display: flex;
+        align-content: center;
+        text-align: center;
+    }
+    
+    .divlabel111 {
+        color: #16344f;
+        font-size: 18px;
+        font-weight: 550;
+        /* margin-left: px; */
+        margin-top: 20px;
+    }
+    
+    .userinput111 {
+        display: flex;
+        margin-right: 40px;
+        padding: 8px;
+        background-color: #c0ffd1;
+        color: #16344f;
+        font-size: 16px;
+        border: 1px solid #16344f;
+        border-radius: 5px;
+        outline: none;
+        width: 300px;
+        margin-bottom: 200px;
+    }
+    
+    .center111 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    

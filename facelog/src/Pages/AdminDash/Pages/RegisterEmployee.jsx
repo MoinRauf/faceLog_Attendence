@@ -1,9 +1,8 @@
-import React, { useState } from "react";
-import WebcamComponent from "../../../Components/Camera/Webcam";
+import React, { useContext, useState } from "react";
+import axios from "axios";
 import styles from "../../../ReusableCSS/form.module.css";
 import Logo from "../../../Components/Logo";
 import HoverButton from "../../../Components/CustomButton/HoverButton";
-import FormField from "../../../Components/FormField";
 import BadgeIcon from "@mui/icons-material/Badge";
 import PersonIcon from "@mui/icons-material/Person";
 import EmailIcon from "@mui/icons-material/Email";
@@ -12,117 +11,211 @@ import PaidIcon from "@mui/icons-material/Paid";
 import PhotoCameraFrontIcon from "@mui/icons-material/PhotoCameraFront";
 import Stack from "@mui/material/Stack";
 import captureimg from "../../../Components/FormField/formfield.module.css";
-
+import { ToastContainer, toast } from "react-toastify";
+import WebcamComponent from "../../../Components/Camera/Webcam";
+import { MyContext } from "../../../MyContext";
 
 const RegisterEmployee = () => {
-  // State to track the camera's open/closed status
+  // Consume the Context start
+  const { text } = useContext(MyContext);
+  // image is the jpeg from the camera component
+  let image = text;
+  console.log("this is text from regemployee file ", image);
+  // Consume the Context end
+  const [formData, setFormData] = useState({
+    employeeId: "",
+    employeeName: "",
+    email: "",
+    password: "",
+    salary: "",
+  });
+
   const [isCameraOpen, setIsCameraOpen] = useState(false);
 
-  // Function to open the camera
+  const handleInputChange = (field, value) => {
+    setFormData({ ...formData, [field]: value });
+  };
+
   const openCamera = () => {
     setIsCameraOpen(true);
   };
 
-  // Function to close the camera
   const closeCamera = () => {
     setIsCameraOpen(false);
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      // Create a FormData object
+      const formDataObj = new FormData();
+
+      // Append image data to FormData
+      formDataObj.append("image", image);
+
+      // Append other form data to FormData
+      Object.keys(formData).forEach((key) => {
+        formDataObj.append(key, formData[key]);
+      });
+
+      // Make the Axios POST request to your API endpoint
+      const response = await axios.post(
+        "http://localhost:3001/RegisterEmployee",
+        formDataObj
+      );
+
+      // Handle the response as needed
+      console.log("Registration successful", response.data);
+
+      // Show success toast
+      toast.success("Registration successful");
+
+      // Clear the form
+      setFormData({
+        employeeId: "",
+        employeeName: "",
+        email: "",
+        password: "",
+        salary: "",
+      });
+    } catch (error) {
+      console.error("Registration failed", error);
+
+      // Show error toast
+      toast.error("Registration failed. Please try again.");
+    }
+  };
+
   return (
     <div>
-      {/* Check if the camera is open */}
       {isCameraOpen ? (
         // Render WebcamComponent if the camera is open
         <WebcamComponent isOpen={isCameraOpen} onClose={closeCamera} />
       ) : (
         // Render the Register Employee page if the camera is closed
-        <>
-          <div className={styles.formBody}>
-            {/* LOGO */}
-            <Logo />
+        <form onSubmit={handleSubmit} className={styles.formBody}>
+          <Logo />
+          <ToastContainer
+            position="top-right"
+            autoClose={2000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
+          <div className="maindiv">
+            <h1 className="heading">Employee Registration</h1>
 
-            {/* Blue Admin Registration Form Container */}
-            <div className={styles.formContainer}>
-              <h1 className={styles.formheading}>Employee Registration</h1>
+            <div>
+              <div>
+                <div className="center">
+                  <label className="divlabel">Employee ID:</label>
+                </div>
+                <input
+                  type="number"
+                  value={formData.employeeId}
+                  placeholder="Enter employee ID"
+                  onChange={(e) =>
+                    handleInputChange("employeeId", e.target.value)
+                  }
+                  className="userinput"
+                />
+              </div>
+              <div>
+                <div className="center">
+                  <label className="divlabel">Employee Name:</label>
+                </div>
+                <input
+                  type="text"
+                  value={formData.employeeName}
+                  placeholder="Enter employee name"
+                  onChange={(e) =>
+                    handleInputChange("employeeName", e.target.value)
+                  }
+                  className="userinput"
+                />
+              </div>
+              <div>
+                <div className="center">
+                  <label className="divlabel">Email:</label>
+                </div>
+                <input
+                  type="email"
+                  value={formData.email}
+                  placeholder="Enter email"
+                  onChange={(e) => handleInputChange("email", e.target.value)}
+                  className="userinput"
+                />
+              </div>
+              <div>
+                <div className="center">
+                  <label className="divlabel">Password:</label>
+                </div>
+                <input
+                  type="password"
+                  value={formData.password}
+                  placeholder="Enter password"
+                  onChange={(e) =>
+                    handleInputChange("password", e.target.value)
+                  }
+                  className="userinput"
+                />
+              </div>
+              <div>
+                <div className="center">
+                  <label className="divlabel">Salary:</label>
+                </div>
+                <input
+                  type="number"
+                  value={formData.salary}
+                  placeholder="Enter salary"
+                  onChange={(e) =>
+                    handleInputChange("salary", e.target.value)
+                  }
+                  className="userinput"
+                />
+              </div>
+              <div className={captureimg.fieldContainer}>
+                {/* Input Label with Icon */}
+                <div className={captureimg.labelContainer}>
+                  <h4 className={captureimg.labelText}>Facial Images</h4>
+                  <PhotoCameraFrontIcon />
+                </div>
 
-              {/* HTML form */}
-              <form className={styles.form}>
-                <Stack spacing={0} direction="row">
-                  <FormField
-                    label="Employee ID"
-                    icon={<BadgeIcon />}
-                    inputType="number"
-                    placeholder="12345"
-                    min="0"
-                  />
-                  <FormField
-                    label="Employee Name"
-                    icon={<PersonIcon />}
-                    inputType="text"
-                    placeholder="John Doe"
-                  />
-                </Stack>
-                <Stack spacing={0} direction="row">
-                  <FormField
-                    label="Email"
-                    icon={<EmailIcon />}
-                    inputType="email"
-                    placeholder="johndoe@gmail.com"
-                  />
-                  <FormField
-                    label="Password"
-                    icon={<LockIcon />}
-                    inputType="password"
-                    placeholder="******"
-                  />
-                </Stack>
-                <Stack spacing={0} direction="row">
-                  <FormField
-                    label="Salary"
-                    icon={<PaidIcon />}
-                    inputType="number"
-                    placeholder="20000"
-                    min="0"
-                  />
-
-                  <div className={captureimg.fieldContainer}>
-                    {/*Input Label with Icon*/}
-                    <div className={captureimg.labelContainer}>
-                      <h4 className={captureimg.labelText}>Facial Images</h4>
-                      <PhotoCameraFrontIcon />
-                    </div>
-
-                    {/*Input Field*/}
-                    <input
-                      type="file"
-                      id="capture"
-                      style={{ display: "none" }}
-                      required
-                    />
-                    <label htmlFor="capture">
-                      <HoverButton
-                        label="Take Images"
-                        bgColor="#16344f"
-                        textColor="#d9eff5"
-                        onClick={openCamera}
-                      />
-                      {/* No Images */}
-                    </label>
-                  </div>
-                </Stack>
-
-                {/* Register button */}
-                <div style={{ margin: "30px 0px" }}>
+                {/* Input Field */}
+                <input
+                  type="file"
+                  value={formData.image}
+                  id="capture"
+                  style={{ display: "none" }}
+                  required
+                />
+                <label htmlFor="capture">
                   <HoverButton
-                    label="Register"
+                    label="Take Images"
                     bgColor="#16344f"
                     textColor="#d9eff5"
+                    onClick={openCamera}
                   />
-                </div>
-              </form>
+                  {/* No Images */}
+                </label>
+              </div>
+              <div style={{ margin: "30px 0px 10px 120px" }}>
+                <HoverButton
+                  label="Register"
+                  bgColor="#16344f"
+                  textColor="#d9eff5"
+                  type="submit"
+                />
+              </div>
             </div>
           </div>
-        </>
+        </form>
       )}
     </div>
   );
