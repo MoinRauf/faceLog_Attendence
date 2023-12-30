@@ -1,5 +1,6 @@
 import * as React from "react";
 import Paper from "@mui/material/Paper";
+import Skeleton from "@mui/material/Skeleton";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -56,8 +57,8 @@ export default function DataTable() {
   const [formid, SetFormid] = useState("");
   const [open, setOpen] = useState(false);
   const [editopen, setEditopen] = useState(false);
-  const setRows=useDataRow((state)=>state.setRows)
-  const rows=useDataRow((state)=>state.rows)
+  const setRows = useDataRow((state) => state.setRows);
+  const rows = useDataRow((state) => state.rows);
 
   const handleOpen = () => setOpen(true);
   const handleEditOpen = () => setEditopen(true);
@@ -194,165 +195,192 @@ export default function DataTable() {
         </Modal>
       </div>
       {/* modal div end */}
-      <Paper sx={{ width: "100%", overflow: "hidden" }}>
-        <Typography
-          gutterBottom
-          variant="h5"
-          component="div"
-          sx={{ padding: "20px" }}
-        >
-          Employee List
-        </Typography>
-        <Divider />
-        <Box height={10} />
-        <Stack direction="row" spacing={2} className="my-2 mb-2">
-          <Autocomplete
-            disablePortal
-            id="combo-box-demo"
-            options={rows}
-            sx={{ width: 300, paddingLeft: "10px" }}
-            onChange={(e, v) => filterData(v)}
-            getOptionLabel={(rows) => rows.EmpName || ""}
-            renderInput={(params) => (
-              <TextField {...params} size="small" label="Search Name" />
-            )}
-          />
+      {rows.length > 0 && (
+        <Paper sx={{ width: "100%", overflow: "hidden" }}>
           <Typography
-            variant="h6"
+            gutterBottom
+            variant="h5"
             component="div"
-            sx={{ flexGrow: 1 }}
-          ></Typography>
-          <Button
-            variant="contained"
-            endIcon={<AddCircleIcon />}
-            onClick={handleOpen}
+            sx={{ padding: "20px" }}
           >
-            Add
-          </Button>
-        </Stack>
-        <Box height={10} />
-        <TableContainer sx={{ maxHeight: 440 }}>
-          <Table stickyHeader aria-label="sticky table">
-            <TableHead>
-              <TableRow>
-                <TableCell align="left" style={{ minWidth: "100px" }}>
-                  Employee id
-                </TableCell>
-                <TableCell align="left" style={{ minWidth: "100px" }}>
-                  Employee Name
-                </TableCell>
-                <TableCell align="left" style={{ minWidth: "100px" }}>
-                  DaysPresent
-                </TableCell>
-                <TableCell align="left" style={{ minWidth: "100px" }}>
-                  DaysAbsent
-                </TableCell>
-                <TableCell align="left" style={{ minWidth: "100px" }}>
-                  DaysLate
-                </TableCell>
-                <TableCell align="left" style={{ minWidth: "100px" }}>
-                  HalfDays
-                </TableCell>
+            Employee List
+          </Typography>
+          <Divider />
+          <Box height={10} />
+          <Stack direction="row" spacing={2} className="my-2 mb-2">
+            <Autocomplete
+              disablePortal
+              id="combo-box-demo"
+              options={rows}
+              sx={{ width: 300, paddingLeft: "10px" }}
+              onChange={(e, v) => filterData(v)}
+              getOptionLabel={(rows) => rows.EmpName || ""}
+              renderInput={(params) => (
+                <TextField {...params} size="small" label="Search Name" />
+              )}
+            />
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{ flexGrow: 1 }}
+            ></Typography>
+            <Button
+              variant="contained"
+              endIcon={<AddCircleIcon />}
+              onClick={handleOpen}
+            >
+              Add
+            </Button>
+          </Stack>
+          <Box height={10} />
+          <TableContainer sx={{ maxHeight: 440 }}>
+            <Table stickyHeader aria-label="sticky table">
+              <TableHead>
+                <TableRow>
+                  <TableCell align="left" style={{ minWidth: "100px" }}>
+                    Employee id
+                  </TableCell>
+                  <TableCell align="left" style={{ minWidth: "100px" }}>
+                    Employee Name
+                  </TableCell>
+                  <TableCell align="left" style={{ minWidth: "100px" }}>
+                    DaysPresent
+                  </TableCell>
+                  <TableCell align="left" style={{ minWidth: "100px" }}>
+                    DaysAbsent
+                  </TableCell>
+                  <TableCell align="left" style={{ minWidth: "100px" }}>
+                    DaysLate
+                  </TableCell>
+                  <TableCell align="left" style={{ minWidth: "100px" }}>
+                    HalfDays
+                  </TableCell>
 
-                <TableCell align="left" style={{ minWidth: "100px" }}>
-                  Action
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {rows
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((row) => (
-                  <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
-                    <TableCell key={row.id} align="left">
-                      {row.EmpId}
-                    </TableCell>
-                    <TableCell key={row.id} align="left">
-                      {row.EmpName}
-                    </TableCell>
-                    <TableCell key={row.id} align="left">
-                      {row.DaysPresent}
-                    </TableCell>
-                    <TableCell key={row.id} align="left">
-                      {row.DaysAbsent}
-                    </TableCell>
-                    <TableCell key={row.id} align="left">
-                      {row.DaysLate}
-                    </TableCell>
-                    <TableCell key={row.id} align="left">
-                      {row.HalfDays}
-                    </TableCell>
-                    {/* <TableCell key={row.id} align="left"> */}
-                    {row.Action}
+                  <TableCell align="left" style={{ minWidth: "100px" }}>
+                    Action
+                  </TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {rows
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((row) => (
+                    <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
+                      <TableCell key={row.id} align="left">
+                        {row.EmpId}
+                      </TableCell>
+                      <TableCell key={row.id} align="left">
+                        {row.EmpName}
+                      </TableCell>
+                      <TableCell key={row.id} align="left">
+                        {row.DaysPresent}
+                      </TableCell>
+                      <TableCell key={row.id} align="left">
+                        {row.DaysAbsent}
+                      </TableCell>
+                      <TableCell key={row.id} align="left">
+                        {row.DaysLate}
+                      </TableCell>
+                      <TableCell key={row.id} align="left">
+                        {row.HalfDays}
+                      </TableCell>
+                      {/* <TableCell key={row.id} align="left"> */}
+                      {row.Action}
 
-                    <TableCell align="left">
-                      <Stack spacing={2} direction="row">
-                        <EditIcon
-                          style={{
-                            fontSize: "20px",
-                            color: "blue",
-                            cursor: "pointer",
-                          }}
-                          className="cursor-pointer"
-                          onClick={() =>
-                            edituser(
-                              row.EmpId,
-                              row.EmpName,
-                              row.DaysPresent,
-                              row.DaysAbsent,
-                              row.DaysLate,
-                              row.HalfDays,
-                              row.id
-                            )
-                          }
-                        />
-                        <DeleteIcon
-                          style={{
-                            fontSize: "20px",
-                            color: "darkred",
-                            cursor: "pointer",
-                          }}
-                          onClick={() => {
-                            deleteUser(row.id);
-                          }}
-                        />
-                        <SignalCellularAltTwoToneIcon
-                          style={{
-                            fontSize: "20px",
-                            color: "Green",
-                            cursor: "pointer",
-                          }}
-                          onClick={() => {
-                            viewUser(row.id);
+                      <TableCell align="left">
+                        <Stack spacing={2} direction="row">
+                          <EditIcon
+                            style={{
+                              fontSize: "20px",
+                              color: "blue",
+                              cursor: "pointer",
+                            }}
+                            className="cursor-pointer"
+                            onClick={() =>
+                              edituser(
+                                row.EmpId,
+                                row.EmpName,
+                                row.DaysPresent,
+                                row.DaysAbsent,
+                                row.DaysLate,
+                                row.HalfDays,
+                                row.id
+                              )
+                            }
+                          />
+                          <DeleteIcon
+                            style={{
+                              fontSize: "20px",
+                              color: "darkred",
+                              cursor: "pointer",
+                            }}
+                            onClick={() => {
+                              deleteUser(row.id);
+                            }}
+                          />
+                          <SignalCellularAltTwoToneIcon
+                            style={{
+                              fontSize: "20px",
+                              color: "Green",
+                              cursor: "pointer",
+                            }}
+                            onClick={() => {
+                              viewUser(row.id);
 
-                            // Calculate 80% of the page height
-                            window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll to the top
+                              // Calculate 80% of the page height
+                              window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll to the top
 
-                            // Swal.fire(
-                            //   "User Viewed!",
-                            //   "User details have been viewed.",
-                            //   "success"
-                            // );
-                          }}
-                        />
-                      </Stack>
-                      {/* </TableCell> */}
-                    </TableCell>
-                  </TableRow>
-                ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-        <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
-          component="div"
-          count={rows.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-        />
-      </Paper>
+                              // Swal.fire(
+                              //   "User Viewed!",
+                              //   "User details have been viewed.",
+                              //   "success"
+                              // );
+                            }}
+                          />
+                        </Stack>
+                        {/* </TableCell> */}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+          <TablePagination
+            rowsPerPageOptions={[5, 10, 25]}
+            component="div"
+            count={rows.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+          />
+        </Paper>
+      )}
+      {/* skeleton start */}
+
+      {/* skeleton end */}
+
+      {rows.length === 0 && (
+        <>
+          <Paper sx={{ width: "98%", overflow: "hidden", padding: "12px" }}>
+            <Box height={20} />
+            <Skeleton variant="rectangular" width={"100%"} height={30} />
+            <Box height={40} />
+            <Skeleton variant="rectangular" width={"100%"} height={60} />
+            <Box height={20} />
+            <Skeleton variant="rectangular" width={"100%"} height={30} />
+            <Box height={40} />
+            <Skeleton variant="rectangular" width={"100%"} height={60} />
+            <Box height={20} />
+            <Skeleton variant="rectangular" width={"100%"} height={30} />
+            <Box height={40} />
+            <Skeleton variant="rectangular" width={"100%"} height={60} />
+            <Box height={20} />
+            <Skeleton variant="rectangular" width={"100%"} height={30} />
+            <Box height={40} />
+          </Paper>
+        </>
+      )}
     </>
   );
 }
