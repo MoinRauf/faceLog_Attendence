@@ -11,3 +11,12 @@ npm i react-toastify
 npm i cors
 
 End
+
+Date 31/12/2023
+START
+
+--->zustand
+npm install zustand
+
+
+END

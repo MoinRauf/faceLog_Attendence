@@ -19,9 +19,11 @@ import {
   deleteDoc,
   doc,
 } from "firebase/firestore";
+import useDataRow from "./DataRow";
 
 const AddData = ({ closeEvent }) => {
-  const [rows, setRows] = useState([]);
+  // const [rows, setRows] = useState([]);
+  const setRows=useDataRow((state)=>state.setRows)
   const [EmpId, setEmpId] = useState("");
   const [EmpName, setEmpName] = useState("");
   const [DaysPresent, setDaysPresent] = useState("");

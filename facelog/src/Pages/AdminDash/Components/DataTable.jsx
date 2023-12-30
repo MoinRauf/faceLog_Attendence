@@ -34,6 +34,7 @@ import { MyContext } from "../../../MyContext";
 import Modal from "@mui/material/Modal";
 import AddData from "./AddData";
 import EditData from "./EditData";
+import useDataRow from "./DataRow";
 // model style which align modal in center
 const style = {
   position: "absolute",
@@ -50,11 +51,13 @@ const style = {
 export default function DataTable() {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
-  const [rows, setRows] = useState([]);
+  // const [rows, setRows] = useState([]);
   // haldel modal open and close state start
   const [formid, SetFormid] = useState("");
   const [open, setOpen] = useState(false);
   const [editopen, setEditopen] = useState(false);
+  const setRows=useDataRow((state)=>state.setRows)
+  const rows=useDataRow((state)=>state.rows)
 
   const handleOpen = () => setOpen(true);
   const handleEditOpen = () => setEditopen(true);

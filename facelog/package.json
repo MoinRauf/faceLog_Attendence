@@ -27,7 +27,8 @@
     "recharts": "^2.10.3",
     "sector": "^0.3.14",
     "sweetalert2": "^11.10.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "zustand": "^4.4.7"
   },
   "scripts": {
     "start": "react-scripts start",
