@@ -50,6 +50,7 @@ const RegisterCoAdmin = () => {
     } catch (error) {
       console.error("Registration failed", error);
       // Handle errors (e.g., show error messages to the user)
+      toast.error("An error occurred while submitting the form");
     }
   };
 

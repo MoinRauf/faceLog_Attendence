@@ -29,6 +29,7 @@ import listItemButtonStyles from "./css/ListItemButtonStyles";
 import ListItemIconCss from "./css/ListItemIcon";
 import AdminCss from "./css/AdminCss";
 import Swal from "sweetalert2";
+import axios from "axios"; // Import Axios
 
 const drawerWidth = 240;
 
@@ -102,6 +103,40 @@ export default function SideNav() {
   const [open, setOpen] = React.useState(false);
 
   const navigate = useNavigate();
+  const handleLogout = async () => {
+    try {
+      const result = await Swal.fire({
+        title: "Logout",
+        text: "Are you sure you want to log out?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes, log out",
+        cancelButtonText: "Cancel",
+        confirmButtonColor: "#16344F",
+        cancelButtonColor: "#d33",
+        
+      });
+
+      if (result.isConfirmed) {
+        // Make API request to log out
+        await axios.get("http://localhost:3001/LogOut");
+
+        setTimeout(() => {
+          navigate("/");
+        }, 222);
+  
+
+        Swal.fire(
+          "Logged Out!",
+          "You have been successfully logged out.",
+          "success"
+        );
+      }
+    } catch (error) {
+      console.error("Error during logout:", error);
+      Swal.fire("Logout Failed", "An error occurred during logout.", "error");
+    }
+  };
 
   return (
     <Box style={{ display: "flex" }}>
@@ -294,28 +329,7 @@ export default function SideNav() {
           <ListItem
             disablePadding
             style={{ display: "block", marginBottom: "10px" }}
-            onClick={() => {
-              Swal.fire({
-                title: "Logout",
-                text: "Are you sure you want to log out?",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonText: "Yes, log out",
-                cancelButtonText: "Cancel",
-                confirmButtonColor: "#16344F", // Set the color for the confirm button
-                cancelButtonColor: "#d33", // Set the color for the cancel button
-              }).then((result) => {
-                if (result.isConfirmed) {
-                  // Perform the logout action
-                  // You can replace the following line with your logout logic
-                  Swal.fire(
-                    "Logged Out!",
-                    "You have been successfully logged out.",
-                    "success"
-                  );
-                }
-              });
-            }}
+            onClick={handleLogout}
           >
             <ListItemButton sx={listItemButtonStyles(open)}>
               <ListItemIcon sx={ListItemIconCss(open)}>

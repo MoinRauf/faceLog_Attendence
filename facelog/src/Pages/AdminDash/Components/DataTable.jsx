@@ -10,7 +10,6 @@ import TableRow from "@mui/material/TableRow";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import { useState, useEffect } from "react";
-
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import SignalCellularAltTwoToneIcon from "@mui/icons-material/SignalCellularAltTwoTone";
 import Button from "@mui/material/Button";
@@ -31,8 +30,11 @@ import Swal from "sweetalert2";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import { MyContext } from "../../../MyContext";
+// modal imported
 import Modal from "@mui/material/Modal";
-
+import AddData from "./AddData";
+import EditData from "./EditData";
+// model style which align modal in center
 const style = {
   position: "absolute",
   top: "50%",
@@ -46,18 +48,27 @@ const style = {
 };
 
 export default function DataTable() {
-
-
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [rows, setRows] = useState([]);
+  // haldel modal open and close state start
+  const [formid, SetFormid] = useState("");
   const [open, setOpen] = useState(false);
+  const [editopen, setEditopen] = useState(false);
+
   const handleOpen = () => setOpen(true);
+  const handleEditOpen = () => setEditopen(true);
   const handleClose = () => setOpen(false);
+  const handleEditClose = () => setEditopen(false);
+
+  console.log(formid, "this is from datatable ");
+  // haldel modal open and close state end
 
   const [filterrow, setfilterrow] = useState("");
   const { text, setText } = React.useContext(MyContext);
+  console.log(filterrow, "asfbsiaugfiasufgiasu");
   setText(filterrow);
+  console.log("moin", text);
 
   const empCollectionRef = collection(db, "EmployeeNew");
 
@@ -92,7 +103,7 @@ export default function DataTable() {
       text: "You won't be able to Delete this!",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
+      confirmButtonColor: "#16344F",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
@@ -102,17 +113,27 @@ export default function DataTable() {
     });
   };
 
-  const edituser = async () => {
-    await updateDoc(empCollectionRef, {
-      EmpId: 2,
-      EmpName: "EmpName",
-      DaysAbsent: 5,
-      DaysLate: 6,
-      HalfDays: 6,
-    });
-    getUsers(); //update the list acc: to data
-    CloseEvent();
-    Swal.fire("edit successfullt");
+  const edituser = (
+    EmpId,
+    EmpName,
+    DaysAbsent,
+    DaysPresent,
+    HalfDays,
+    DaysLate,
+    id
+  ) => {
+    const Data = {
+      id: id,
+      EmpId: EmpId,
+      EmpName: EmpName,
+      DaysPresent: DaysPresent,
+      DaysAbsent: DaysAbsent,
+      DaysLate: DaysLate,
+      HalfDays: HalfDays,
+    };
+    console.log("setformid k upper wali line", Data);
+    SetFormid(Data);
+    handleEditOpen();
   };
 
   const viewUser = (id) => {
@@ -147,6 +168,29 @@ export default function DataTable() {
 
   return (
     <>
+      {/* model div start */}
+      <div>
+        <Modal
+          open={open}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <AddData closeEvent={handleClose} />
+          </Box>
+        </Modal>
+
+        <Modal
+          open={editopen}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <EditData closeEvent={handleEditClose} fid={formid} />
+          </Box>
+        </Modal>
+      </div>
+      {/* modal div end */}
       <Paper sx={{ width: "100%", overflow: "hidden" }}>
         <Typography
           gutterBottom
@@ -175,7 +219,11 @@ export default function DataTable() {
             component="div"
             sx={{ flexGrow: 1 }}
           ></Typography>
-          <Button variant="contained" endIcon={<AddCircleIcon />}>
+          <Button
+            variant="contained"
+            endIcon={<AddCircleIcon />}
+            onClick={handleOpen}
+          >
             Add
           </Button>
         </Stack>
@@ -185,10 +233,10 @@ export default function DataTable() {
             <TableHead>
               <TableRow>
                 <TableCell align="left" style={{ minWidth: "100px" }}>
-                  EmpId
+                  Employee id
                 </TableCell>
                 <TableCell align="left" style={{ minWidth: "100px" }}>
-                  EmpName
+                  Employee Name
                 </TableCell>
                 <TableCell align="left" style={{ minWidth: "100px" }}>
                   DaysPresent
@@ -243,7 +291,17 @@ export default function DataTable() {
                             cursor: "pointer",
                           }}
                           className="cursor-pointer"
-                          onClick={() => edituser(row.id)}
+                          onClick={() =>
+                            edituser(
+                              row.EmpId,
+                              row.EmpName,
+                              row.DaysPresent,
+                              row.DaysAbsent,
+                              row.DaysLate,
+                              row.HalfDays,
+                              row.id
+                            )
+                          }
                         />
                         <DeleteIcon
                           style={{

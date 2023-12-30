@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Button,
   Grid,
@@ -11,11 +11,16 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import Swal from "sweetalert2";
 import { db } from "../../../firebase-config";
-import { collection, updateDoc, getDocs, doc, get } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  doc,
+} from "firebase/firestore";
 
-const EditData = ({ fid, closeEvent }) => {
-  console.log("edir table ki fid", fid);
-  console.log(fid, "this is from the edit datatable ");
+const AddData = ({ closeEvent }) => {
   const [rows, setRows] = useState([]);
   const [EmpId, setEmpId] = useState("");
   const [EmpName, setEmpName] = useState("");
@@ -24,15 +29,6 @@ const EditData = ({ fid, closeEvent }) => {
   const [DaysLate, setDaysLate] = useState("");
   const [HalfDays, setHalfDays] = useState("");
   const empCollectionRef = collection(db, "EmployeeNew");
-  useEffect(() => {
-    console.log("FID", fid.id);
-    setEmpId(fid.EmpId);
-    setEmpName(fid.EmpName);
-    setDaysPresent(fid.DaysPresent);
-    setDaysAbsent(fid.DaysAbsent);
-    setDaysLate(fid.DaysLate);
-    setHalfDays(fid.HalfDays);
-  }, []);
   const handleEmpIdChange = (event) => {
     setEmpId(event.target.value);
   };
@@ -52,21 +48,24 @@ const EditData = ({ fid, closeEvent }) => {
     setHalfDays(event.target.value);
   };
 
-  const CreateUser = async () => {
-    const userDoc = doc(db, "EmployeeNew", fid.id);
+  const createUser = async () => {
+    try {
+      await addDoc(empCollectionRef, {
+        EmpId: EmpId,
+        EmpName: EmpName,
+        DaysPresent: DaysPresent,
+        DaysAbsent: DaysAbsent,
+        DaysLate: DaysLate,
+        HalfDays: HalfDays,
+      });
 
-    const newFields = {
-      EmpId: EmpId,
-      EmpName: EmpName,
-      DaysPresent: DaysPresent,
-      DaysAbsent: DaysAbsent,
-      DaysLate: DaysLate,
-      HalfDays: HalfDays,
-    };
-    await updateDoc(userDoc, newFields);
-    getUsers(); // Update the list according to the data
-    closeEvent(); // Correct function name
-    Swal.fire("Edit successful"); // Display success message
+      getUsers(); // Update the list according to the data
+      closeEvent(); // Correct function name
+      Swal.fire("Edit successful"); // Display success message
+    } catch (error) {
+      console.error("Error creating user:", error);
+      // Handle error if necessary
+    }
   };
 
   const getUsers = async () => {
@@ -85,7 +84,7 @@ const EditData = ({ fid, closeEvent }) => {
     <>
       <Box sx={{ m: 2 }} />
       <Typography variant="h5" align="center">
-        Edit Data
+        ADD YA REMOVE KRNA HY FUNCTION !!! LAST MAIN
       </Typography>
       <IconButton
         style={{ position: "absolute", top: "0", right: "0" }}
@@ -181,21 +180,9 @@ const EditData = ({ fid, closeEvent }) => {
         <br />
         <Grid item xs={12}>
           <Typography variant="h5" align="center">
-          <Button
-  variant="contained"
-  onClick={CreateUser}
-  sx={{
-    backgroundColor: "#16344F",
-    color: "white",
-    marginTop: "20px",
-    "&:hover": {
-      backgroundColor: "#16344F", // Set the hover background color to match the button's background color
-    },
-  }}
->
-  Submit
-</Button>
-
+            <Button variant="contained" onClick={createUser}>
+              Submit
+            </Button>
           </Typography>
         </Grid>
       </Grid>
@@ -204,4 +191,4 @@ const EditData = ({ fid, closeEvent }) => {
   );
 };
 
-export default EditData;
+export default AddData;
