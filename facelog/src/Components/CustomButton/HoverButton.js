@@ -50,7 +50,7 @@ HoverButton.propTypes = {
   label: PropTypes.string.isRequired,
   bgColor: PropTypes.string,
   textColor: PropTypes.string,
-  linkTo: PropTypes.string.isRequired,
+  linkTo: PropTypes.string,
 };
 
 export default HoverButton;

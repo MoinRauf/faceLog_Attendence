@@ -1,0 +1,26 @@
+.dashboardBody {
+    background-image: url("../../../../Assets/darkbg1.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.dashboardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.headerButton {
+    margin-top: 10px;
+    margin-right: 65px;
+}
+.employeeReport h1 {
+    margin: 40px 65px 20px;
+    font-size: 3em;
+    color: #c0ffd1;
+    text-shadow: 7px 7px 4px rgba(0, 0, 0, 0.5);
+}

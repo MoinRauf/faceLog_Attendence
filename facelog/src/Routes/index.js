@@ -11,6 +11,8 @@ import SetDays from "../Pages/AdminDash/Pages/SetDays";
 import SetSalaryPolicy from "../Pages/AdminDash/Pages/SetSalaryPolicy";
 import SetTimeInterval from "../Pages/AdminDash/Pages/SetTimeInterval";
 import Error from "../Pages/AdminDash/Pages/errorpage";
+import DashBoard from "../Pages/EmployeeDash/Pages/Dashboard";
+import ChangePassword from "../Pages/EmployeeDash/Pages/ChangePassword";
 
 const MainRoutes = () => {
   return (
@@ -26,7 +28,9 @@ const MainRoutes = () => {
         <Route path="/SetDays" element={<SetDays />} />
         <Route path="/SetSalaryPolicy" element={<SetSalaryPolicy />} />
         <Route path="/SetTimeInterval" element={<SetTimeInterval />} />
-        <Route path="*" element={<Error/>} />
+        <Route path="/employeeDashboard" element={<DashBoard />} />
+        <Route path="/changePassword" element={<ChangePassword />} />
+        <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>
   );
