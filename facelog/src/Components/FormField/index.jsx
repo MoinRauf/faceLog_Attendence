@@ -4,10 +4,9 @@ import PropTypes from "prop-types";
 
 
 
-const FormField = ({label, icon, inputType, placeholder, min}) => {
+const FormField = ({label, icon, inputType, placeholder, min, value, setter, required}) => {
   return (
     <div className={styles.fieldContainer}>
-      
       {/*Input Label with Icon*/}
       <div className={styles.labelContainer}>
         <h4 className={styles.labelText}>{label}</h4>
@@ -26,7 +25,9 @@ const FormField = ({label, icon, inputType, placeholder, min}) => {
         type={inputType}
         placeholder={placeholder || ""}
         min={min || ""}
-        required
+        value={value}
+        onChange={(e) => setter(e.target.value)}
+        required={required}
       />
     </div>
   );
