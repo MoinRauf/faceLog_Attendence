@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Button,
   Grid,
@@ -10,29 +10,19 @@ import {
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import Swal from "sweetalert2";
-import { db } from "../../../firebase-config";
-import { collection, updateDoc, getDocs, doc, get } from "firebase/firestore";
+import axios from "axios";
 
 const EditData = ({ fid, closeEvent }) => {
   console.log("edir table ki fid", fid);
   console.log(fid, "this is from the edit datatable ");
-  const [rows, setRows] = useState([]);
-  const [EmpId, setEmpId] = useState("");
-  const [EmpName, setEmpName] = useState("");
-  const [DaysPresent, setDaysPresent] = useState("");
-  const [DaysAbsent, setDaysAbsent] = useState("");
-  const [DaysLate, setDaysLate] = useState("");
-  const [HalfDays, setHalfDays] = useState("");
-  const empCollectionRef = collection(db, "EmployeeNew");
-  useEffect(() => {
-    console.log("FID", fid.id);
-    setEmpId(fid.EmpId);
-    setEmpName(fid.EmpName);
-    setDaysPresent(fid.DaysPresent);
-    setDaysAbsent(fid.DaysAbsent);
-    setDaysLate(fid.DaysLate);
-    setHalfDays(fid.HalfDays);
-  }, []);
+
+  const [EmpId, setEmpId] = useState(fid.EmpId);
+  const [EmpName, setEmpName] = useState(fid.EmpName);
+  const [DaysPresent, setDaysPresent] = useState(fid.DaysPresent);
+  const [DaysAbsent, setDaysAbsent] = useState(fid.DaysAbsent);
+  const [DaysLate, setDaysLate] = useState(fid.DaysLate);
+  const [HalfDays, setHalfDays] = useState(fid.HalfDays);
+
   const handleEmpIdChange = (event) => {
     setEmpId(event.target.value);
   };
@@ -53,34 +43,39 @@ const EditData = ({ fid, closeEvent }) => {
   };
 
   const CreateUser = async () => {
-    const userDoc = doc(db, "EmployeeNew", fid.id);
-
-    const newFields = {
+    // Create an object with the data you want to update
+    const updatedFields = {
       EmpId: EmpId,
       EmpName: EmpName,
       DaysPresent: DaysPresent,
       DaysAbsent: DaysAbsent,
       DaysLate: DaysLate,
       HalfDays: HalfDays,
+      fid:fid.id
     };
-    await updateDoc(userDoc, newFields);
-    getUsers(); // Update the list according to the data
-    closeEvent(); // Correct function name
-    Swal.fire("Edit successful"); // Display success message
-  };
 
-  const getUsers = async () => {
     try {
-      const data = await getDocs(empCollectionRef);
-      const sortedRows = data.docs
-        .map((doc) => ({ ...doc.data(), id: doc.id }))
-        .sort((a, b) => a.EmpId - b.EmpId); // Sorting based on EmpId
+      // Make a PATCH request to your API endpoint with the updated data
+      //await axios.patch(`http://localhost:3001/Edit/${fid.id}`, updatedFields, {
+      await axios.patch(`http://localhost:3001/Edit/${fid.id}`, updatedFields, {
+        headers: {    
+          "Content-Type": "application/json",
+        },
+      });
 
-      setRows(sortedRows);
+      // Close the modal
+      closeEvent();
+
+      // Display success message
+      Swal.fire("Edit successful");
+      console.log("log", updatedFields);
     } catch (error) {
-      console.error("Error fetching data:", error);
+      // Handle errors, e.g., display an error message
+      console.error("Error updating data:", error);
+      Swal.fire("Error", "Failed to edit data", "error");
     }
   };
+
   return (
     <>
       <Box sx={{ m: 2 }} />
@@ -94,7 +89,7 @@ const EditData = ({ fid, closeEvent }) => {
         <CloseIcon />
       </IconButton>
       <Box height={40} />
-      <Grid continer spacing={2}>
+      <Grid container spacing={2}>
         <Stack spacing={2} direction="row">
           <Grid item xs={12}>
             <TextField
@@ -181,21 +176,20 @@ const EditData = ({ fid, closeEvent }) => {
         <br />
         <Grid item xs={12}>
           <Typography variant="h5" align="center">
-          <Button
-  variant="contained"
-  onClick={CreateUser}
-  sx={{
-    backgroundColor: "#16344F",
-    color: "white",
-    marginTop: "20px",
-    "&:hover": {
-      backgroundColor: "#16344F", // Set the hover background color to match the button's background color
-    },
-  }}
->
-  Submit
-</Button>
-
+            <Button
+              variant="contained"
+              onClick={CreateUser}
+              sx={{
+                backgroundColor: "#16344F",
+                color: "white",
+                marginTop: "20px",
+                "&:hover": {
+                  backgroundColor: "#16344F",
+                },
+              }}
+            >
+              Submit
+            </Button>
           </Typography>
         </Grid>
       </Grid>

@@ -15,6 +15,8 @@ import AddCircleIcon from "@mui/icons-material/AddCircle";
 import SignalCellularAltTwoToneIcon from "@mui/icons-material/SignalCellularAltTwoTone";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
+import axios from "axios";
+
 import Stack from "@mui/material/Stack";
 import { db } from "../../../firebase-config";
 import {
@@ -82,10 +84,21 @@ export default function DataTable() {
 
   const getUsers = async () => {
     try {
-      const data = await getDocs(empCollectionRef);
-      const sortedRows = data.docs
-        .map((doc) => ({ ...doc.data(), id: doc.id }))
-        .sort((a, b) => a.EmpId - b.EmpId); // Sorting based on EmpId
+      const response = await axios.get("https://dummyjson.com/products");
+
+      const { products } = response.data;
+
+      const mappedRows = products.map((product) => ({
+        id: product.id,
+        EmpId: product.id,
+        EmpName: product.title,
+        DaysPresent: product.stock,
+        DaysAbsent: product.stock * 0.2, // Adjust as needed
+        DaysLate: product.brand, // Adjust as needed
+        HalfDays: product.brand, // Adjust as needed
+      }));
+
+      const sortedRows = mappedRows.sort((a, b) => a.EmpId - b.EmpId);
 
       setRows(sortedRows);
     } catch (error) {
@@ -113,8 +126,34 @@ export default function DataTable() {
     }).then((result) => {
       if (result.value) {
         deleteApi(id);
+        console.log("this is delete id ", id);
       }
     });
+  };
+  const deleteApi = async (id) => {
+    try {
+      // Make a DELETE request to your API endpoint with the specified id
+      await axios.delete(`http://localhost:3001/DeleteData/${id}`);
+
+      // Display success message
+      Swal.fire("Deleted!", "Your file has been deleted.", "success");
+
+      // Fetch and update the user list from the server
+      getUsers();
+    } catch (error) {
+      // Handle errors, e.g., display an error message
+      console.error("Error deleting data:", error);
+      Swal.fire("Error", "Failed to delete data", "error");
+    }
+  };
+
+  const filterData = (v) => {
+    if (v) {
+      setRows([v]);
+    } else {
+      setRows([]);
+      getUsers();
+    }
   };
 
   const edituser = (
@@ -153,20 +192,6 @@ export default function DataTable() {
 
         break;
       }
-    }
-  };
-  const deleteApi = async (id) => {
-    const userDoc = doc(db, "EmployeeNew", id);
-    await deleteDoc(userDoc);
-    Swal.fire("Deleted!", "Your file has been deleted.", "success");
-    getUsers();
-  };
-  const filterData = (v) => {
-    if (v) {
-      setRows([v]);
-    } else {
-      setRows([]);
-      getUsers();
     }
   };
 
@@ -224,13 +249,13 @@ export default function DataTable() {
               component="div"
               sx={{ flexGrow: 1 }}
             ></Typography>
-            <Button
+            {/* <Button
               variant="contained"
               endIcon={<AddCircleIcon />}
               onClick={handleOpen}
             >
               Add
-            </Button>
+            </Button> */}
           </Stack>
           <Box height={10} />
           <TableContainer sx={{ maxHeight: 440 }}>
