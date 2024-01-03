@@ -12,11 +12,12 @@ import {
 import { MyContext } from "../../../MyContext";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../../firebase-config";
+import axios from "axios";
 const empCollectionRef = collection(db, "EmployeeNew");
 export default function AChart() {
   const { text } = useContext(MyContext);
   const [rows, setRows] = useState([]);
-  console.log("okkokokokokokokok", rows,);
+  // console.log("okkokokokokokokok", rows, text);
 
   useEffect(() => {
     getUsers();
@@ -24,10 +25,17 @@ export default function AChart() {
 
   const getUsers = async () => {
     try {
-      const data = await getDocs(empCollectionRef);
-      const sortedRows = data.docs
-        .map((doc) => ({ ...doc.data(), id: doc.id }))
-        .sort((a, b) => a.EmpId - b.EmpId); // Sorting based on EmpId
+      const response = await axios.get("https://dummyjson.com/products");
+
+      const { products } = response.data;
+
+      const mappedRows = products.map((product) => ({
+        EmpName: product.title,
+        DaysPresent: product.stock,
+        DaysAbsent: product.stock * 0.2, // Adjust as needed
+      }));
+
+      const sortedRows = mappedRows.sort((a, b) => a.EmpId - b.EmpId);
 
       setRows(sortedRows);
     } catch (error) {

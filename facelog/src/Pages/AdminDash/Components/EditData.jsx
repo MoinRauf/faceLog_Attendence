@@ -13,8 +13,8 @@ import Swal from "sweetalert2";
 import axios from "axios";
 
 const EditData = ({ fid, closeEvent }) => {
-  console.log("edir table ki fid", fid);
-  console.log(fid, "this is from the edit datatable ");
+  // console.log("edir table ki fid", fid);
+  // console.log(fid, "this is from the edit datatable ");
 
   const [EmpId, setEmpId] = useState(fid.EmpId);
   const [EmpName, setEmpName] = useState(fid.EmpName);
@@ -57,7 +57,7 @@ const EditData = ({ fid, closeEvent }) => {
     try {
       // Make a PATCH request to your API endpoint with the updated data
       //await axios.patch(`http://localhost:3001/Edit/${fid.id}`, updatedFields, {
-      await axios.patch(`http://localhost:3001/Edit/${fid.id}`, updatedFields, {
+      await axios.put(`https://jsonplaceholder.typicode.com/posts/1`, updatedFields, {
         headers: {    
           "Content-Type": "application/json",
         },
@@ -68,7 +68,7 @@ const EditData = ({ fid, closeEvent }) => {
 
       // Display success message
       Swal.fire("Edit successful");
-      console.log("log", updatedFields);
+      // console.log("log", updatedFields);
     } catch (error) {
       // Handle errors, e.g., display an error message
       console.error("Error updating data:", error);

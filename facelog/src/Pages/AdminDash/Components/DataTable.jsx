@@ -67,14 +67,14 @@ export default function DataTable() {
   const handleClose = () => setOpen(false);
   const handleEditClose = () => setEditopen(false);
 
-  console.log(formid, "this is from datatable ");
+  // console.log(formid, "this is from datatable ");
   // haldel modal open and close state end
 
   const [filterrow, setfilterrow] = useState("");
   const { text, setText } = React.useContext(MyContext);
-  console.log(filterrow, "asfbsiaugfiasufgiasu");
+  // console.log(filterrow, "asfbsiaugfiasufgiasu");
   setText(filterrow);
-  console.log("moin", text);
+  // console.log("rauf", filterrow);
 
   const empCollectionRef = collection(db, "EmployeeNew");
 
@@ -82,8 +82,10 @@ export default function DataTable() {
     getUsers();
   }, []);
 
+  // api use start
   const getUsers = async () => {
     try {
+      // const response = await axios.get("https://dummyjson.com/products");
       const response = await axios.get("https://dummyjson.com/products");
 
       const { products } = response.data;
@@ -94,8 +96,8 @@ export default function DataTable() {
         EmpName: product.title,
         DaysPresent: product.stock,
         DaysAbsent: product.stock * 0.2, // Adjust as needed
-        DaysLate: product.brand, // Adjust as needed
-        HalfDays: product.brand, // Adjust as needed
+        DaysLate: product.rating, // Adjust as needed
+        HalfDays: product.rating, // Adjust as needed
       }));
 
       const sortedRows = mappedRows.sort((a, b) => a.EmpId - b.EmpId);
@@ -105,7 +107,7 @@ export default function DataTable() {
       console.error("Error fetching data:", error);
     }
   };
-
+  // api use end
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -126,14 +128,14 @@ export default function DataTable() {
     }).then((result) => {
       if (result.value) {
         deleteApi(id);
-        console.log("this is delete id ", id);
+        // console.log("this is delete id ", id);
       }
     });
   };
   const deleteApi = async (id) => {
     try {
       // Make a DELETE request to your API endpoint with the specified id
-      await axios.delete(`http://localhost:3001/DeleteData/${id}`);
+      await axios.delete(`https://jsonplaceholder.typicode.com/posts/1`);
 
       // Display success message
       Swal.fire("Deleted!", "Your file has been deleted.", "success");
@@ -174,21 +176,16 @@ export default function DataTable() {
       DaysLate: DaysLate,
       HalfDays: HalfDays,
     };
-    console.log("setformid k upper wali line", Data);
+    // console.log("setformid k upper wali line", Data);
     SetFormid(Data);
     handleEditOpen();
   };
 
   const viewUser = (id) => {
-    console.log(rows);
+    // console.log(rows);
     for (var i = 0; i < rows.length; i++) {
       if (rows[i].id === id) {
         setfilterrow(rows[i]);
-        // Swal.fire(
-        //   "Graph Updated!",
-        //   "Employee graph has been successfully updated.",
-        //   "success"
-        // );
 
         break;
       }
