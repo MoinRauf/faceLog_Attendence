@@ -51,20 +51,27 @@ const EditData = ({ fid, closeEvent }) => {
       DaysAbsent: DaysAbsent,
       DaysLate: DaysLate,
       HalfDays: HalfDays,
-      fid:fid.id
+      fid: fid.id,
     };
 
     try {
       // Make a PATCH request to your API endpoint with the updated data
       //await axios.patch(`http://localhost:3001/Edit/${fid.id}`, updatedFields, {
-      await axios.put(`https://jsonplaceholder.typicode.com/posts/1`, updatedFields, {
-        headers: {    
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await axios.put(
+        `http://localhost:3001/Edit/${EmpId}`,
+        updatedFields,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       // Close the modal
       closeEvent();
+
+      // to print the api respone
+      console.log("API Response:", response.data);
 
       // Display success message
       Swal.fire("Edit successful");

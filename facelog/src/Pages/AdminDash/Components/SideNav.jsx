@@ -114,18 +114,17 @@ export default function SideNav() {
         cancelButtonText: "Cancel",
         confirmButtonColor: "#16344F",
         cancelButtonColor: "#d33",
-        
       });
 
       if (result.isConfirmed) {
         // Make API request to log out
-        await axios.get("http://localhost:3001/LogOut");
+        const response = await axios.get("http://localhost:3001/LogOut");
 
         setTimeout(() => {
           navigate("/");
         }, 222);
-  
 
+        console.log("API Response:", response.data);
         Swal.fire(
           "Logged Out!",
           "You have been successfully logged out.",

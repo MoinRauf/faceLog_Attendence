@@ -135,10 +135,14 @@ export default function DataTable() {
   const deleteApi = async (id) => {
     try {
       // Make a DELETE request to your API endpoint with the specified id
-      await axios.delete(`https://jsonplaceholder.typicode.com/posts/1`);
+      const response = await axios.delete(
+        `http://localhost:3001/DeleteData/${id}`
+      );
+      console.log("this is the id number in try block", id);
 
       // Display success message
       Swal.fire("Deleted!", "Your file has been deleted.", "success");
+      console.log("API Response:", response.data);
 
       // Fetch and update the user list from the server
       getUsers();
@@ -337,7 +341,7 @@ export default function DataTable() {
                               cursor: "pointer",
                             }}
                             onClick={() => {
-                              deleteUser(row.id);
+                              deleteUser(row.EmpId);
                             }}
                           />
                           <SignalCellularAltTwoToneIcon
