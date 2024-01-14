@@ -18,18 +18,18 @@ const Register = () => {
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!name || !email || !password) {
       toast.error("Missing Credentials!");
       return;
-    } else if (password.length < 7) {
-      toast.error("Password must be at least 7 characters long");
-      return;
     } else if (!email.includes("@")) {
       toast.error("Please enter a valid email address");
+      return;
+    } else if (password.length < 7) {
+      toast.error("Password must be at least 7 characters long");
       return;
     } else {
       try {
