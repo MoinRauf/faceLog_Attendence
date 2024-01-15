@@ -245,7 +245,7 @@ export default function SideNav() {
             disablePadding
             style={{ display: "block", marginBottom: "10px", color: "#16344f" }}
             onClick={() => {
-              navigate("/RegisterEmployee");
+              navigate("/New");
             }}
           >
             <ListItemButton sx={listItemButtonStyles(open)}>

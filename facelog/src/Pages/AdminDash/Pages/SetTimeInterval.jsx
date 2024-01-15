@@ -18,8 +18,8 @@ const SetTimeInterval = () => {
     attendanceEndTime: "",
     presentStartTime: "",
     presentEndTime: "",
-    absentStartTime: "",
-    absentEndTime: "",
+    // absentStartTime: "",
+    // absentEndTime: "",
     lateStartTime: "",
     lateEndTime: "",
     halfDayStartTime: "",
@@ -59,8 +59,8 @@ const SetTimeInterval = () => {
         attendanceEndTime: "",
         presentStartTime: "",
         presentEndTime: "",
-        absentStartTime: "",
-        absentEndTime: "",
+        // absentStartTime: "",
+        // absentEndTime: "",
         lateStartTime: "",
         lateEndTime: "",
         halfDayStartTime: "",
@@ -146,7 +146,7 @@ const SetTimeInterval = () => {
             </Stack>
           </div>
 
-          <div>
+          {/* <div>
             <div className="center111">
               <label className="divlabel111">Absent Timing </label>
             </div>
@@ -168,7 +168,7 @@ const SetTimeInterval = () => {
                 className="userinput111"
               />
             </Stack>
-          </div>
+          </div> */}
 
           <div>
             <div className="center111">

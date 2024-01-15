@@ -60,7 +60,8 @@ const RegisterEmployee = () => {
         formDataObj.append(key, formData[key]);
       });
 
-      // Make the Axios POST request to your API endpoint
+      // Make the Axios POST request to your API endpointdifferent api ;
+      // 
       const response = await axios.post(
         "http://localhost:3001/RegisterEmployee",
         formDataObj
@@ -110,11 +111,11 @@ const RegisterEmployee = () => {
             theme="light"
           />
           <div className="maindiv12">
-            <h1 className="heading12">Employee Registration</h1>
+            <h1 className="heading12">Take Images </h1>
 
             <div>
               <Stack spacing={7} direction="row">
-                <div>
+                {/* <div>
                   <div className="center12">
                     <label className="divlabel12">Employee ID:</label>
                   </div>
@@ -127,8 +128,8 @@ const RegisterEmployee = () => {
                     }
                     className="userinput12"
                   />
-                </div>
-                <div>
+                </div> */}
+                {/* <div>
                   <div className="center12">
                     <label className="divlabel12">Employee Name:</label>
                   </div>
@@ -141,10 +142,10 @@ const RegisterEmployee = () => {
                     }
                     className="userinput12"
                   />
-                </div>
+                </div> */}
               </Stack>
               <Stack spacing={7} direction="row">
-                <div>
+                {/* <div>
                   <div className="center12">
                     <label className="divlabel12">Email:</label>
                   </div>
@@ -155,8 +156,8 @@ const RegisterEmployee = () => {
                     onChange={(e) => handleInputChange("email", e.target.value)}
                     className="userinput12"
                   />
-                </div>
-                <div>
+                </div> */}
+                {/* <div>
                   <div className="center12">
                     <label className="divlabel12">Password:</label>
                   </div>
@@ -169,28 +170,32 @@ const RegisterEmployee = () => {
                     }
                     className="userinput12"
                   />
-                </div>
+                </div> */}
               </Stack>
-              <Stack spacing={7} direction="row">
-                <div>
-                  <div className="center12">
-                    <label className="divlabel12">Salary:</label>
-                  </div>
-                  <input
-                    type="number"
-                    value={formData.salary}
-                    placeholder="Enter salary"
-                    onChange={(e) =>
-                      handleInputChange("salary", e.target.value)
-                    }
-                    className="userinput12"
-                  />
+
+              <div>
+                <div className="center12">
+                  <label className="divlabel12">Email:</label>
                 </div>
+                <input
+                  type="email"
+                  value={formData.email}
+                  placeholder="Enter email"
+                  onChange={(e) => handleInputChange("email", e.target.value)}
+                  className="userinput12"
+                />
+              </div>
+              <Stack spacing={4} direction="row">
                 <div className={captureimg.fieldContainer}>
                   {/* Input Label with Icon */}
                   <div className={captureimg.labelContainer}>
-                    <h4 className={captureimg.labelText}> <span style={{fontSize:"20px"}}>Facial Images</span>  <PhotoCameraFrontIcon /> </h4>
-                    
+                    <h4 className={captureimg.labelText}>
+                      {" "}
+                      <span style={{ fontSize: "20px" }}>
+                        Facial Images
+                      </span>{" "}
+                      <PhotoCameraFrontIcon />{" "}
+                    </h4>
                   </div>
 
                   {/* Input Field */}
@@ -211,15 +216,16 @@ const RegisterEmployee = () => {
                     {/* No Images */}
                   </label>
                 </div>
+
+                <div style={{ margin: "40px 0px 0px 0px" }}>
+                  <HoverButton
+                    label="Register"
+                    bgColor="#16344f"
+                    textColor="#d9eff5"
+                    type="submit"
+                  />
+                </div>
               </Stack>
-              <div style={{ margin: "30px 0px 10px 230px" }}>
-                <HoverButton
-                  label="Register"
-                  bgColor="#16344f"
-                  textColor="#d9eff5"
-                  type="submit"
-                />
-              </div>
             </div>
           </div>
         </form>
