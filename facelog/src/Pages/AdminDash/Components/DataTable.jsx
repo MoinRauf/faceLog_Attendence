@@ -431,7 +431,7 @@ export default function DataTable() {
 
                       <TableCell align="left" sx={{ borderBottom: "2px solid #16344f" }}>
                         <Stack spacing={2} direction="row" >
-                          {/* <EditIcon
+                          <EditIcon
                             style={{
                               fontSize: "20px",
                               color: "blue",
@@ -451,7 +451,7 @@ export default function DataTable() {
                                 row.id
                               )
                             }
-                          /> */}
+                          />
                           <DeleteIcon
                             style={{
                               fontSize: "20px",

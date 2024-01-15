@@ -7,6 +7,7 @@ import Stack from "@mui/material/Stack";
 import { ToastContainer, toast } from "react-toastify";
 import { MyContext } from "../../../MyContext";
 import { useNavigate } from "react-router-dom";
+import admincss from "../../../Pages/AdminDash/Pages/ADMINCSS/New.css";
 
 const New = () => {
   const navigate = useNavigate();
@@ -29,15 +30,15 @@ const New = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (
-        !formData.employeeId ||
-        !formData.employeeName ||
-        !formData.email ||
-        !formData.password ||
-        !formData.salary
-      ) {
-        toast.error("Please fill out all fields");
-        return;
-      }
+      !formData.employeeId ||
+      !formData.employeeName ||
+      !formData.email ||
+      !formData.password ||
+      !formData.salary
+    ) {
+      toast.error("Please fill out all fields");
+      return;
+    }
 
     try {
       const formDataObj = new FormData();
@@ -88,14 +89,14 @@ const New = () => {
           pauseOnHover
           theme="light"
         />
-        <div className="maindiv12">
-          <h1 className="heading12">Employee Registration</h1>
+        <div className="maindiv90">
+          <h1 className="heading90">Employee Registration</h1>
 
           <div>
             <Stack spacing={7} direction="row">
               <div>
-                <div className="center12">
-                  <label className="divlabel12">Employee ID:</label>
+                <div className="center90">
+                  <label className="divlabel90">Employee ID:</label>
                 </div>
                 <input
                   type="number"
@@ -104,12 +105,12 @@ const New = () => {
                   onChange={(e) =>
                     handleInputChange("employeeId", e.target.value)
                   }
-                  className="userinput12"
+                  className="userinput90"
                 />
               </div>
               <div>
-                <div className="center12">
-                  <label className="divlabel12">Employee Name:</label>
+                <div className="center90">
+                  <label className="divlabel90">Employee Name:</label>
                 </div>
                 <input
                   type="text"
@@ -118,26 +119,26 @@ const New = () => {
                   onChange={(e) =>
                     handleInputChange("employeeName", e.target.value)
                   }
-                  className="userinput12"
+                  className="userinput90"
                 />
               </div>
             </Stack>
             <Stack spacing={7} direction="row">
               <div>
-                <div className="center12">
-                  <label className="divlabel12">Email:</label>
+                <div className="center90">
+                  <label className="divlabel90">Email:</label>
                 </div>
                 <input
                   type="email"
                   value={formData.email}
                   placeholder="Enter email"
                   onChange={(e) => handleInputChange("email", e.target.value)}
-                  className="userinput12"
+                  className="userinput90"
                 />
               </div>
               <div>
-                <div className="center12">
-                  <label className="divlabel12">Password:</label>
+                <div className="center90">
+                  <label className="divlabel90">Password:</label>
                 </div>
                 <input
                   type="password"
@@ -146,21 +147,21 @@ const New = () => {
                   onChange={(e) =>
                     handleInputChange("password", e.target.value)
                   }
-                  className="userinput12"
+                  className="userinput90"
                 />
               </div>
             </Stack>
             <Stack spacing={2} direction="row">
               <div>
-                <div className="center12">
-                  <label className="divlabel12">Salary:</label>
+                <div className="center90">
+                  <label className="divlabel90">Salary:</label>
                 </div>
                 <input
                   type="number"
                   value={formData.salary}
                   placeholder="Enter salary"
                   onChange={(e) => handleInputChange("salary", e.target.value)}
-                  className="userinput12"
+                  className="userinput90"
                 />
               </div>
               <div style={{ margin: "20px 0px 10px 50px" }}>

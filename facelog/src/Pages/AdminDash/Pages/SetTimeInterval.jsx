@@ -18,8 +18,7 @@ const SetTimeInterval = () => {
     attendanceEndTime: "",
     presentStartTime: "",
     presentEndTime: "",
-    // absentStartTime: "",
-    // absentEndTime: "",
+  
     lateStartTime: "",
     lateEndTime: "",
     halfDayStartTime: "",
@@ -59,8 +58,6 @@ const SetTimeInterval = () => {
         attendanceEndTime: "",
         presentStartTime: "",
         presentEndTime: "",
-        // absentStartTime: "",
-        // absentEndTime: "",
         lateStartTime: "",
         lateEndTime: "",
         halfDayStartTime: "",
