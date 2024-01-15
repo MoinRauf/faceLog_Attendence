@@ -1,1 +1,4 @@
+# .gitignore
+
+# Virtual Environment
 venv/
