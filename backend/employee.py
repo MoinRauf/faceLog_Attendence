@@ -12,12 +12,12 @@ employee_registration_parser.add_argument("salary", type= str, help = "Salary is
 
 # Defining the parser for changing password
 change_password_parser = reqparse.RequestParser()
-change_password_parser.add_argument("employeeID", type=str, help="Employee ID is required", required=True)
+change_password_parser.add_argument("email", type=str, help="email is required", required=True)
 change_password_parser.add_argument("old_password", type=str, help="Old password is required", required=True)
 change_password_parser.add_argument("new_password", type=str, help="New password is required", required=True)
 
 # Store the data in MongoDB using Flask-PyMongo
-employee_collection = mongo.db.employee  # Use the 'employee' collection
+employee_collection = mongo.db.Employee  # Use the 'employee' collection
 
 class registerEmployee(Resource):
     # extracting the JSON data into the server
@@ -32,7 +32,7 @@ class registerEmployee(Resource):
         else:
             # Save employee data to MongoDB
             employee_data = {
-                "employeeID": args["employeeID"],
+                #"employeeID": args["employeeID"]
                 "name": args["name"],
                 "email": args["email"],
                 "salary": args["salary"],
@@ -54,26 +54,27 @@ class ChangePassword(Resource):
         args = change_password_parser.parse_args()
 
         # Check if the employeeID exists in the database
-        employee = employee_collection.find_one({"employeeID": args["employeeID"]})
+        employee = employee_collection.find_one({"email": args["email"]})
 
         if not employee:
-            return {"error": "EmployeeID not found"}, 404
+            return {"error": "Employee not found"}, 404
 
         # Check if the old password matches the stored password
         if not check_password_hash(employee["password"], args["old_password"]):
             return {"error": "Incorrect old password"}, 401
         
+        new_password = args["new_password"]
         # Hash the new password
         hashed_new_password = generate_password_hash(args["new_password"])
 
         # Update the password in the database
         result = employee_collection.update_one(
-            {"employeeID": args["employeeID"]},
+            {"email": args["email"]},
             {"$set": {"password": hashed_new_password}}
         )
 
         # Check if the document was successfully updated
         if result.modified_count > 0:
-            return {"message": "Password changed successfully"}, 200
+            return {"message": "Password changed successfully", "new password": new_password}, 200
         else:
             return {"error": "Failed to change password"}, 500

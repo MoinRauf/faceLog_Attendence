@@ -31,3 +31,13 @@ class registerAdmin(Resource):
             return {"error": "Failed to create a new account"}, 500
         
         
+class CheckAdminExistence(Resource):
+    def get(self):
+        try:
+            # Check if there is at least one admin in the database
+            admin_exists = mongo.db.admin.find_one() is not None
+
+            return {"adminExists": admin_exists}, 200
+
+        except Exception as e:
+            return {"message": f"Internal Server error: {str(e)}"}, 500
