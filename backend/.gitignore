@@ -1,4 +1,4 @@
 # .gitignore
 
 # Virtual Environment
-.venv
+venv
