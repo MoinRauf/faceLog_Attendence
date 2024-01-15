@@ -226,6 +226,9 @@ export default function SideNav() {
           <ListItem
             disablePadding
             style={{ display: "block", marginBottom: "10px", color: "#16344f" }}
+            onClick={() => {
+              navigate("/");
+            }}
           >
             <ListItemButton sx={listItemButtonStyles(open)}>
               {/* ... your component JSX */}

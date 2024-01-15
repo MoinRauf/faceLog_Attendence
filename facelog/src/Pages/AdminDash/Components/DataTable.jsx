@@ -222,7 +222,16 @@ export default function DataTable() {
       </div>
       {/* modal div end */}
       {rows.length > 0 && (
-        <Paper sx={{ width: "100%", overflow: "hidden" }}>
+        <Paper
+          sx={{
+            width: "90%",
+            overflow: "hidden",
+            margin: "20px 65px",
+            backgroundColor: "#d9eff5",
+            border: "5px solid #16344f",
+            boxShadow: "10px 10px 26px 5px rgba(0,0,0,0.52);",
+          }}
+        >
           <Typography
             gutterBottom
             variant="h5"
@@ -269,26 +278,103 @@ export default function DataTable() {
             <Table stickyHeader aria-label="sticky table">
               <TableHead>
                 <TableRow>
-                  <TableCell align="left" style={{ minWidth: "100px" }}>
+                  <TableCell
+                    align="left"
+                    sx={{
+                      fontSize: "22px",
+                      fontFamily: "PT Serif, serif",
+                      color: "#16344f",
+                      minWidth: "100px",
+                      background: "rgb(204, 223, 240)",
+                      fontWeight: "bold",
+                      borderBottom: "2px solid #16344f",
+                    }}
+                  >
                     Employee ID
                   </TableCell>
-                  <TableCell align="left" style={{ minWidth: "100px" }}>
+                  <TableCell
+                    align="left"
+                    style={{
+                      fontSize: "22px",
+                      fontFamily: "PT Serif, serif",
+                      color: "#16344f",
+                      minWidth: "100px",
+                      background: "rgb(204, 223, 240)",
+                      fontWeight: "bold",
+                      borderBottom: "2px solid #16344f",
+                    }}
+                  >
                     Employee Name
                   </TableCell>
-                  <TableCell align="left" style={{ minWidth: "100px" }}>
+                  <TableCell
+                    align="left"
+                    style={{
+                      fontSize: "22px",
+                      fontFamily: "PT Serif, serif",
+                      color: "#16344f",
+                      minWidth: "100px",
+                      background: "rgb(204, 223, 240)",
+                      fontWeight: "bold",
+                      borderBottom: "2px solid #16344f",
+                    }}
+                  >
                     Present days
                   </TableCell>
-                  <TableCell align="left" style={{ minWidth: "100px" }}>
+                  <TableCell
+                    align="left"
+                    style={{
+                      fontSize: "22px",
+                      fontFamily: "PT Serif, serif",
+                      color: "#16344f",
+                      minWidth: "100px",
+                      background: "rgb(204, 223, 240)",
+                      fontWeight: "bold",
+                      borderBottom: "2px solid #16344f",
+                    }}
+                  >
                     Absent days
                   </TableCell>
-                  <TableCell align="left" style={{ minWidth: "100px" }}>
+                  <TableCell
+                    align="left"
+                    style={{
+                      fontSize: "22px",
+                      fontFamily: "PT Serif, serif",
+                      color: "#16344f",
+                      minWidth: "100px",
+                      background: "rgb(204, 223, 240)",
+                      fontWeight: "bold",
+                      borderBottom: "2px solid #16344f",
+                    }}
+                  >
                     Late Days
                   </TableCell>
-                  <TableCell align="left" style={{ minWidth: "100px" }}>
+                  <TableCell
+                    align="left"
+                    style={{
+                      fontSize: "22px",
+                      fontFamily: "PT Serif, serif",
+                      color: "#16344f",
+                      minWidth: "100px",
+                      background: "rgb(204, 223, 240)",
+                      fontWeight: "bold",
+                      borderBottom: "2px solid #16344f",
+                    }}
+                  >
                     Half Days
                   </TableCell>
 
-                  <TableCell align="left" style={{ minWidth: "100px" }}>
+                  <TableCell
+                    align="left"
+                    style={{
+                      fontSize: "22px",
+                      fontFamily: "PT Serif, serif",
+                      color: "#16344f",
+                      minWidth: "100px",
+                      background: "rgb(204, 223, 240)",
+                      fontWeight: "bold",
+                      borderBottom: "2px solid #16344f",
+                    }}
+                  >
                     Action
                   </TableCell>
                 </TableRow>
@@ -298,34 +384,60 @@ export default function DataTable() {
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((row) => (
                     <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
-                      <TableCell key={row.id} align="left">
+                      <TableCell
+                        key={row.id}
+                        align="left"
+                        sx={{ borderBottom: "2px solid #16344f" }}
+                      >
                         {row.EmpId}
                       </TableCell>
-                      <TableCell key={row.id} align="left">
+                      <TableCell
+                        key={row.id}
+                        align="left"
+                        sx={{ borderBottom: "2px solid #16344f" }}
+                      >
                         {row.EmpName}
                       </TableCell>
-                      <TableCell key={row.id} align="left">
+                      <TableCell
+                        key={row.id}
+                        align="left"
+                        sx={{ borderBottom: "2px solid #16344f" }}
+                      >
                         {row.DaysPresent}
                       </TableCell>
-                      <TableCell key={row.id} align="left">
+                      <TableCell
+                        key={row.id}
+                        align="left"
+                        sx={{ borderBottom: "2px solid #16344f" }}
+                      >
                         {row.DaysAbsent}
                       </TableCell>
-                      <TableCell key={row.id} align="left">
+                      <TableCell
+                        key={row.id}
+                        align="left"
+                        sx={{ borderBottom: "2px solid #16344f" }}
+                      >
                         {row.DaysLate}
                       </TableCell>
-                      <TableCell key={row.id} align="left">
+                      <TableCell
+                        key={row.id}
+                        align="left"
+                        sx={{ borderBottom: "2px solid #16344f" }}
+                      >
                         {row.HalfDays}
                       </TableCell>
                       {/* <TableCell key={row.id} align="left"> */}
                       {row.Action}
 
-                      <TableCell align="left">
-                        <Stack spacing={2} direction="row">
+                      <TableCell align="left" sx={{ borderBottom: "2px solid #16344f" }}>
+                        <Stack spacing={2} direction="row" >
                           <EditIcon
                             style={{
                               fontSize: "20px",
                               color: "blue",
                               cursor: "pointer",
+                              
+                              
                             }}
                             className="cursor-pointer"
                             onClick={() =>
