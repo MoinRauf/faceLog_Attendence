@@ -9,6 +9,8 @@ import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import Axios from "axios";
+import { MyContext } from "../../../MyContext";
+import { useContext } from "react";
 
 const columns = [
   { id: "id", label: "SNo", minWidth: 20, align: "center" },
@@ -33,11 +35,18 @@ const AttendanceReport = () => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
+  const { text } = useContext(MyContext);
+  console.log(text, "employee dashboard");
+  const empid = text.id;
+  console.log(empid, "employee id");
+
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchData = async (empid) => {
       try {
         // Replace the URL with your actual API endpoint
-        const response = await Axios.get("http://localhost:3001/attendance");
+        const response = await Axios.get(
+          `http://localhost:5000/employee/dashboard/${empid}`
+        );
         console.log("API Response:", response.data);
         const apiData = response.data;
 
@@ -48,8 +57,8 @@ const AttendanceReport = () => {
       }
     };
 
-    fetchData();
-  }, []);
+    fetchData(empid); // Pass empid as an argument to fetchData
+  }, [empid]);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);

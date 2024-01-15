@@ -10,12 +10,16 @@ import Axios from "axios";
 import { toast } from "react-toastify";
 import Toast from "../../Components/Toast";
 import { useNavigate } from "react-router-dom";
+import { MyContext } from "../../MyContext";
 
 const Login = () => {
 
   const [loginType, setloginType] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  // Login response is given to other components using context
+  const { text, setText } = React.useContext(MyContext);
 
   const navigate = useNavigate();
 
@@ -37,18 +41,16 @@ const Login = () => {
     } else {
       try {
         // Make the Axios POST request to your API endpoint
-        const response = await Axios.post(
-          "https://jsonplaceholder.typicode.com/posts",
-          {
-            loginType,
-            email,
-            password,
-          }
-        );
+        const response = await Axios.post("http://localhost:5000/login", {
+          loginType,
+          email,
+          password,
+        });
 
         // Handle the response as needed
         console.log("Login successful", response.data);
-
+        console.log(text, "login response data");
+        setText(response.data);
         // Show success toast
         toast.success("Login successful");
 
