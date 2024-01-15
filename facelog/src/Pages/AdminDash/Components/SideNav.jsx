@@ -16,15 +16,15 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import HomeTwoToneIcon from "@mui/icons-material/HomeTwoTone";
-import SupervisorAccountTwoToneIcon from "@mui/icons-material/SupervisorAccountTwoTone";
-import CalendarMonthTwoToneIcon from "@mui/icons-material/CalendarMonthTwoTone";
-import PolicyTwoToneIcon from "@mui/icons-material/PolicyTwoTone";
-import LogoutTwoToneIcon from "@mui/icons-material/LogoutTwoTone";
+import HomeTwoToneIcon from "@mui/icons-material/Home";
+import SupervisorAccountTwoToneIcon from "@mui/icons-material/SupervisorAccount";
+import CalendarMonthTwoToneIcon from "@mui/icons-material/CalendarMonth";
+import PolicyTwoToneIcon from "@mui/icons-material/Policy";
+import LogoutTwoToneIcon from "@mui/icons-material/Logout";
 import { useNavigate } from "react-router-dom";
-import PermIdentityTwoToneIcon from "@mui/icons-material/PermIdentityTwoTone";
-import HowToRegTwoToneIcon from "@mui/icons-material/HowToRegTwoTone";
-import AccessTimeTwoToneIcon from "@mui/icons-material/AccessTimeTwoTone";
+import PermIdentityTwoToneIcon from "@mui/icons-material/PermIdentity";
+import HowToRegTwoToneIcon from "@mui/icons-material/HowToReg";
+import AccessTimeTwoToneIcon from "@mui/icons-material/AccessTime";
 import listItemButtonStyles from "./css/ListItemButtonStyles";
 import ListItemIconCss from "./css/ListItemIcon";
 import AdminCss from "./css/AdminCss";
@@ -35,6 +35,7 @@ const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
+  background: "#d9eff5",
   transition: theme.transitions.create("width", {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.enteringScreen,
@@ -43,6 +44,7 @@ const openedMixin = (theme) => ({
 });
 
 const closedMixin = (theme) => ({
+  background: "#d9eff5",
   transition: theme.transitions.create("width", {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
@@ -149,10 +151,11 @@ export default function SideNav() {
             edge="start"
             sx={{
               marginRight: 5,
+              color: "#b0ede7",
               ...(open && { display: "none" }),
             }}
           >
-            <MenuIcon />
+            <MenuIcon sx={{ fontSize: "1.3em" }} />
           </IconButton>
 
           <div style={AdminCss}>
@@ -167,7 +170,9 @@ export default function SideNav() {
                 <span
                   style={{
                     fontSize: "1.5em",
+                    fontWeight: "bold",
                     fontFamily: "Bad Script, cursive",
+                    color: "#b0ede7",
                   }}
                 >
                   {" "}
@@ -185,14 +190,21 @@ export default function SideNav() {
               >
                 <span
                   style={{
-                    fontFamily: "Bad Script, cursive",
                     fontSize: "1.5em",
+                    fontWeight: "bold",
+                    fontFamily: "Bad Script, cursive",
+                    color: "#b0ede7",
                   }}
                 >
-                  Welcome Admin
+                  Admin Dashboard
                 </span>
               </Typography>
-              <PermIdentityTwoToneIcon />
+              <PermIdentityTwoToneIcon
+                sx={{
+                  fontSize: "3em",
+                  color: "#b0ede7",
+                }}
+              />
             </div>
           </div>
         </Toolbar>
@@ -213,13 +225,13 @@ export default function SideNav() {
         <List>
           <ListItem
             disablePadding
-            style={{ display: "block", marginBottom: "10px" }}
+            style={{ display: "block", marginBottom: "10px", color: "#16344f" }}
           >
             <ListItemButton sx={listItemButtonStyles(open)}>
               {/* ... your component JSX */}
 
               <ListItemIcon sx={ListItemIconCss(open)}>
-                <HomeTwoToneIcon />
+                <HomeTwoToneIcon sx={{ color: "#16344f" }} />
               </ListItemIcon>
               <ListItemText primary="Home" style={{ opacity: open ? 1 : 0 }} />
             </ListItemButton>
@@ -228,14 +240,14 @@ export default function SideNav() {
           {/* employee reg start */}
           <ListItem
             disablePadding
-            style={{ display: "block", marginBottom: "10px" }}
+            style={{ display: "block", marginBottom: "10px", color: "#16344f" }}
             onClick={() => {
               navigate("/RegisterEmployee");
             }}
           >
             <ListItemButton sx={listItemButtonStyles(open)}>
               <ListItemIcon sx={ListItemIconCss(open)}>
-                <HowToRegTwoToneIcon />
+                <HowToRegTwoToneIcon sx={{ color: "#16344f" }} />
               </ListItemIcon>
               <ListItemText
                 primary="Register Employee"
@@ -247,14 +259,14 @@ export default function SideNav() {
           {/* coadmin reg start */}
           <ListItem
             disablePadding
-            style={{ display: "block", marginBottom: "10px" }}
+            style={{ display: "block", marginBottom: "10px", color: "#16344f" }}
             onClick={() => {
               navigate("/RegisterCoAdmin");
             }}
           >
             <ListItemButton sx={listItemButtonStyles(open)}>
               <ListItemIcon sx={ListItemIconCss(open)}>
-                <SupervisorAccountTwoToneIcon />
+                <SupervisorAccountTwoToneIcon sx={{ color: "#16344f" }} />
               </ListItemIcon>
               <ListItemText
                 primary="Register Co Admin"
@@ -267,14 +279,14 @@ export default function SideNav() {
           </ListItem>
           <ListItem
             disablePadding
-            style={{ display: "block", marginBottom: "10px" }}
+            style={{ display: "block", marginBottom: "10px", color: "#16344f" }}
             onClick={() => {
               navigate("/SetTimeInterval");
             }}
           >
             <ListItemButton sx={listItemButtonStyles(open)}>
               <ListItemIcon sx={ListItemIconCss(open)}>
-                <AccessTimeTwoToneIcon />
+                <AccessTimeTwoToneIcon sx={{ color: "#16344f" }} />
               </ListItemIcon>
               <ListItemText
                 primary="Set Time Interval"
@@ -288,14 +300,14 @@ export default function SideNav() {
           </ListItem>
           <ListItem
             disablePadding
-            style={{ display: "block", marginBottom: "10px" }}
+            style={{ display: "block", marginBottom: "10px", color: "#16344f" }}
             onClick={() => {
               navigate("/SetDays");
             }}
           >
             <ListItemButton sx={listItemButtonStyles(open)}>
               <ListItemIcon sx={ListItemIconCss(open)}>
-                <CalendarMonthTwoToneIcon />
+                <CalendarMonthTwoToneIcon sx={{ color: "#16344f" }} />
               </ListItemIcon>
               <ListItemText
                 primary="Set Days"
@@ -306,14 +318,14 @@ export default function SideNav() {
           {/* setdays end */}
           <ListItem
             disablePadding
-            style={{ display: "block", marginBottom: "10px" }}
+            style={{ display: "block", marginBottom: "10px", color: "#16344f" }}
             onClick={() => {
               navigate("/SetSalaryPolicy");
             }}
           >
             <ListItemButton sx={listItemButtonStyles(open)}>
               <ListItemIcon sx={ListItemIconCss(open)}>
-                <PolicyTwoToneIcon />
+                <PolicyTwoToneIcon sx={{ color: "#16344f" }} />
               </ListItemIcon>
               {/* setsalarypolicy start */}
               <ListItemText
@@ -327,12 +339,12 @@ export default function SideNav() {
           </ListItem>
           <ListItem
             disablePadding
-            style={{ display: "block", marginBottom: "10px" }}
+            style={{ display: "block", marginBottom: "10px", color: "#16344f" }}
             onClick={handleLogout}
           >
             <ListItemButton sx={listItemButtonStyles(open)}>
               <ListItemIcon sx={ListItemIconCss(open)}>
-                <LogoutTwoToneIcon />
+                <LogoutTwoToneIcon sx={{ color: "#16344f" }} />
               </ListItemIcon>
               <ListItemText
                 primary="Logout"

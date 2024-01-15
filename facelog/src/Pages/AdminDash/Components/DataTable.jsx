@@ -227,9 +227,15 @@ export default function DataTable() {
             gutterBottom
             variant="h5"
             component="div"
-            sx={{ padding: "20px" }}
+            sx={{
+              padding: "20px",
+              fontSize: "2em",
+              color: "#16344f",
+              fontWeight: "bold",
+              fontFamily: "'PT Serif', serif",
+            }}
           >
-            Employee List
+            Employees Report
           </Typography>
           <Divider />
           <Box height={10} />
@@ -264,22 +270,22 @@ export default function DataTable() {
               <TableHead>
                 <TableRow>
                   <TableCell align="left" style={{ minWidth: "100px" }}>
-                    Employee id
+                    Employee ID
                   </TableCell>
                   <TableCell align="left" style={{ minWidth: "100px" }}>
                     Employee Name
                   </TableCell>
                   <TableCell align="left" style={{ minWidth: "100px" }}>
-                    DaysPresent
+                    Present days
                   </TableCell>
                   <TableCell align="left" style={{ minWidth: "100px" }}>
-                    DaysAbsent
+                    Absent days
                   </TableCell>
                   <TableCell align="left" style={{ minWidth: "100px" }}>
-                    DaysLate
+                    Late Days
                   </TableCell>
                   <TableCell align="left" style={{ minWidth: "100px" }}>
-                    HalfDays
+                    Half Days
                   </TableCell>
 
                   <TableCell align="left" style={{ minWidth: "100px" }}>

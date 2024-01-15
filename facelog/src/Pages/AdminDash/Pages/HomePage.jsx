@@ -11,6 +11,7 @@ import AChart from "../AdminCharts/AChart";
 import PiChart from "../AdminCharts/PiChart";
 import DataTable from "../Components/DataTable";
 import { MyContext } from "../../../MyContext";
+import backgroundImage from "../../../Assets/darkbg2.svg";
 
 const HomePage = () => {
   const DrawerHeader = styled("div")(({ theme }) => ({
@@ -23,7 +24,15 @@ const HomePage = () => {
   }));
   const { text } = useContext(MyContext);
   return (
-    <>
+    <div
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        minHeight: "100vh",
+      }}
+    >
       <Box height={10} />
       <Box style={{ display: "flex", overflowX: "hidden" }}>
         <SideNav />
@@ -31,7 +40,7 @@ const HomePage = () => {
           <DrawerHeader />
           <Card
             variant="soft"
-            style={{ margin: "10px", backgroundColor: "#091D36" }}
+            style={{ margin: "10px", backgroundColor: "transparent" }}
           >
             <Grid container spacing={2} sx={{ flexGrow: 1 }}>
               <Grid
@@ -43,9 +52,17 @@ const HomePage = () => {
                   color: "white",
                 }}
               >
-                <span style={{fontSize: "1em", fontFamily: 'Bad Script, cursive' }}>DashBoard</span>
-
-                
+                <span
+                  style={{
+                    fontSize: "1em",
+                    color: "#c0ffd1",
+                    textShadow: "7px 7px 4px rgba(0, 0, 0, 0.5)",
+                    display: "block",
+                    width: "300px",
+                  }}
+                >
+                  Hi, Admin!{" "}
+                </span>
               </Grid>
 
               {/* remove start */}
@@ -62,7 +79,10 @@ const HomePage = () => {
                   }}
                 >
                   <Stack spacing={2} direction="row">
-                    <Card variant="plain">
+                    <Card
+                      variant="plain"
+                      style={{ backgroundColor: "#d9eff5" }}
+                    >
                       <CardContent>
                         <Typography level="title-md" fontWeight="bold">
                           Present Days
@@ -72,27 +92,36 @@ const HomePage = () => {
                         </Typography>
                       </CardContent>
                     </Card>
-                    <Card variant="plain">
+                    <Card
+                      variant="plain"
+                      style={{ backgroundColor: "#d9eff5" }}
+                    >
                       <CardContent>
                         <Typography level="title-md" fontWeight="bold">
-                          Days Late
-                        </Typography>
-                        <Typography style={{ textAlign: "center" }}>
-                          {text.DaysLate ? text.DaysLate : "- - -"}
-                        </Typography>
-                      </CardContent>
-                    </Card>
-                    <Card variant="plain">
-                      <CardContent>
-                        <Typography level="title-md" fontWeight="bold">
-                          Days Absent
+                          Absent Days
                         </Typography>
                         <Typography style={{ textAlign: "center" }}>
                           {text.DaysAbsent ? text.DaysAbsent : "- - -"}
                         </Typography>
                       </CardContent>
                     </Card>
-                    <Card variant="plain">
+                    <Card
+                      variant="plain"
+                      style={{ backgroundColor: "#d9eff5" }}
+                    >
+                      <CardContent>
+                        <Typography level="title-md" fontWeight="bold">
+                          Late Days
+                        </Typography>
+                        <Typography style={{ textAlign: "center" }}>
+                          {text.DaysLate ? text.DaysLate : "- - -"}
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                    <Card
+                      variant="plain"
+                      style={{ backgroundColor: "#d9eff5" }}
+                    >
                       <CardContent>
                         <Typography
                           level="title-md"
@@ -118,7 +147,7 @@ const HomePage = () => {
             <Grid
               container
               spacing={0.2}
-              sx={{ flexGrow: 1, marginLeft:"170px" }}
+              sx={{ flexGrow: 1, marginLeft: "170px" }}
             >
               <Grid xs={4.5} style={{ margin: "30px" }}>
                 <Card
@@ -164,7 +193,7 @@ const HomePage = () => {
           </Card>
         </Box>
       </Box>
-    </>
+    </div>
   );
 };
 
