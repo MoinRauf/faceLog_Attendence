@@ -9,15 +9,15 @@ import { useNavigate } from "react-router-dom";
 
 const SetSalaryPolicy = () => {
   const navigate = useNavigate();
-  const [absentDays, setAbsentDays] = useState("");
-  const [lateDays, setLateDays] = useState("");
-  const [halfDays, setHalfDays] = useState("");
+  const [perAbsentDeduct, setAbsentDays] = useState("");
+  const [perLateDeduct, setLateDays] = useState("");
+  const [perHalfDayDeduct, setHalfDays] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Check if any field is empty
-    if (!absentDays || !lateDays || !halfDays) {
+    if (!perAbsentDeduct || !perLateDeduct || !perHalfDayDeduct) {
       // Show error toast and return
       toast.error("Please fill out all fields");
       return;
@@ -27,9 +27,9 @@ const SetSalaryPolicy = () => {
       const response = await axios.post(
         "http://localhost:5000/policy/setSalaryDeduction",
         {
-          absentDays,
-          lateDays,
-          halfDays,
+          perAbsentDeduct,
+          perLateDeduct,
+          perHalfDayDeduct,
         }
       );
 
@@ -78,7 +78,7 @@ const SetSalaryPolicy = () => {
 
           <input
             type="number"
-            value={absentDays}
+            value={perAbsentDeduct}
             onChange={(e) => setAbsentDays(e.target.value)}
             // className={adminPageStyles.userinput}
             placeholder="%"
@@ -93,7 +93,7 @@ const SetSalaryPolicy = () => {
           </div>
           <input
             type="number"
-            value={lateDays}
+            value={perLateDeduct}
             onChange={(e) => setLateDays(e.target.value)}
             // className={adminPageStyles.userinput}
             placeholder="%"
@@ -108,7 +108,7 @@ const SetSalaryPolicy = () => {
           </div>
           <input
             type="number"
-            value={halfDays}
+            value={perHalfDayDeduct}
             onChange={(e) => setHalfDays(e.target.value)}
             // className={adminPageStyles.userinput}
             placeholder="%"

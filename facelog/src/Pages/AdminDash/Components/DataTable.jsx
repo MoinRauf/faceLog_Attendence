@@ -83,33 +83,32 @@ export default function DataTable() {
   }, []);
 
   // api use start
-  const getUsers = async () => {
-    try {
-      // const response = await axios.get("https://dummyjson.com/products");
-      const response = await axios.get(
-        "http://localhost:5000/api/admin/dashboard"
-      );
+const getUsers = async () => {
+  try {
+    // const response = await axios.get("https://dummyjson.com/products");
+    const response = await axios.get(
+      "http://localhost:5000/api/admin/dashboard"
+    );
 
-      const { products } = response.data;
-      console.log(products, "employee data");
+    const { result } = response.data; // Change to 'result' instead of 'products'
+    console.log(result, "employee data");
 
-      const mappedRows = products.map((product) => ({
-        id: product.id,
-        EmpId: product.EmpId,
-        EmpName: product.EmpName,
-        DaysPresent: product.DaysPresent,
-        DaysAbsent: product.DaysAbsent, // Adjust as needed
-        DaysLate: product.Late, // Adjust as needed
-        HalfDays: product.HalfDays, // Adjust as needed
-      }));
+    const mappedRows = result.map((employee) => ({
+      id: employee.EmpId, // Extract the ID string from EmpId object
+      EmpName: employee.EmpName,
+      DaysPresent: employee.DaysPresent,
+      DaysAbsent: employee.DaysAbsent,
+      DaysLate: employee.late, // Change to 'late' instead of 'Late'
+      HalfDays: employee.HalfDays,
+    }));
 
-      const sortedRows = mappedRows.sort((a, b) => a.EmpId - b.EmpId);
+    const sortedRows = mappedRows.sort((a, b) => a.id.localeCompare(b.id)); // Use localeCompare for string comparison
 
-      setRows(sortedRows);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
+    setRows(sortedRows);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+};
   // api use end
   const handleChangePage = (event, newPage) => {
     setPage(newPage);

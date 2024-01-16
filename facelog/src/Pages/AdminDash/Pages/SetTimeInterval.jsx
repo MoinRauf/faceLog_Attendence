@@ -14,14 +14,14 @@ const SetTimeInterval = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    attendanceStartTime: "",
-    attendanceEndTime: "",
-    presentStartTime: "",
+    attendance_start_time: "",
+    attendance_end_time: "",
+    present_time: "",
     presentEndTime: "",
-  
-    lateStartTime: "",
+
+    late_time: "",
     lateEndTime: "",
-    halfDayStartTime: "",
+    half_day_time: "",
     halfDayEndTime: "",
   });
 
@@ -54,13 +54,13 @@ const SetTimeInterval = () => {
 
       // Clear the form
       setFormData({
-        attendanceStartTime: "",
-        attendanceEndTime: "",
-        presentStartTime: "",
+        attendance_start_time: "",
+        attendance_end_time: "",
+        present_time: "",
         presentEndTime: "",
-        lateStartTime: "",
+        late_time: "",
         lateEndTime: "",
-        halfDayStartTime: "",
+        half_day_time: "",
         halfDayEndTime: "",
       });
 
@@ -102,17 +102,17 @@ const SetTimeInterval = () => {
             <Stack spacing={7} direction="row">
               <input
                 type="time"
-                value={formData.attendanceStartTime}
+                value={formData.attendance_start_time}
                 onChange={(e) =>
-                  handleInputChange("attendanceStartTime", e.target.value)
+                  handleInputChange("attendance_start_time", e.target.value)
                 }
                 className="userinput111"
               />
               <input
                 type="time"
-                value={formData.attendanceEndTime}
+                value={formData.attendance_end_time}
                 onChange={(e) =>
-                  handleInputChange("attendanceEndTime", e.target.value)
+                  handleInputChange("attendance_end_time", e.target.value)
                 }
                 className="userinput111"
               />
@@ -126,9 +126,9 @@ const SetTimeInterval = () => {
             <Stack spacing={7} direction="row">
               <input
                 type="time"
-                value={formData.presentStartTime}
+                value={formData.present_time}
                 onChange={(e) =>
-                  handleInputChange("presentStartTime", e.target.value)
+                  handleInputChange("present_time", e.target.value)
                 }
                 className="userinput111"
               />
@@ -174,9 +174,9 @@ const SetTimeInterval = () => {
             <Stack spacing={7} direction="row">
               <input
                 type="time"
-                value={formData.lateStartTime}
+                value={formData.late_time}
                 onChange={(e) =>
-                  handleInputChange("lateStartTime", e.target.value)
+                  handleInputChange("late_time", e.target.value)
                 }
                 className="userinput111"
               />
@@ -198,9 +198,9 @@ const SetTimeInterval = () => {
             <Stack spacing={7} direction="row">
               <input
                 type="time"
-                value={formData.halfDayStartTime}
+                value={formData.half_day_time}
                 onChange={(e) =>
-                  handleInputChange("halfDayStartTime", e.target.value)
+                  handleInputChange("half_day_time", e.target.value)
                 }
                 className="userinput111"
               />

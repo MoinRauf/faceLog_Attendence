@@ -11,16 +11,16 @@ import admincss from "../../../Pages/AdminDash/Pages/ADMINCSS/SetDays.css";
 const SetDays = () => {
   const navigate = useNavigate();
   // State variables to store input values
-  const [absentDays, setAbsentDays] = useState("");
-  const [halfDays, setHalfDays] = useState("");
-  const [lateDays, setLateDays] = useState("");
+  const [allowed_absent_days, setAbsentDays] = useState("");
+  const [allowed_late_days, setHalfDays] = useState("");
+  const [allowed_half_days, setLateDays] = useState("");
 
   // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Check if any field is empty
-    if (!absentDays || !halfDays || !lateDays) {
+    if (!allowed_absent_days || !allowed_late_days || !allowed_half_days) {
       // Show error toast and return
       toast.error("Please fill out all fields");
       return;
@@ -31,9 +31,9 @@ const SetDays = () => {
       const response = await axios.post(
         "http://localhost:5000/policy/setDays",
         {
-          absentDays,
-          halfDays,
-          lateDays,
+          allowed_absent_days,
+          allowed_late_days,
+          allowed_half_days,
         }
       );
 
@@ -83,7 +83,7 @@ const SetDays = () => {
             </div>
             <input
               type="number"
-              value={absentDays}
+              value={allowed_absent_days}
               placeholder="Enter the number of absent days"
               onChange={(e) => setAbsentDays(e.target.value)}
               className="userinput"
@@ -95,7 +95,7 @@ const SetDays = () => {
             </div>
             <input
               type="number"
-              value={halfDays}
+              value={allowed_late_days}
               onChange={(e) => setHalfDays(e.target.value)}
               placeholder="Enter the number of absent days"
               className="userinput"
@@ -107,7 +107,7 @@ const SetDays = () => {
             </div>
             <input
               type="number"
-              value={lateDays}
+              value={allowed_half_days}
               placeholder="Enter the number of absent days"
               onChange={(e) => setLateDays(e.target.value)}
               className="userinput"

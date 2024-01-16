@@ -23,6 +23,7 @@ const HomePage = () => {
     ...theme.mixins.toolbar,
   }));
   const { text } = useContext(MyContext);
+  console.log(text, "hhhh")
   return (
     <div
       style={{

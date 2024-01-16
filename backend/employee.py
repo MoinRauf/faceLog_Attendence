@@ -32,7 +32,7 @@ class registerEmployee(Resource):
         else:
             # Save employee data to MongoDB
             employee_data = {
-                #"employeeId": args["employeeId"],
+                "employeeId": args["employeeId"],
                 "employeeName": args["employeeName"],
                 "email": args["email"],
                 "salary": args["salary"],

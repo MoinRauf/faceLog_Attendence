@@ -25,19 +25,22 @@ export default function AChart() {
 
   const getUsers = async () => {
     try {
+      // const response = await axios.get("https://dummyjson.com/products");
       const response = await axios.get(
         "http://localhost:5000/api/admin/dashboard"
       );
 
-      const { products } = response.data;
+      const { result } = response.data; // Change to 'result' instead of 'products'
+      console.log(result, "employee data");
 
-      const mappedRows = products.map((product) => ({
-        EmpName: product.title,
-        DaysPresent: product.stock,
-        DaysAbsent: product.stock * 0.2, // Adjust as needed
+      const mappedRows = result.map((employee) => ({
+        id: employee.EmpId.$oid, // Extract the ID string from EmpId object
+        EmpName: employee.EmpName,
+        DaysPresent: employee.DaysPresent,
+        DaysAbsent: employee.DaysAbsent,
       }));
 
-      const sortedRows = mappedRows.sort((a, b) => a.EmpId - b.EmpId);
+      const sortedRows = mappedRows.sort((a, b) => a.id.localeCompare(b.id)); // Use localeCompare for string comparison
 
       setRows(sortedRows);
     } catch (error) {
