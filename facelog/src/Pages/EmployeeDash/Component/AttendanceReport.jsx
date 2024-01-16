@@ -11,7 +11,7 @@ import TableRow from "@mui/material/TableRow";
 import Axios from "axios";
 
 const columns = [
-  { id: "id", label: "SNo", minWidth: 20, align: "center"},
+  { id: "id", label: "SNo", minWidth: 20, align: "center" },
   { id: "date", label: "Date", minWidth: 150, align: "center" },
   { id: "time", label: "Time", minWidth: 150, align: "center" },
   {
@@ -38,7 +38,7 @@ const AttendanceReport = () => {
       try {
         // Replace the URL with your actual API endpoint
         const response = await Axios.get("http://localhost:3001/attendance");
-        console.log("API Response:", response.data); 
+        console.log("API Response:", response.data);
         const apiData = response.data;
 
         // Assuming the API response has a 'data' property containing an array

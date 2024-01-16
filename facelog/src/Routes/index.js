@@ -13,6 +13,7 @@ import SetTimeInterval from "../Pages/AdminDash/Pages/SetTimeInterval";
 import Error from "../Pages/AdminDash/Pages/errorpage";
 import DashBoard from "../Pages/EmployeeDash/Pages/Dashboard";
 import ChangePassword from "../Pages/EmployeeDash/Pages/ChangePassword";
+import New from "../Pages/AdminDash/Pages/New";
 
 const MainRoutes = () => {
   return (
@@ -30,6 +31,8 @@ const MainRoutes = () => {
         <Route path="/SetTimeInterval" element={<SetTimeInterval />} />
         <Route path="/employeeDashboard" element={<DashBoard />} />
         <Route path="/changePassword" element={<ChangePassword />} />
+        <Route path="/New" element={<New />} />
+
         <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>

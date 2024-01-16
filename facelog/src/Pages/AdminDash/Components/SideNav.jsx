@@ -226,6 +226,9 @@ export default function SideNav() {
           <ListItem
             disablePadding
             style={{ display: "block", marginBottom: "10px", color: "#16344f" }}
+            onClick={() => {
+              navigate("/");
+            }}
           >
             <ListItemButton sx={listItemButtonStyles(open)}>
               {/* ... your component JSX */}
@@ -242,7 +245,7 @@ export default function SideNav() {
             disablePadding
             style={{ display: "block", marginBottom: "10px", color: "#16344f" }}
             onClick={() => {
-              navigate("/RegisterEmployee");
+              navigate("/New");
             }}
           >
             <ListItemButton sx={listItemButtonStyles(open)}>
