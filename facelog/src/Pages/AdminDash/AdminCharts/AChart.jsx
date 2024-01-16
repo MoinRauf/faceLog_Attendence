@@ -34,7 +34,7 @@ export default function AChart() {
       console.log(result, "employee data");
 
       const mappedRows = result.map((employee) => ({
-        id: employee.EmpId.$oid, // Extract the ID string from EmpId object
+        id: employee.EmpId, // Extract the ID string from EmpId object
         EmpName: employee.EmpName,
         DaysPresent: employee.DaysPresent,
         DaysAbsent: employee.DaysAbsent,

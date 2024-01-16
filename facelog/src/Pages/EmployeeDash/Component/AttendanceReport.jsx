@@ -47,11 +47,15 @@ const AttendanceReport = () => {
         const response = await Axios.get(
           `http://localhost:5000/employee/dashboard/${empid}`
         );
-        console.log("API Response:", response.data);
-        const apiData = response.data;
-
-        // Assuming the API response has a 'data' property containing an array
-        setData(apiData);
+        if(response.data.result) {
+          console.log("API Response:", response.data);
+          const apiData = response.data;
+          // Assuming the API response has a 'data' property containing an array
+          setData(apiData);
+        }
+        else {
+          setData([]);
+        }
       } catch (error) {
         console.error("Error fetching data:", error);
       }
