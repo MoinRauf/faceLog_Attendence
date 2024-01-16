@@ -22,9 +22,12 @@ const RegisterEmployee = () => {
 
     try {
       // Make an API request using axios
-      const response = await axios.post("http://localhost:3001/SetDays", {
-        email,
-      });
+      const response = await axios.post(
+        "http://localhost:5000/attendance/register",
+        {
+          email,
+        }
+      );
 
       // Handle the response as needed
       console.log("API Response:", response.data);

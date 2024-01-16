@@ -120,7 +120,7 @@ export default function SideNav() {
 
       if (result.isConfirmed) {
         // Make API request to log out
-        const response = await axios.get("http://localhost:3001/LogOut");
+        const response = await axios.get("http://localhost:5000/logout");
 
         setTimeout(() => {
           navigate("/");

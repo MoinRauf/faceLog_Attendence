@@ -3,8 +3,8 @@ from config import mongo, generate_password_hash, check_password_hash
 
 # defining the format of data that server will receive
 employee_registration_parser = reqparse.RequestParser()
-employee_registration_parser.add_argument("employeeID", type= str, help = "employeeID is required", required= True)
-employee_registration_parser.add_argument("name", type= str, help = "Name is required", required= True)
+employee_registration_parser.add_argument("employeeId", type= str, help = "employeeID is required", required= True)
+employee_registration_parser.add_argument("employeeName", type= str, help = "Name is required", required= True)
 employee_registration_parser.add_argument("email", type= str, help = "Email is required", required= True)
 employee_registration_parser.add_argument("password", type= str, help = "Password is required", required= True)
 employee_registration_parser.add_argument("salary", type= str, help = "Salary is required", required= True)

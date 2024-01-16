@@ -86,18 +86,21 @@ export default function DataTable() {
   const getUsers = async () => {
     try {
       // const response = await axios.get("https://dummyjson.com/products");
-      const response = await axios.get("https://dummyjson.com/products");
+      const response = await axios.get(
+        "http://localhost:5000/api/admin/dashboard"
+      );
 
       const { products } = response.data;
+      console.log(products, "employee data");
 
       const mappedRows = products.map((product) => ({
         id: product.id,
-        EmpId: product.id,
-        EmpName: product.title,
-        DaysPresent: product.stock,
-        DaysAbsent: product.stock * 0.2, // Adjust as needed
-        DaysLate: product.rating, // Adjust as needed
-        HalfDays: product.rating, // Adjust as needed
+        EmpId: product.EmpId,
+        EmpName: product.EmpName,
+        DaysPresent: product.DaysPresent,
+        DaysAbsent: product.DaysAbsent, // Adjust as needed
+        DaysLate: product.Late, // Adjust as needed
+        HalfDays: product.HalfDays, // Adjust as needed
       }));
 
       const sortedRows = mappedRows.sort((a, b) => a.EmpId - b.EmpId);
@@ -136,7 +139,7 @@ export default function DataTable() {
     try {
       // Make a DELETE request to your API endpoint with the specified id
       const response = await axios.delete(
-        `http://localhost:3001/DeleteData/${id}`
+        `http://localhost:5000/api/admin/dashboard/delete/${id}`
       );
       console.log("this is the id number in try block", id);
 

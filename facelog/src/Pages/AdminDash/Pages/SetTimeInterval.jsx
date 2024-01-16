@@ -42,7 +42,7 @@ const SetTimeInterval = () => {
     try {
       // Make the Axios POST request to your API endpoint
       const response = await Axios.post(
-        "http://localhost:3001/SetTimeInterval",
+        "http://localhost:5000/policy/setTimeInterval",
         formData
       );
 

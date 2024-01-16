@@ -25,7 +25,7 @@ const SetSalaryPolicy = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3001/SetSalaryPolicy",
+        "http://localhost:5000/policy/setSalaryDeduction",
         {
           absentDays,
           lateDays,

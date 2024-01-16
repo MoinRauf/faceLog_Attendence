@@ -28,11 +28,14 @@ const SetDays = () => {
 
     try {
       // Make an API request using axios
-      const response = await axios.post("http://localhost:3001/SetDays", {
-        absentDays,
-        halfDays,
-        lateDays,
-      });
+      const response = await axios.post(
+        "http://localhost:5000/policy/setDays",
+        {
+          absentDays,
+          halfDays,
+          lateDays,
+        }
+      );
 
       // Handle the response as needed
       console.log("API Response:", response.data);

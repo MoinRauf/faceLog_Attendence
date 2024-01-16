@@ -25,14 +25,11 @@ const RegisterCoAdmin = () => {
 
     try {
       // Make the Axios POST request to your API endpoint
-      const response = await Axios.post(
-        "http://localhost:3001/SetTimeInterval",
-        {
-          name,
-          email,
-          password,
-        }
-      );
+      const response = await Axios.post("http://localhost:5000/registerAdmin", {
+        name,
+        email,
+        password,
+      });
 
       // Handle the response as needed
       console.log("Registration successful", response.data);
