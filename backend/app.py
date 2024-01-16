@@ -7,6 +7,7 @@ from login import Login, Logout
 from policy import TimeInterval, Days, SalaryDeduction
 #from attendance import MarkAttendance
 from employee import registerEmployee, ChangePassword
+from employeeDashboard import EmployeeDashboard
 
 from getDeductedSalary import getDeductedSalary_bp
 from markAttendance import markAttendance_bp
@@ -27,6 +28,7 @@ api.add_resource(Logout, '/logout')
 api.add_resource(TimeInterval, '/policy/setTimeInterval')
 #api.add_resource(MarkAttendance, '/attendance')
 api.add_resource(registerEmployee, '/registerEmployee')
+api.add_resource(EmployeeDashboard, '/employee/dashboard/<string:emp_id>')
 api.add_resource(ChangePassword, '/ChangePassword')
 
 # Ammar's code
@@ -52,7 +54,7 @@ if __name__ == "__main__":
 # from policy import TimeInterval, Days, SalaryDeduction
 # from attendance import MarkAttendance
 # from employee import registerEmployee, ChangePassword
-# from employeeDashboard import EmployeeDashboard
+
 
 # # index page or default page        
 # @app.route("/")
@@ -67,7 +69,7 @@ if __name__ == "__main__":
 # api.add_resource(MarkAttendance, '/attendance')
 # api.add_resource(registerEmployee, '/registerEmployee')
 # api.add_resource(ChangePassword, '/ChangePassword')
-# api.add_resource(EmployeeDashboard, '/employee/dashboard/<string:emp_id>')
+
 
 # # Ammar's code
 # api.add_resource(AdminDashboard, '/admin/dashboard')

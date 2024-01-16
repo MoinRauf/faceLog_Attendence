@@ -22,8 +22,8 @@ class EmployeeDashboard(Resource):
                     "sNo": index,
                     "date": entry["dateTimeIn"].strftime("%d-%m-%Y"),
                     "time": entry["dateTimeIn"].strftime("%H:%M"),
-                    "status": entry["status"].capitalize()
-                    #"salaryded": entry.get("salaryPolicy", "-")
+                    "status": entry["status"].capitalize(),
+                    "salaryded": "-"
                 }
                 formatted_data.append(formatted_entry)
 
