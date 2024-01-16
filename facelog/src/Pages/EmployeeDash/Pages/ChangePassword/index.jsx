@@ -13,8 +13,8 @@ import { useNavigate } from "react-router-dom";
 const ChangePassword = () => {
 
   const [email, setEmail] = useState("");
-  const [oldPassword, setOldPassword] = useState("");
-  const [newPassword, setnewPassword] = useState("");
+  const [old_password, setOldPassword] = useState("");
+  const [new_password, setnewPassword] = useState("");
 
 
   const navigate = useNavigate();
@@ -22,24 +22,24 @@ const ChangePassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!email || !oldPassword || !newPassword) {
+    if (!email || !old_password || !new_password) {
       toast.error("Missing Credentials!");
       return;
     } else if (!email.includes("@")) {
       toast.error("Please enter a valid email address");
       return;
-    } else if (newPassword.length < 7) {
+    } else if (new_password.length < 7) {
       toast.error("New Password must be at least 7 characters long");
       return;
     } else {
       try {
         // Make the Axios POST request to your API endpoint
-        const response = await Axios.post(
+        const response = await Axios.put(
           "http://localhost:5000/ChangePassword",
           {
             email,
-            oldPassword,
-            newPassword,
+            old_password,
+            new_password,
           }
         );
 
@@ -109,7 +109,7 @@ const ChangePassword = () => {
             icon={<LockIcon />}
             inputType="password"
             placeholder="123j808"
-            value={oldPassword}
+            value={old_password}
             setter={setOldPassword}
             required={true}
           />
@@ -119,7 +119,7 @@ const ChangePassword = () => {
             icon={<LockIcon />}
             inputType="password"
             placeholder="123j808"
-            value={newPassword}
+            value={new_password}
             setter={setnewPassword}
             required={true}
           />
