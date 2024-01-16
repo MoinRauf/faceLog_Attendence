@@ -35,7 +35,7 @@ const ChangePassword = () => {
       try {
         // Make the Axios POST request to your API endpoint
         const response = await Axios.post(
-          "https://jsonplaceholder.typicode.com/posts",
+          "http://localhost:5000/ChangePassword",
           {
             email,
             oldPassword,

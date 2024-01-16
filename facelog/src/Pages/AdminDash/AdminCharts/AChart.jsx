@@ -25,7 +25,9 @@ export default function AChart() {
 
   const getUsers = async () => {
     try {
-      const response = await axios.get("https://dummyjson.com/products");
+      const response = await axios.get(
+        "http://localhost:5000/api/admin/dashboard"
+      );
 
       const { products } = response.data;
 

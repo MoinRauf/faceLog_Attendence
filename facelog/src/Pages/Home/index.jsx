@@ -15,16 +15,18 @@ const Home = () => {
   useEffect(() => {
     const checkadminreg = async () => {
       try {
-        const response = await Axios.get("apaiapa");
-        if (response.status === 200) {
+        const response = await Axios.get(
+          "http://localhost:5000/CheckAdminExistence"
+        );
+        if (response.data === true) {
           // If there is at least one entry, set isAdminReg to true
           setIsAdminReg(true);
+        } else if (response.data === false) {
+          setIsAdminReg(false);
         }
         console.log("Admin is registered-Response data: ", response.data); 
       } catch (error) {
-        if (error.response.status === 404) {
-          setIsAdminReg(false);
-        } else if (error.request) {
+         if (error.request) {
           // The request was made but no response was received
           toast.error("No response received from the server");
           console.error("Request made but no response received");
@@ -44,7 +46,7 @@ const Home = () => {
   const [name, setname] = useState(null);
   const handleClick = async () => {
     try {
-      const response = await Axios.get("markattendanceapi");
+      const response = await Axios.get("http://localhost:5000/mark-attendance");
       console.log("API Response:", response.data);
       const apiname = response.data.name;
       setname(apiname);
