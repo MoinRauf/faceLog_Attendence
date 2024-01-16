@@ -19,7 +19,6 @@ change_password_parser.add_argument("new_password", type=str, help="New password
 # Store the data in MongoDB using Flask-PyMongo
 employee_collection = mongo.db.employee  # Use the 'employee' collection
 
-
 class registerEmployee(Resource):
     # extracting the JSON data into the server
     def post(self):
