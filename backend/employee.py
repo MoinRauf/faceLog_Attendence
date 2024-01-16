@@ -17,7 +17,7 @@ change_password_parser.add_argument("old_password", type=str, help="Old password
 change_password_parser.add_argument("new_password", type=str, help="New password is required", required=True)
 
 # Store the data in MongoDB using Flask-PyMongo
-employee_collection = mongo.db.employee  # Use the 'employee' collection
+employee_collection = mongo.db.Employee  # Use the 'employee' collection
 
 class registerEmployee(Resource):
     # extracting the JSON data into the server
@@ -32,7 +32,7 @@ class registerEmployee(Resource):
         else:
             # Save employee data to MongoDB
             employee_data = {
-                "employeeID": args["employeeID"],
+                #"employeeID": args["employeeID"]
                 "name": args["name"],
                 "email": args["email"],
                 "salary": args["salary"],
