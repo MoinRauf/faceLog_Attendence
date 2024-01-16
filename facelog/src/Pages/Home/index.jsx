@@ -44,16 +44,20 @@ const Home = () => {
 
   // Mark Attendance button
   const [name, setname] = useState(null);
+  const clockIn = "in";
   const handleClick = async () => {
     try {
-      const response = await Axios.get("http://localhost:5000/mark-attendance");
+      const response = await Axios.post(
+        "http://localhost:5000/mark-attendance",
+        clockIn
+      );
       console.log("API Response:", response.data);
       const apiname = response.data.name;
       setname(apiname);
       toast.success(`Hi ${name}! Your Attendance is marked:)`);
     } catch (error) {
       if (error.response) {
-        toast.error("Sorry! You are not registered");
+        toast.error("Sorry! You are not registered person");
         console.error("Request failed with status code", error.response.status);
         console.error("Response data:", error.response.data);
       } else {
