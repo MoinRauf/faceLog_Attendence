@@ -49,12 +49,17 @@ const Home = () => {
     try {
       const response = await Axios.post(
         "http://localhost:5000/mark-attendance",
-        clockIn
+        { clockIn: clockIn }, 
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
       );
       console.log("API Response:", response.data);
       const apiname = response.data.name;
       setname(apiname);
-      toast.success(`Hi ${name}! Your Attendance is marked:)`);
+      toast.success(`Hi ${apiname}! Your Attendance is marked:)`);
     } catch (error) {
       if (error.response) {
         toast.error("Sorry! You are not registered person");

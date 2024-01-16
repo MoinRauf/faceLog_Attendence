@@ -65,6 +65,7 @@ def mark():
             if not employeeRecJson:
                 return jsonify({"message": "Employee not found"})
             id = employeeRecJson["_id"]["$oid"]
+            name = employeeRecJson["employeeName"]
             print(id)
 
             latestSalaryPolicy = mongo.db.salaryPolicy.find_one(
@@ -87,7 +88,7 @@ def mark():
                 "salaryPolicy": ObjectId(latestSalaryPolicyId)
             })
                 return jsonify({"message": "Clocked in successfully",
-                                "employee Id": id}), 200
+                                "employee Id": id, "name": name}), 200
             
             elif clockIn == "out":
             # Clocking out
