@@ -1,9 +1,9 @@
 from config import app, api, mongo
 from flask_restful import Resource, reqparse
 from werkzeug.security import generate_password_hash, check_password_hash
-from adminRegister import registerAdmin 
+from adminRegister import registerAdmin, CheckAdminExistence
 # from adminDashboard import AdminDashboard
-from login import Login
+from login import Login, Logout
 from policy import TimeInterval, Days, SalaryDeduction
 #from attendance import MarkAttendance
 from employee import registerEmployee, ChangePassword
@@ -20,8 +20,10 @@ def home_page():
     return "Default page"
 
 # endpoints
+api.add_resource(CheckAdminExistence, '/CheckAdminExistence')
 api.add_resource(registerAdmin, '/registerAdmin')
 api.add_resource(Login, '/login')
+api.add_resource(Logout, '/logout')
 api.add_resource(TimeInterval, '/policy/setTimeInterval')
 #api.add_resource(MarkAttendance, '/attendance')
 api.add_resource(registerEmployee, '/registerEmployee')
@@ -45,7 +47,6 @@ if __name__ == "__main__":
 # from config import app, api, mongo
 # from flask_restful import Resource, reqparse
 # from werkzeug.security import generate_password_hash, check_password_hash
-# from adminRegister import registerAdmin, CheckAdminExistence
 # from adminDashboard import AdminDashboard
 # from login import Login, Logout
 # from policy import TimeInterval, Days, SalaryDeduction
@@ -59,10 +60,9 @@ if __name__ == "__main__":
 #     return "Default page"
 
 # # endpoints
-# api.add_resource(CheckAdminExistence, '/CheckAdminExistence')
 # api.add_resource(registerAdmin, '/registerAdmin')
 # api.add_resource(Login, '/login')
-# api.add_resource(Logout, '/logout')
+
 # api.add_resource(TimeInterval, '/policy/setTimeInterval')
 # api.add_resource(MarkAttendance, '/attendance')
 # api.add_resource(registerEmployee, '/registerEmployee')
