@@ -27,13 +27,13 @@ class registerEmployee(Resource):
         # Hash the password before storing it
         hashed_password = generate_password_hash(args["password"])
 
-        if employee_collection.find_one({"employeeID": args["employeeID"]}):
+        if employee_collection.find_one({"employeeId": args["employeeId"]}):
             return {"error": "EmployeeID already exists"}, 409
         else:
             # Save employee data to MongoDB
             employee_data = {
-                "employeeID": args["employeeID"],
-                "name": args["name"],
+                #"employeeId": args["employeeId"],
+                "employeeName": args["employeeName"],
                 "email": args["email"],
                 "salary": args["salary"],
                 "password": hashed_password
