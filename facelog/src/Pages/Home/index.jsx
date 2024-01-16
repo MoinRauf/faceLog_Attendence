@@ -18,10 +18,10 @@ const Home = () => {
         const response = await Axios.get(
           "http://localhost:5000/CheckAdminExistence"
         );
-        if (response.data === true) {
+        if (response.data.adminExists === true) {
           // If there is at least one entry, set isAdminReg to true
           setIsAdminReg(true);
-        } else if (response.data === false) {
+        } else if (response.data.adminExists === false) {
           setIsAdminReg(false);
         }
         console.log("Admin is registered-Response data: ", response.data); 
