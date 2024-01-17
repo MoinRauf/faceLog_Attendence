@@ -83,32 +83,61 @@ export default function DataTable() {
   }, []);
 
   // api use start
-const getUsers = async () => {
-  try {
-    // const response = await axios.get("https://dummyjson.com/products");
-    const response = await axios.get(
-      "http://localhost:5000/api/admin/dashboard"
-    );
 
-    const { result } = response.data; // Change to 'result' instead of 'products'
-    console.log(result, "employee data");
+  const getUsers = async () => {
+    try {
+      // const response = await axios.get("https://dummyjson.com/products");
+      const response = await axios.get(
+        "http://localhost:5000/api/admin/dashboard"
+      );
 
-    const mappedRows = result.map((employee) => ({
-      id: employee.EmpId, // Extract the ID string from EmpId object
-      EmpName: employee.EmpName,
-      DaysPresent: employee.DaysPresent,
-      DaysAbsent: employee.DaysAbsent,
-      DaysLate: employee.late, // Change to 'late' instead of 'Late'
-      HalfDays: employee.HalfDays,
-    }));
+      const { result } = response.data; // Change to 'result' instead of 'products'
+      console.log(result, "employee data");
 
-    const sortedRows = mappedRows.sort((a, b) => a.id.localeCompare(b.id)); // Use localeCompare for string comparison
+      const mappedRows = result.map((employee) => ({
+        EmpId: employee.EmpId, // Extract the ID string from EmpId object
+        EmpName: employee.EmpName,
+        DaysPresent: employee.DaysPresent,
+        DaysAbsent: employee.DaysAbsent,
+        DaysLate: employee.late, // Change to 'late' instead of 'Late'
+        HalfDays: employee.HalfDays,
+      }));
 
-    setRows(sortedRows);
-  } catch (error) {
-    console.error("Error fetching data:", error);
-  }
-};
+      const sortedRows = mappedRows.sort((a, b) =>
+        a.EmpId.localeCompare(b.EmpId)
+      ); // Use localeCompare for string comparison
+
+      setRows(sortedRows);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+// const getUsers = async () => {
+//   try {
+//     // const response = await axios.get("https://dummyjson.com/products");
+//     const response = await axios.get(
+//       "http://localhost:5000/api/admin/dashboard"
+//     );
+
+//     const { result } = response.data; // Change to 'result' instead of 'products'
+//     console.log(result, "employee data");
+
+//     const mappedRows = result.map((employee) => ({
+//       id: employee.EmpId, // Extract the ID string from EmpId object
+//       EmpName: employee.EmpName,
+//       DaysPresent: employee.DaysPresent,
+//       DaysAbsent: employee.DaysAbsent,
+//       DaysLate: employee.late, // Change to 'late' instead of 'Late'
+//       HalfDays: employee.HalfDays,
+//     }));
+
+//     const sortedRows = mappedRows.sort((a, b) => a.id.localeCompare(b.id)); // Use localeCompare for string comparison
+
+//     setRows(sortedRows);
+//   } catch (error) {
+//     console.error("Error fetching data:", error);
+//   }
+// };
   // api use end
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -389,57 +418,88 @@ const getUsers = async () => {
                       <TableCell
                         key={row.id}
                         align="left"
-                        sx={{ borderBottom: "2px solid #16344f" }}
+                        sx={{
+                          fontSize: "16px",
+                          fontFamily: "PT Serif, serif",
+                          color: "#16344f",
+                          borderBottom: "2px solid #16344f",
+                        }}
                       >
                         {row.EmpId}
                       </TableCell>
                       <TableCell
                         key={row.id}
                         align="left"
-                        sx={{ borderBottom: "2px solid #16344f" }}
+                        sx={{
+                          fontSize: "16px",
+                          fontFamily: "PT Serif, serif",
+                          color: "#16344f",
+                          borderBottom: "2px solid #16344f",
+                        }}
                       >
                         {row.EmpName}
                       </TableCell>
                       <TableCell
                         key={row.id}
                         align="left"
-                        sx={{ borderBottom: "2px solid #16344f" }}
+                        sx={{
+                          fontSize: "16px",
+                          fontFamily: "PT Serif, serif",
+                          color: "#16344f",
+                          borderBottom: "2px solid #16344f",
+                        }}
                       >
                         {row.DaysPresent}
                       </TableCell>
                       <TableCell
                         key={row.id}
                         align="left"
-                        sx={{ borderBottom: "2px solid #16344f" }}
+                        sx={{
+                          fontSize: "16px",
+                          fontFamily: "PT Serif, serif",
+                          color: "#16344f",
+                          borderBottom: "2px solid #16344f",
+                        }}
                       >
                         {row.DaysAbsent}
                       </TableCell>
                       <TableCell
                         key={row.id}
                         align="left"
-                        sx={{ borderBottom: "2px solid #16344f" }}
+                        sx={{
+                          fontSize: "16px",
+                          fontFamily: "PT Serif, serif",
+                          color: "#16344f",
+                          borderBottom: "2px solid #16344f",
+                        }}
                       >
                         {row.DaysLate}
                       </TableCell>
                       <TableCell
                         key={row.id}
                         align="left"
-                        sx={{ borderBottom: "2px solid #16344f" }}
+                        sx={{
+                          fontSize: "16px",
+                          fontFamily: "PT Serif, serif",
+                          color: "#16344f",
+                          borderBottom: "2px solid #16344f",
+                        }}
                       >
                         {row.HalfDays}
                       </TableCell>
                       {/* <TableCell key={row.id} align="left"> */}
                       {row.Action}
 
-                      <TableCell align="left" sx={{ borderBottom: "2px solid #16344f" }}>
-                        <Stack spacing={2} direction="row" >
+                      <TableCell
+                        align="left"
+                        sx={{ borderBottom: "2px solid #16344f" }}
+                      >
+                        <Stack spacing={2} direction="row">
                           <EditIcon
                             style={{
                               fontSize: "20px",
                               color: "blue",
                               cursor: "pointer",
-                              
-                              
                             }}
                             className="cursor-pointer"
                             onClick={() =>
@@ -530,3 +590,4 @@ const getUsers = async () => {
     </>
   );
 }
+

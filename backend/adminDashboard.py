@@ -25,6 +25,7 @@ def get():
         '$group': {
             '_id': '$empInfo._id',
             'EmpName': {'$first': '$empInfo.empName'},
+            'EmpId': {'$first': '$empInfo.employeeID'},
             # 'empFName': {'$first': '$empInfo.empFName'},
             # 'empLName': {'$first': '$empInfo.empLName'},
             # 'designation': {'$first': '$empInfo.designation'},
@@ -36,7 +37,7 @@ def get():
         },
         {
         '$project': {
-            'EmpId': '$_id',
+            'EmpId': 1,
             'EmpName': 1,
             # 'empFName': 1,
             # 'empLName': 1,
