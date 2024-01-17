@@ -31,7 +31,7 @@ def get():
             'DaysAbsent': {'$sum': {'$cond': [{'$eq': ['$status', 'absent']}, 1, 0]}},
             'DaysPresent': {'$sum': {'$cond': [{'$eq': ['$status', 'present']}, 1, 0]}},
             'late': {'$sum': {'$cond': [{'$eq': ['$status', 'late']}, 1, 0]}},
-            'HalfDays': {'$sum': {'$cond': [{'$eq': ['$status', 'half day']}, 1, 0]}}
+            'HalfDays': {'$sum': {'$cond': [{'$eq': ['$status', 'halfDay']}, 1, 0]}}
         }
         },
         {

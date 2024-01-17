@@ -35,7 +35,7 @@ class Login(Resource):
                 "loginStatus": True,
                 "usermode": "employee",
                 "id": str(employee_user["_id"]),
-                "name": employee_user.get("name", "")
+                "name": employee_user.get("employeeName", "")
             }
             response = make_response(response_data, 200)
             response.set_cookie('user_id', str(employee_user["_id"]))
