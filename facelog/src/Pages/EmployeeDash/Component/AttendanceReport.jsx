@@ -51,7 +51,8 @@ const AttendanceReport = () => {
           console.log("API Response:", response.data);
           const apiData = response.data.result;
           // Assuming the API response has a 'data' property containing an array
-          setData(apiData);
+
+          setData(apiData.data);
         }
         else {
           setData([]);
