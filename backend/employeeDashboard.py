@@ -2,6 +2,7 @@ from flask_restful import Resource
 from config import mongo
 from flask import jsonify
 from bson import ObjectId
+from datetime import datetime
 
 class EmployeeDashboard(Resource):
     def get(self, emp_id):
@@ -18,12 +19,13 @@ class EmployeeDashboard(Resource):
             # Format the data with serial numbers
             formatted_data = []
             for index, entry in enumerate(employee_data, start=1):
+                salary_deduction = self.calculate_salary_deduction(entry)  # Calculate salary deduction
                 formatted_entry = {
                     "sNo": index,
                     "date": entry["dateTimeIn"].strftime("%d-%m-%Y"),
                     "time": entry["dateTimeIn"].strftime("%H:%M"),
                     "status": entry["status"].capitalize(),
-                    "salaryded": "-"
+                    "salaryded": salary_deduction,
                 }
                 formatted_data.append(formatted_entry)
 
@@ -34,6 +36,35 @@ class EmployeeDashboard(Resource):
 
         except Exception as e:
             return jsonify({"message": f"Internal Server error: {str(e)}"})
+
+    def calculate_salary_deduction(self, entry):
+        # Retrieve the salary policy for the applicable month
+        policy_year = entry["dateTimeIn"].year
+        salary_policy_record = mongo.db.salaryPolicy.find_one({
+            "applicationMonth": {
+                "$gte": datetime(policy_year, 1, 1),
+                "$lt": datetime(policy_year + 1, 1, 1)
+            }
+        })
+
+        if not salary_policy_record:
+            return 0  # Return 0 if no salary policy record is found
+
+        per_absent_deduct = salary_policy_record["perAbsentDeduct"]
+        per_half_day_deduct = salary_policy_record["perHalfDayDeduct"]
+        per_late_deduct = salary_policy_record["perLateDeduct"]
+
+        # Logic to calculate salary deduction based on entry status
+        status = entry["status"]
+        if status == "absent":
+            return per_absent_deduct
+        elif status == "late":
+            return per_late_deduct
+        elif status == "halfDay":
+            return per_half_day_deduct
+        else:
+            return 0  # No deduction for other statuses
+
 
 
 
