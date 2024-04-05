@@ -38,7 +38,7 @@ const AttendanceReport = () => {
   const { text } = useContext(MyContext);
   console.log(text, "employee dashboard");
   const empid = text.id;
-  console.log(empid, "employee id");
+  const empname = text.name;
 
   useEffect(() => {
     const fetchData = async (empid) => {
@@ -47,14 +47,13 @@ const AttendanceReport = () => {
         const response = await Axios.get(
           `http://localhost:5000/employee/dashboard/${empid}`
         );
-        if(response.data.result) {
-          console.log("API Response:", response.data);
+        if (response.data.result) {
+          console.log("API Response:", response.data.result);
           const apiData = response.data.result;
           // Assuming the API response has a 'data' property containing an array
 
-          setData(apiData.data);
-        }
-        else {
+          setData(apiData);
+        } else {
           setData([]);
         }
       } catch (error) {
@@ -109,7 +108,8 @@ const AttendanceReport = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+            {data
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
                 return (
                   <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>

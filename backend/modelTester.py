@@ -9,10 +9,15 @@ from PIL import Image
 MAX_SAMPLES = 50
 CONFIDENCE_THRESHOLD = 50
 
-HAARCASCADE_FILE_PATH = "C:/Users/WAQUAR IMAM/ammar_repo/FacelogBackend2/static/haarcascade_frontalface_default.xml"
-TRAINING_DATA_PATH = "C:/Users/WAQUAR IMAM/ammar_repo/FacelogBackend2/static/face-trainner"
-MODEL_PATH = "C:/Users/WAQUAR IMAM/ammar_repo/FacelogBackend2/static/Trainner.yml"
+ROOT_PATH = r"E:\5th semester\5th semester MOIN\SCD\Scd complete project\faceLog_Attendence\backend\static"
+
+HAARCASCADE_FILE_PATH = ROOT_PATH + r"\haarcascade_frontalface_default.xml"
+TRAINING_DATA_PATH = ROOT_PATH + r"\face-trainner"
+MODEL_PATH = ROOT_PATH + r"\Trainner.yml"
+
 label_mapping = {}  # Initialize label mapping
+
+
 
 # Functions
 
