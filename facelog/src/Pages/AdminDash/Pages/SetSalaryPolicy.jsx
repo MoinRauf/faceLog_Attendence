@@ -1,37 +1,41 @@
 import React, { useState } from "react";
-import styles from "../../../ReusableCSS/form.module.css";
-import Logo from "../../../Components/Logo";
-import HoverButton from "../../../Components/CustomButton/HoverButton";
-import adminPageStyles from "../../../Pages/AdminDash/Pages/ADMINCSS/SetSalaryPolicy.css";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import Logo from "../../../Components/Logo";
+import HoverButton from "../../../Components/CustomButton/HoverButton";
+import styles from "../../../ReusableCSS/form.module.css";
+import adminPageStyles from "../../../Pages/AdminDash/Pages/ADMINCSS/SetSalaryPolicy.css";
+import "react-toastify/dist/ReactToastify.css";
 
 const SetSalaryPolicy = () => {
   const navigate = useNavigate();
-  const [perAbsentDeduct, setAbsentDays] = useState("");
-  const [perLateDeduct, setLateDays] = useState("");
-  const [perHalfDayDeduct, setHalfDays] = useState("");
+  const [formState, setFormState] = useState({
+    perAbsentDeduct: "",
+    perLateDeduct: "",
+    perHalfDayDeduct: "",
+  });
+
+  const clearForm = () => {
+    setFormState({
+      perAbsentDeduct: "",
+      perLateDeduct: "",
+      perHalfDayDeduct: "",
+    });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Check if any field is empty
-    if (!perAbsentDeduct || !perLateDeduct || !perHalfDayDeduct) {
+    if (!formState.perAbsentDeduct || !formState.perLateDeduct || !formState.perHalfDayDeduct) {
       // Show error toast and return
       toast.error("Please fill out all fields");
       return;
     }
 
     try {
-      const response = await axios.post(
-        "http://localhost:5000/policy/setSalaryDeduction",
-        {
-          perAbsentDeduct,
-          perLateDeduct,
-          perHalfDayDeduct,
-        }
-      );
+      const response = await axios.post("http://localhost:5000/policy/setSalaryDeduction", { ...formState });
 
       console.log("API Response:", response.data);
 
@@ -43,9 +47,7 @@ const SetSalaryPolicy = () => {
       }, 3000);
 
       // Clear the form by resetting state variables
-      setAbsentDays("");
-      setHalfDays("");
-      setLateDays("");
+      clearForm();
     } catch (error) {
       // Handle errors
       console.error("API Error:", error);
@@ -71,59 +73,23 @@ const SetSalaryPolicy = () => {
       />
       <div className="maindiv1">
         <h1 className="heading1">Salary Deduction Policy</h1>
-        <div className={styles.formField}>
-          <div className="center">
-            <label className="divlabel1">Absent Days:</label>
+        {["perAbsentDeduct", "perLateDeduct", "perHalfDayDeduct"].map((field) => (
+          <div key={field} className={styles.formField}>
+            <div className="center">
+              <label className="divlabel1">{field.replace("per", "")}:</label>
+            </div>
+            <input
+              type="number"
+              value={formState[field]}
+              onChange={(e) => setFormState({ ...formState, [field]: e.target.value })}
+              placeholder="%"
+              min="0"
+              className="userinput1"
+            />
           </div>
-
-          <input
-            type="number"
-            value={perAbsentDeduct}
-            onChange={(e) => setAbsentDays(e.target.value)}
-            // className={adminPageStyles.userinput}
-            placeholder="%"
-            min="0"
-            className="userinput1"
-          />
-        </div>
-
-        <div className={styles.formField}>
-          <div className="center">
-            <label className="divlabel1">Late Days:</label>
-          </div>
-          <input
-            type="number"
-            value={perLateDeduct}
-            onChange={(e) => setLateDays(e.target.value)}
-            // className={adminPageStyles.userinput}
-            placeholder="%"
-            min="0"
-            className="userinput1"
-          />
-        </div>
-
-        <div className={styles.formField}>
-          <div className="center">
-            <label className="divlabel1">Half Days:</label>
-          </div>
-          <input
-            type="number"
-            value={perHalfDayDeduct}
-            onChange={(e) => setHalfDays(e.target.value)}
-            // className={adminPageStyles.userinput}
-            placeholder="%"
-            min="0"
-            className="userinput1"
-          />
-        </div>
-
+        ))}
         <div style={{ margin: "30px 0px 30px 150px" }}>
-          <HoverButton
-            label="Submit"
-            bgColor="#16344f"
-            textColor="#d9eff5"
-            type="submit"
-          />
+          <HoverButton label="Submit" bgColor="#16344f" textColor="#d9eff5" type="submit" />
         </div>
       </div>
     </form>

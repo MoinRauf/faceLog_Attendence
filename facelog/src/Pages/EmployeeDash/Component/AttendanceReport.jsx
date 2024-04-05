@@ -13,7 +13,7 @@ import { MyContext } from "../../../MyContext";
 import { useContext } from "react";
 
 const columns = [
-  { id: "id", label: "SNo", minWidth: 20, align: "center" },
+  { id: "sNo", label: "SNo", minWidth: 20, align: "center" },
   { id: "date", label: "Date", minWidth: 150, align: "center" },
   { id: "time", label: "Time", minWidth: 150, align: "center" },
   {
@@ -49,7 +49,7 @@ const AttendanceReport = () => {
         );
         if(response.data.result) {
           console.log("API Response:", response.data);
-          const apiData = response.data;
+          const apiData = response.data.result;
           // Assuming the API response has a 'data' property containing an array
           setData(apiData);
         }
@@ -108,8 +108,7 @@ const AttendanceReport = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+            {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
                 return (
                   <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
