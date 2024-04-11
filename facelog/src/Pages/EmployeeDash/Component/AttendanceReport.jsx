@@ -27,6 +27,7 @@ const columns = [
     label: "Salary\u00a0Deduction",
     minWidth: 150,
     align: "center",
+    format: (value) => `${value}%`,
   },
 ];
 

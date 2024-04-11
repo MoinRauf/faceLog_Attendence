@@ -23,7 +23,17 @@ const DashBoard = () => {
             textColor="#16344f"
             linkTo="/changePassword"
           />
+          
+          <HoverButton
+            label="Log Out"
+            bgColor="#c0ffd1"
+            textColor="#16344f"
+            linkTo="/"
+            
+          />
+          
         </div>
+        
       </div>
       <div className={styles.employeeReport}>
         <h1>

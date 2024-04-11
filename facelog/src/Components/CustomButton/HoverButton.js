@@ -9,6 +9,8 @@ const HoverButton = ({ label, bgColor, textColor, linkTo, onClick }) => {
 
   const buttonStyle = {
     padding: "10px 20px",
+    margin:"10px",
+    // gap:"200px",
     border: "2px solid #16344f",
     fontSize: "18px",
     fontWeight: "bold",
@@ -33,6 +35,7 @@ const HoverButton = ({ label, bgColor, textColor, linkTo, onClick }) => {
   const handleClick = () => {
     navigate(linkTo);
   };
+  
 
   return (
     <button

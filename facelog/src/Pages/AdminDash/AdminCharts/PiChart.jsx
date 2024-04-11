@@ -11,7 +11,7 @@ export default function PiChart() {
     ["PENDING", "Hours per Day"],
     ["Present Days  ", text.DaysPresent ? text.DaysPresent : 2],
     ["Days Late", text.DaysLate ? text.DaysLate : 2],
-    ["Days Absent", text.DaysAbsent ? text.DaysAbsent : 2],
+    // ["Days Absent", text.DaysAbsent ? text.DaysAbsent : 2],
     ["Half Days", text.HalfDays ? text.HalfDays : 2],
   ];
 // console.log(text.DaysPresent)
