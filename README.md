@@ -1,6 +1,6 @@
 # Facelog Attendance System
 
-Welcome to Facelog Attendance System! This application utilizes facial recognition technology to facilitate employee attendance registration. The frontend is developed using React, while the backend is powered by Python Flask.
+Facelog presents a pioneering solution for attendance management, redefining conventional tracking techniques through its sophisticated facial recognition technology. Developed using React and Python's Flask framework, it seamlessly incorporates OpenCV and TensorFlow for precise and hands-free attendance monitoring. Facelog empowers organizations to optimize their processes while upholding stringent standards of efficiency and security in attendance tracking.
 
 ## Setup Instructions
 
